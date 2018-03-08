@@ -3,8 +3,16 @@
 > A Vue.js project
 
 ## Build Setup
+====================================================================
+1、由于npm有时候特别慢  所以可以在全局装一个淘宝镜像 cnpm
+2、安装方法： npm install -g cnpm --registry=https://registry.npm.taobao.org
+3、切到对应文件夹下
+4、cnpm install  :安装该项目需要的包
+5、安装完成之后  npm run dev  启动本地服务 开始开发项目
+6、项目开发完成之后  npm run build  打包项目
 
-``` bash
+
+===================================================================
 # install dependencies
 npm install
 
