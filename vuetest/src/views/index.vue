@@ -12,6 +12,9 @@
                 <router-link to='/activity'>活动</router-link>
             </li>
         </ul>
+        <div class="content_box">
+            这是内容部分  这是在nrc分支
+        </div>
     </div>
 </template>
 
