@@ -12,6 +12,7 @@
 6、项目开发完成之后  npm run build  打包项目
 
 
+7、https://www.easy-mock.com/login   模拟接口网站
 ===================================================================
 # install dependencies
 npm install

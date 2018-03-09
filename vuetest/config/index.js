@@ -3,14 +3,36 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
-
+const arrProxy = [
+    '/proxy',
+    '/mock',
+    '/upload'
+];
+let proxy = {};
+arrProxy.forEach((item,i) => {
+    proxy[irem] = {
+        changeOrigin: true,
+        target: 'https://www.easy-mock.com/mock/5a9f49ae6080a32617c73596',
+        secure: false,
+        pathRewrite: {}
+    }
+    proxy[item].pathRewrite[item] = '/example' + item
+})
 module.exports = {
   dev: {
 
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+        '/proxy': {
+            target: 'https://www.easy-mock.com/mock/5a9f49ae6080a32617c73596',
+            secure: false,
+            pathRewrite: {
+                '/proxy': '/example/proxy'
+            }
+        }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

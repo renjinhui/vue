@@ -23,7 +23,10 @@
                 text-align: center;
                 color: #fff;
                 height:30px;
-                line-height:30px; 
+                line-height:30px;
+                &.current{
+                    background: #e68585;
+                }
             }
         }
         .body_box{
@@ -52,9 +55,9 @@
         <div class="body_box">
             <ul class="menu_box lt">
                 <li>
-                    <router-link to='/activity1'>活动1</router-link>
-                    <router-link to='/activity2'>活动2</router-link>
-                    <router-link to='/activity3'>活动3</router-link>
+                    <router-link to='/activity1' activeClass='current'>活动1</router-link>
+                    <router-link to='/activity2' activeClass='current'>活动2</router-link>
+                    <router-link to='/activity3' activeClass='current'>活动3</router-link>
                 </li>
             </ul>
             <div class="content_box">
