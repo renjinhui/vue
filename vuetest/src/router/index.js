@@ -1,10 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/demo/hello'
 
 const Login = () => import('@/views/login')
 const Index = () => import('@/views/index')
-
+// const Activity = () => import('@/views/activity/index')
+const Activity1 = () => import('@/views/activity/Activity1')
+const Activity2 = () => import('@/views/activity/Activity2')
+const Activity3 = () => import('@/views/activity/Activity3')
+console.log(Index)
 Vue.use(Router)
 
 export default new Router({
@@ -15,7 +18,21 @@ export default new Router({
 		},
 		{
 			path: '/main',
-			component: Index
+			component: Index,
+			children: [
+				{
+					path: '/activity1',
+					component: Activity1
+				},
+				{
+					path: '/activity2',
+					component: Activity2
+				},
+				{
+					path: '/activity3',
+					component: Activity3
+				}
+			]
 		},
 		{
 			path: '/login',

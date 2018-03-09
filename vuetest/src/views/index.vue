@@ -52,12 +52,13 @@
         <div class="body_box">
             <ul class="menu_box lt">
                 <li>
-                    <router-link to='/activity'>活动</router-link>
+                    <router-link to='/activity1'>活动1</router-link>
+                    <router-link to='/activity2'>活动2</router-link>
+                    <router-link to='/activity3'>活动3</router-link>
                 </li>
             </ul>
             <div class="content_box">
-                这是内容部分  这是在nrc分支
-                分支管理---------正在测试
+                <router-view/>
             </div>    
         </div>
         
