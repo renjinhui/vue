@@ -1,62 +1,50 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+const Demo = () => import('@/demo/hello')
 const Login = () => import('@/views/login')
 const Index = () => import('@/views/index')
-// const Activity = () => import('@/views/activity/index')
-const Activity1 = () => import('@/views/activity/Activity1')
-const Activity2 = () => import('@/views/activity/Activity2')
-const Activity3 = () => import('@/views/activity/Activity3')
-console.log(Index)
+import {Activity1,Activity2,Activity3} from '@/views/activity/index'
 Vue.use(Router)
 
+
+let route = [
+	{
+		path: '/',
+		redirect: '/main'
+	},
+	{
+		path: '/login',
+		component: Login
+	},
+	{
+		path: '/main',
+		component: Index,
+		children: [
+			{
+				path: '/main/activity1',
+				component: Activity1
+			},
+			{
+				path: '/main/activity2',
+				component: Activity2
+			},
+			{
+				path: '/main/activity3',
+				component: Activity3
+			}
+		]
+	}
+];
+let demoRoute = [
+	{
+		path: '/main/demo',
+		component: Demo
+	}
+];
+if(process.env.NODE_ENV === "development"){
+	route[2].children = route[2].children.concat(demoRoute)
+}
 export default new Router({
-	routes: [
-		{
-			path: '/',
-			redirect: '/main'
-		},
-		{
-			path: '/main',
-			component: Index,
-			children: [
-				{
-					path: '/activity1',
-					component: Activity1
-				},
-				{
-					path: '/activity2',
-					component: Activity2
-				},
-				{
-					path: '/activity3',
-					component: Activity3
-				}
-			]
-		},
-		{
-			path: '/login',
-			component: Login
-		}
-
-	]
+	routes: route
 })
-// export default new Router({
-// 	routes: [
-// 		{
-// 			path: '/',
-// 			redirect: '/main',
-// 			children: [
-// 				{
-// 					path: '/main',
-// 					component: Index
-// 				},
-// 				{
-// 					path: '/login',
-// 					component: Login
-// 				}
-// 			]
-// 		}
-
-// 	]
-// })

@@ -16,6 +16,9 @@
             height: 100%;
             background: #948a9c;
             color: #fff;
+            li{
+                width: 100%;
+            }
             li>a{
                 display: inline-block;
                 width: 100%;
@@ -37,12 +40,12 @@
             right:0;
         }
         .content_box{
-            // position: absolute;
-            // left:205px;
-            // right:0;
-            // top:0;
-            // bottom:0;
-            margin-left:205px;
+            position:absolute;
+            top:0;
+            bottom:0;
+            left:205px;
+            right:0;
+            overflow: hidden;
         }
     }
 </style>
@@ -55,9 +58,10 @@
         <div class="body_box">
             <ul class="menu_box lt">
                 <li>
-                    <router-link to='/activity1' activeClass='current'>活动1</router-link>
-                    <router-link to='/activity2' activeClass='current'>活动2</router-link>
-                    <router-link to='/activity3' activeClass='current'>活动3</router-link>
+                    <router-link to='/main/demo' v-if="isDev" activeClass='current'>DEMO</router-link>
+                    <router-link to='/main/activity1' activeClass='current'>积分管理</router-link>
+                    <router-link to='/main/activity2' activeClass='current'>活动管理</router-link>
+                    <router-link to='/main/activity3' activeClass='current'>商城管理</router-link>
                 </li>
             </ul>
             <div class="content_box">
@@ -73,11 +77,21 @@ export default {
     name: 'index',
     data () {
         return {
-            
+            isDev: false
         }
     },
+    mounted(){
+        this.judgeDev()
+    },
     methods:{
-        
+        judgeDev(){
+            console.log(process.env.NODE_ENV)
+            if(process.env.NODE_ENV === "development"){
+                this.isDev = true
+            }else{
+                this.isDev = false
+            }
+        }
     }
 }
 </script>

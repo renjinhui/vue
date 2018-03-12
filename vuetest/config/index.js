@@ -10,7 +10,7 @@ const arrProxy = [
 ];
 let proxy = {};
 arrProxy.forEach((item,i) => {
-    proxy[irem] = {
+    proxy[item] = {
         changeOrigin: true,
         target: 'https://www.easy-mock.com/mock/5a9f49ae6080a32617c73596',
         secure: false,
