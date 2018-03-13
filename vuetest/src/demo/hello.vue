@@ -1,15 +1,31 @@
+<style lang='less' rel='stylesheet/less'>
+    .hello{
+        width: 100%;
+        height: 100%;
+        overflow: scroll;
+    }
+</style>
 <template>
     <div class="hello">
         <Table :titleList="titleList" :dataList="dataList" style="height:300px" @onSelect="selectFn"></Table>
+        <Tabs @onChange="tabChange" :tabData="tabAry" activeClass="current" style="height:300px"></Tabs>
+        <Tabs @onChange="tabChange">
+            <div order='0' @click='tabClick' class='wwww'>111</div>
+            <div order='1' class='wwww'>222</div>
+            <div order='2' class='wwww'>333</div>
+            <div order='3' class='wwww'>444</div>
+        </Tabs>
     </div>
 </template>
 
 <script>
-import Table from '@/components/table';
+import Table from '@/components/Table';
+import Tabs from '@/components/Tabs';
 export default {
     name: 'hello',
     components: {
         Table,
+        Tabs
     },
     data () {
         return {
