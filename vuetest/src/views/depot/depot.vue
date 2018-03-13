@@ -8,8 +8,7 @@
     <div class="activity">
         <ul class="menu_box lt">
             <li>
-                <router-link to='/main/activity1' activeClass='current'>转盘活动</router-link>
-                <router-link to='/main/activity2' activeClass='current'>抽奖活动</router-link>
+                <router-link to='/main/depot/list' activeClass='current'>仓库列表</router-link>
             </li>
         </ul>
         <div class="content_box">

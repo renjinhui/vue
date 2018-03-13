@@ -4,7 +4,9 @@ import Router from 'vue-router'
 const Demo = () => import('@/demo/hello')
 const Login = () => import('@/views/login')
 const Index = () => import('@/views/index')
-import {Activity1,Activity2,Activity3} from '@/views/activity/index'
+import { Activity,Luckdraw,Turntable } from '@/views/activity/index'
+import { Depot } from '@/views/depot/index'
+import { Point } from '@/views/point/index'
 Vue.use(Router)
 
 
@@ -20,18 +22,30 @@ let route = [
 	{
 		path: '/main',
 		component: Index,
+		redirect: '/main/activity/',
 		children: [
 			{
-				path: '/main/activity1',
-				component: Activity1
+				path: '/main/activity',
+				component: Activity,
+				redirect: '/main/activity/luckdraw',
+				children: [
+					{
+						path: '/main/activity/luckdraw',
+						component: Luckdraw
+					},
+					{
+						path: '/main/activity/turntable',
+						component: Turntable
+					}
+				]
 			},
 			{
-				path: '/main/activity2',
-				component: Activity2
+				path: '/main/depot',
+				component: Depot
 			},
 			{
-				path: '/main/activity3',
-				component: Activity3
+				path: '/main/point',
+				component: Point
 			}
 		]
 	}

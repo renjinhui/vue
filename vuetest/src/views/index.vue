@@ -59,9 +59,9 @@
             <ul class="menu_box lt">
                 <li>
                     <router-link to='/main/demo' v-if="isDev" activeClass='current'>DEMO</router-link>
-                    <router-link to='/main/activity1' activeClass='current'>积分管理</router-link>
-                    <router-link to='/main/activity2' activeClass='current'>活动管理</router-link>
-                    <router-link to='/main/activity3' activeClass='current'>商城管理</router-link>
+                    <router-link to='/main/point' activeClass='current'>积分管理</router-link>
+                    <router-link to='/main/activity' activeClass='current'>活动管理</router-link>
+                    <router-link to='/main/depot' activeClass='current'>商城管理</router-link>
                 </li>
             </ul>
             <div class="content_box">

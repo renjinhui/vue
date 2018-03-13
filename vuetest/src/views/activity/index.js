@@ -1,4 +1,4 @@
-const Activity1 = () => import('@/views/activity/Activity1')
-const Activity2 = () => import('@/views/activity/Activity2')
-const Activity3 = () => import('@/views/activity/Activity3')
-export { Activity1,Activity2,Activity3 }
+const Activity = () => import('@/views/activity/activity')
+const Luckdraw = () => import('@/views/activity/luckdraw')
+const Turntable = () => import('@/views/activity/turntable')
+export { Activity,Luckdraw,Turntable }
