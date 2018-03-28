@@ -8,7 +8,7 @@
     <div class="activity">
         <ul class="menu_box lt">
             <li>
-                <router-link to='/main/point/point' activeClass='current'>积分日历</router-link>
+                <router-link to='/main/point/point1' activeClass='current'>积分日历1</router-link>
                 <router-link to='/main/point/point2' activeClass='current'>积分日历2</router-link>
             </li>
         </ul>

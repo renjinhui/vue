@@ -1,2 +1,3 @@
 const Depot = () => import('@/views/depot/depot')
-export { Depot }
+const List = () => import('@/views/depot/list')
+export { Depot,List }
