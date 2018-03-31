@@ -7,6 +7,7 @@
 <template>
     <div class="activity">
         转盘活动
+        {{this.$store.state.count}}
     </div>
 </template>
 

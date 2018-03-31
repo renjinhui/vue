@@ -53,6 +53,7 @@
     <div class="main">
         <div class="title_box">
             <div class="lt">icon</div>
+            {{this.$store.state.count}}
             <div class="name rt">任金辉</div>
         </div>
         <div class="body_box">

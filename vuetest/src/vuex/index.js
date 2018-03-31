@@ -10,8 +10,6 @@ Vue.use(Vuex);
 const state = {
     count: 0,
     zpDicts:{},
-    goodsDicts: {},
-    goodsProductDicts: {}
 };
 
 const store = new Vuex.Store({

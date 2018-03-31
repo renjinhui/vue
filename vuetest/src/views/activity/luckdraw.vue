@@ -7,6 +7,7 @@
 <template>
     <div class="activity">
         抽奖活动
+        <button @click='addCount'>增加数字</button>
     </div>
 </template>
 
@@ -19,7 +20,10 @@ export default {
         }
     },
     methods:{
-        
+        addCount(n){
+            n = 4;
+            this.$store.dispatch('addCount',n);
+        }
     }
 }
 </script>
