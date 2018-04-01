@@ -4,7 +4,6 @@ import * as getters from './getters';
 import * as actions from './actions';
 import * as mutations from './mutations';
 
-
 Vue.use(Vuex);
 
 const state = {
@@ -12,7 +11,7 @@ const state = {
     userinfo:{},
 };
 
-const store = new Vuex.Store({
+const store1 = new Vuex.Store({
     state,
     getters,
     actions,
@@ -20,4 +19,4 @@ const store = new Vuex.Store({
 });
 
 
-export default store;
+export default store1;
