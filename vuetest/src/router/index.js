@@ -5,8 +5,8 @@ const Demo = () => import('@/demo/hello')
 const Login = () => import('@/views/login')
 const Index = () => import('@/views/index')
 import { Activity,Luckdraw,Turntable } from '@/views/activity/index'
-import { Depot } from '@/views/depot/index'
-import { Point } from '@/views/point/index'
+import { Depot,List } from '@/views/depot/index'
+import { Point,Point1,Point2 } from '@/views/point/index'
 Vue.use(Router)
 
 
@@ -41,11 +41,28 @@ let route = [
 			},
 			{
 				path: '/main/depot',
-				component: Depot
+				component: Depot,
+				children: [
+					{
+						path: '/main/depot/list',
+						component: List
+					}
+				]
 			},
 			{
 				path: '/main/point',
-				component: Point
+				component: Point,
+				redirect: '/main/point/point1',
+				children: [
+					{
+						path: '/main/point/point1',
+						component: Point1
+					},
+					{
+						path: '/main/point/point2',
+						component: Point2
+					}
+				]
 			}
 		]
 	}
@@ -62,3 +79,18 @@ if(process.env.NODE_ENV === "development"){
 export default new Router({
 	routes: route
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

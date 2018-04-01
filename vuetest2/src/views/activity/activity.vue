@@ -1,18 +1,21 @@
 <style lang='less' rel='stylesheet/less'>
     .activity{
-        width: 100%;
+        width: 200px;
         height: 100%;
+    }
+    .current{
+         background-color: #ccc;
     }
 </style>
 <template>
     <div class="activity">
         <ul class="menu_box lt">
             <li>
-                <router-link to='/main/point/point1' activeClass='current'>积分日历1</router-link>
-                <router-link to='/main/point/point2' activeClass='current'>积分日历2</router-link>
+                <router-link to='/activity1' activeClass='current'>转盘活动</router-link>
+                <router-link to='/activity2' activeClass='current'>抽奖活动</router-link>
             </li>
         </ul>
-        <div class="content_box">
+        <div class="content_box scroll">
             <router-view/>
         </div>    
     </div>
@@ -25,6 +28,9 @@ export default {
         return {
             
         }
+    },
+    mounted(){
+        
     },
     methods:{
         

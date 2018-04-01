@@ -1,0 +1,1 @@
+export const zpDicts = state => state.zpDicts;

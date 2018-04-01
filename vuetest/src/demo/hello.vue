@@ -31,12 +31,6 @@ export default {
         return {
             titleList:[
                 {
-                    text:'',
-                    key:'select',
-                    width:50,
-                    class:'dddd'
-                },
-                {
                     text:'序号',
                     key:'',
                     width:50,

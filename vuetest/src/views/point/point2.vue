@@ -1,29 +1,25 @@
 <style lang='less' rel='stylesheet/less'>
-    .activity{
+    .point1{
         width: 100%;
         height: 100%;
     }
 </style>
 <template>
-    <div class="activity">
-        抽奖活动
-        <button @click='addCount'>增加数字</button>
+    <div class="point2">
+        point2
     </div>
 </template>
 
 <script>
 export default {
-    name: 'activity',
+    name: 'point2',
     data () {
         return {
             
         }
     },
     methods:{
-        addCount(n){
-            n = 4;
-            this.$store.dispatch('addCount',n);
-        }
+        
     }
 }
 </script>

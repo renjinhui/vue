@@ -12,7 +12,7 @@
                 <router-link to='/main/activity/luckdraw' activeClass='current'>抽奖活动</router-link>
             </li>
         </ul>
-        <div class="content_box">
+        <div class="content_box scroll">
             <router-view/>
         </div>    
     </div>
@@ -25,6 +25,9 @@ export default {
         return {
             
         }
+    },
+    mounted(){
+        console.log(this.$store.state)
     },
     methods:{
         
