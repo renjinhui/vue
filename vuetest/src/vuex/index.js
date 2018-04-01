@@ -9,7 +9,7 @@ Vue.use(Vuex);
 
 const state = {
     count: 0,
-    zpDicts:{},
+    userinfo:{},
 };
 
 const store = new Vuex.Store({

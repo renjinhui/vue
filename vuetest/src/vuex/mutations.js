@@ -1,5 +1,5 @@
-export const zpDicts =  (state,obj) => {
-    state.zpDicts = obj
+export const userinfo =  (state,obj) => {
+    state.userinfo = obj
 };
 export const addCount = (state,n) => {
 	state.count = n

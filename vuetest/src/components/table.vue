@@ -41,7 +41,7 @@
                 <tbody>
                     <tr class="body" v-for="(item,index) in dataList">
                         <td v-for="(til,n) in titleList" :class="til.class||''">
-                            <span v-if="til.key == 'index'">{{index}}</span>
+                            <span v-if="til.key == 'index'">{{index+1}}</span>
                             <span v-else-if="til.key == 'html'">
                             	<span v-for="obj in til.htmlAry" @click="()=>{spanClick(obj,{item,index})}" v-html="obj.html"></span>
                             </span>
@@ -106,7 +106,7 @@
             this.giveSelectAry();
         },
         updated(){
-            
+            console.log(this.dataList)
         },
         methods:{
         	getThWidth(){

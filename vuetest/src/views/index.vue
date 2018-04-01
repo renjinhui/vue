@@ -47,6 +47,9 @@
             right:0;
             overflow: hidden;
         }
+        .scroll{
+            overflow: scroll;
+        }
     }
 </style>
 <template>
@@ -54,7 +57,7 @@
         <div class="title_box">
             <div class="lt">icon</div>
             {{this.$store.state.count}}
-            <div class="name rt">任金辉</div>
+            <div class="name rt">{{this.$store.state.userinfo.name || 'moren'}}</div>
         </div>
         <div class="body_box">
             <ul class="menu_box lt">
@@ -83,6 +86,7 @@ export default {
     },
     mounted(){
         this.judgeDev()
+        this.$store.dispatch('getuserInfo');
     },
     methods:{
         judgeDev(){

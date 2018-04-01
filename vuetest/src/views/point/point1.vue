@@ -66,12 +66,14 @@ export default {
         }
     },
     mounted(){
-        let time = new Date().getTime();
+        let time = new Date();
         this.getDateArray(time)
     },
     methods:{
         getDateArray(time){
-            let t = new Date(time).getDate();//当月天数
+            let y = time.getFullYear();
+            let m = time.getMonth()+1;
+            let t = new Date(y,m,0).getDate();//当月天数
             let w = this.getWeekDay(time);
             let ary = [];
             for(let i = 0; i< (t+w); i++){
