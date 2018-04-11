@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>干掉便便 赢取圣诞礼物</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="360-fullscreen" content="true"/>
+    <link rel="stylesheet" type="text/css" href="https://static.souyidai.com/other/christmas/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://static.souyidai.com/other/christmas/css/style.css"/>
+    <style>
+        body, canvas, div {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -khtml-user-select: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+    </style>
+</head>
+<body class="fg" style="height: 100%;">
+<div class="mui-content page" id="game">
+    <img id="game-top" src='https://static.souyidai.com/other/christmas/img/8003.png'/>
+    <img id="game-bottom" src='https://static.souyidai.com/other/christmas/img/8004.png'/>
+
+    <div id="stuffs"></div>
+    <p id="game-timer"></p>
+    <p id="game-score"></p>
+    <img id="game-music" src="https://static.souyidai.com/other/christmas/img/8001.png"/>
+    <img id="game-ready" src="https://static.souyidai.com/other/christmas/img/9006.png"/>
+    <img id="game-go" src="https://static.souyidai.com/other/christmas/img/9005.png" />
+    <p id="game-gift"></p>
+    <div id="game-get-gift" align="center">
+        <img id="game-cloud" src="https://static.souyidai.com/other/christmas/img/11001.png" style="width: 90%; margin-top: 32px;"/>
+        <img src="https://static.souyidai.com/other/christmas/img/11002.png" style="margin-top: -24px; width: 90%;"/>
+        <img id="game-gift-img" src="https://static.souyidai.com/other/christmas/img/13001.png" style="width: 40%; position: absolute; top: 15%; left: 30%;"/>
+        <img id="game-gift-close" src="https://static.souyidai.com/other/christmas/img/11003.png" style="width: 64px; height: 64px; position: absolute; right: 5%; top: 5%;z-index:100;" />
+        <p style="margin-top: -18%; margin-bottom: 1%;">你是<span id="friend-name"></span>的真朋友!</p>
+        <p>帮TA赢了一个<span id="gift-name"></span></p>
+        <p style="font-size: 12px; margin-top: 5%;">一定要提醒Ta在今日23:59分前兑换，否则就白瞎啦</p>
+    </div>
+</div>
+
+<div class='mui-content mui-scroll-wrapper page' id="main">
+    <div class='mui-scroll'>
+        <div class='game-title'>
+            <img src="https://static.souyidai.com/other/christmas/img/9008.gif" style="position: absolute; width: 100%; left: 0; top: 0;" />
+            <img id="play" class='start-btn' src="https://static.souyidai.com/other/christmas/img/2.png"  />
+            <div id="rules" class='text-btn'>
+                <p style="color: #2a618c; font-weight: bold; font-size: 16px;">查看活动规则</p>
+            </div>
+        </div>
+        <div>
+            <a href="#" id="exchange" class='mui-btn mui-block mui-block-80 btn red'>领取今日圣诞礼物</a>
+            <a href="#" id="invite" class='mui-btn mui-block mui-block-80 btn blue'>邀请好友玩出新礼物</a>
+            <p class='tip'>今日累计获得圣诞红包: <span class='value rp'></span>元</p>
+            <p class='tip' id="gift" style="display:none;">圣诞礼物: <span class='value gift'></span></p>
+            <img src='https://static.souyidai.com/other/christmas/img/3.png' class='img-title'>
+            <ul class="mui-table-view" id="friends">
+            </ul>
+            <img id="none" src="https://static.souyidai.com/other/christmas/img/1001.png" style="width: 60%; margin-top: 20px; display: none;"/>
+        </div>
+    </div>
+    <div id="share-mask" style="display: none; position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8);z-index: 10;">
+        <img src='https://static.souyidai.com/other/christmas/img/7011.png' style='position: absolute; right: 0; top: 0; width: 90%;'/>
+    </div>
+</div>
+
+<div class='mui-content page' id="helpmain">
+    <div class='game-title'>
+        <img src="https://static.souyidai.com/other/christmas/img/9008.gif" style="position: absolute; width: 100%; left: 0; top: 0;" />
+        <img id="help-play" class='start-btn' src="https://static.souyidai.com/other/christmas/img/2.png"  />
+        <div id="help-rules" class='text-btn'>
+            <p style="color:#2a618c; font-weight: bold; font-size: 18px;">查看活动规则</p>
+        </div>
+    </div>
+
+    <ul class="mui-table-view" style='background-color: rgba(76,142,193,0.5); margin: 12px; border-radius: 8px;'>
+        <li iclass="mui-table-view-cell mui-media" style='height: 120px; padding: 10px 0px;'>
+            <a href="javascript:;">
+                <div class="mui-media-object mui-pull-left head" style="margin-left: 10px;">
+                    <img id='help-inviter-head' src='https://static.souyidai.com/other/christmas/img/4.png' height="100"/>
+                </div>
+                <div class="mui-media-body" style="padding-left: 35px;">
+                    <p id="help-inviter" style="color: white; text-align: left;margin:0;">微信用户昵称</p>
+                    <p style="color: white; text-align: left;margin:0;">一直觉得你手气好！来帮我玩出圣诞实物大奖,顺便帮我赚点红包花花呗</p>
+                    <p style='color: white; text-align: left;margin:0;margin-top: 5px;font-size:16px;font-weight: 400;'>今天还能帮Ta<span id="time" style="margin-left: 2px; margin-right: 2px; color:#f2dc60;font-size: 20px;">0</span>次</p>
+                </div>
+            </a>
+        </li>
+    </ul>
+
+    <a href="javascript:;" id="help-nav" class='mui-btn mui-block mui-block-80 btn blue' style='font-size: 20px;'>红包那么多，我想去赚赚</a>
+</div>
+
+<div class='mui-content mui-scroll-wrapper page' id="guide" align='center'>
+    <div class='mui-scroll' style="min-height: 100%;">
+        <img src='https://static.souyidai.com/other/christmas/img/1008.png' width="90%" />
+        <img src='https://static.souyidai.com/other/christmas/img/1007.png' width="85%" style='position: absolute; bottom: 0px; left: 5%;' />
+    </div>
+</div>
+
+<div class='mui-content page mui-scroll-wrapper' id='qrcode1' align="center">
+    <div class='mui-scroll'>
+        <img src='https://static.souyidai.com/other/christmas/img/2001.png' width='40%'/>
+        <img src='https://static.souyidai.com/other/christmas/img/2002.png' width='96%'/>
+        <div>
+            <img src='https://static.souyidai.com/other/christmas/img/2016.png' width='60%'/>
+            <p style="font-size: 18px;">今日还可以兑换&nbsp;<span id="qr-exchange" style="color: #ebd660; font-size: 20px;">66</span>&nbsp;元红包</p>
+            <p style="font-size: 18px;">已兑换&nbsp;<span id="qr-free" style="color: #ebd660; font-size: 20px;">0</span>&nbsp;元</p>
+        </div>
+
+        <img src='https://static.souyidai.com/other/christmas/img/2014.png' class='img-title' />
+        <div class='reward1 exist' align='left' id="mine">
+            <p class='type'>圣诞红包</p>
+            <p class='value'></p>
+            <p class='exchange'></p>
+        </div>
+
+        <img src='https://static.souyidai.com/other/christmas/img/2015.png' class='img-title' />
+
+        <div class='reward1' align='left' id="friend">
+            <p class='type'>圣诞红包</p>
+            <p class='value'></p>
+            <p class='exchange'></p>
+        </div>
+
+        <div id="awards">
+
+        </div>
+    </div>
+</div>
+
+<div class="mui-content page" id="login1" align="center">
+    <img src="https://static.souyidai.com/other/christmas/res/dom/132.png" style="margin-top: 32px; width: 90%;"/>
+
+    <div class="mui-content-padded" style="margin-top: 64px;">
+        <div class="mui-input-group">
+            <div class="mui-input-row mui-password" style="margin-top: 16px;">
+                <input type="number" class="mui-input-password" placeholder="输入手机号" style="background-color: white;" id="phone"/>
+            </div>
+            <div class="mui-input-row" style="margin-top: 16px;">
+                <input type="number" class="mui-pull-left" style="width: 65%; background-color: white;" placeholder="图片验证码"  id="imgcode"/>
+                <img class="mui-pull-right" style="width: 33%; background-color: white; height: 40px; -webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;" id="imgcodeContent"/>
+            </div>
+
+            <img src="https://static.souyidai.com/other/christmas/res/dom/131.png" width="80%;" style="margin-top: 128px;" id="next1"/>
+        </div>
+    </div>
+</div>
+<div class="mui-content page" id="login2" align="center">
+    <img src="https://static.souyidai.com/other/christmas/res/dom/136.png" style="margin-top: 32px; width: 90%;"/>
+
+    <div class="mui-content-padded" style="margin-top: 64px;">
+        <div class="mui-input-group" style="background-color: transparent;">
+            <div class="mui-input-row">
+                <input type="number" class="mui-pull-left" style="width: 65%; background-color: white;" placeholder="输入短信验证码" id="code"/>
+                <button class="mui-pull-right" style="width: 33%; padding: 10px 15px; border: 1px solid #f9e15f; background-color: #f9e15f;" id="fetchcode">点击获取</button>
+            </div>
+
+            <div class="mui-input-row mui-password" style="margin-top: 16px;">
+                <input type="password" class="mui-input-password" placeholder="设置登录密码" style="background-color: white;" id="password"/>
+                <span class="mui-icon mui-icon-eye"></span>
+            </div>
+
+            <div class="mui-input-row mui-checkbox mui-left" style="margin-top: 128px; font-size: 12px;">
+                <label style="font-size: 12px;"><span style="color: white;">我已同意并阅读</span><span style="color: #36afd1;">《搜易贷在线服务协议》</span></label>
+                <input type="checkbox" id="check" checked="true"/>
+            </div>
+
+            <img src="https://static.souyidai.com/other/christmas/res/dom/1311.png" width="80%;" id="next2"/>
+        </div>
+    </div>
+</div>
+
+<div class='mui-content page mui-scroll-wrapper' id='intro' align="center">
+    <div class='mui-scroll'>
+        <img src='https://static.souyidai.com/other/christmas/img/3001.png' id="intro-content" style="width: 100%; position: relative; top: -60px;"/>
+    </div>
+</div>
+
+<div class='mui-content page' id='result' align="center">
+    <img src='https://static.souyidai.com/other/christmas/img/4006.png' width="80%;" style="margin-top: 32px;"/>
+    <p style='color: white; font-size: 24px; margin-top: 24px;'>获得圣诞红包<span id="score" style='color: #f9e15f; font-size: 28px; margin-top: 32px;'></span>元</p>
+
+    <a href="#" id="r-exchange" class='mui-btn mui-block mui-block-80 btn red' style="margin-top: 48px;left:0;">兑换红包</a>
+    <a href="#" id="replay" class='mui-btn mui-block mui-block-80 btn blue' style="margin-top: 16px;left:0">我要重玩</a>
+
+    <img src='https://static.souyidai.com/other/christmas/img/4007.png' style='position: absolute; left: 0; bottom: 0;' width="90%"/>
+</div>
+
+<div class='mui-content page' id="helpresult">
+    <img src='https://static.souyidai.com/other/christmas/img/6001.png' width='80%' style="margin-top: 15px; position: relative; left: 10%;"/>
+    <img id='help-result-inviter' src='https://static.souyidai.com/other/christmas/img/6003.png' width='80%' style="margin-top: 15px; position: relative; left: 14%;"/>
+    <img id='help-result-friend' src='https://static.souyidai.com/other/christmas/img/6004.png' width='80%' style="margin-top: 15px; position: relative; left: 16%;"/>
+    <img id="inviter-head">
+    <img id="friend-head">
+    <p id="help-result-score"></p>
+    <a href="javascript:;" id="help-result-nav" class='mui-btn mui-block mui-block-80 btn blue' style='font-size: 18px; left: 10%; margin-top: 32px;'>圣诞礼物什么的，人家也要嘛</a>
+</div>
+
+<div class='mui-content page' id="exchange-page" align='center'>
+    <div id="exchange-old" style="display: none; position: absolute; width: 100%; height: 100%; left: 0; top: 0; text-align: center;">
+        <img src="https://static.souyidai.com/other/christmas/img/3013.png" style="width: 40%; margin-top: 10%;" />
+
+        <div id="exchange-container" style="position: relative; width: 100%; height: auto;">
+            <img id='exchange-img' src="https://static.souyidai.com/other/christmas/img/11002.png" style="position: relative; width: 90%;"/>
+            <p id='exchange-word' src='https://static.souyidai.com/other/christmas/img/11002.png'  style="position: absolute;">领取成功</p>
+        </div>
+
+        <div id="exchange-money" style="display: none; margin-top: 32px;">
+            <p style='margin-top: 16px;'><span id='exchange-value'></span>元投资红包奖励已放入</p>
+            <p style='margin-top: 16px;'><span id='exchange-phone'></span>的搜易贷账户</p>
+        </div>
+        <div id="exchange-award" style="display: none; margin-top: 32px;">
+            <p id="exchange-code">兑换码: </p>
+        </div>
+
+        <a href="javascript:;" id="exchange-share" class='mui-btn mui-block mui-block-80 btn blue' style="margin-top: 15%; font-size: 16px;">找好友来帮我玩出圣诞厚礼</a>
+
+        <img id='exchange-card' src="https://static.souyidai.com/other/christmas/img/15001.png" width="60%" style="margin-top: 10%;"/>
+
+        <div id="exchange-mask" style="display: none; position: absolute; z-index: 5; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8);">
+            <img src='https://static.souyidai.com/other/christmas/img/7011.png' style='position: absolute; right: 0; top: 0; width: 90%;'/>
+        </div>
+    </div>
+    <div id="exchange-new" style="display: none; position: absolute; width: 100%; height: 100%; left: 0; top: 0;">
+        <div style="position: relative; top: 0; left: 0; width: 100%; height: 100%;">
+            <img id='exchange-new-img' src='https://static.souyidai.com/other/christmas/img/7013.png' width="80%" style="position: relative; margin-top: 32px;"/>
+            <p id="exchange-new-word"></p>
+        </div>
+
+        <a href="javascript:;" id="exchange-download" class='mui-btn mui-block mui-block-80 btn blue' style="margin-top: 64px; font-size: 16px; left: 0;">下载搜易贷理财APP</a>
+    </div>
+</div>
+
+<div id="loading" style="width: 100%; height: 100%; z-index: 99999; position: absolute; left: 0; top: 0;display: none;" align="center">
+    <p>loading...</p>
+</div>
+
+<div id="alert" class="alert-outter">
+    <div class="alert">
+        <div class="content"></div>
+        <div class='btn-group'>
+            <a href="javascript:;" class='mui-btn two left'>暂不兑换</a>
+            <a href="javascript:;" class='mui-btn two right'>暂不兑换</a>
+        </div>
+    </div>
+</div>
+
+<audio id="audio-click" src="https://static.souyidai.com/other/christmas/music/click.mp3" style="display:none"></audio>
+<audio id="audio-bg" src="https://static.souyidai.com/other/christmas/music/321readygo.mp3" preload="auto" style="display:none"></audio>
+<audio id="audio-bingo" src="https://static.souyidai.com/other/christmas/music/bingo.mp3" preload="auto" style="display:none"></audio>
+<audio id="audio-bg1" src="https://static.souyidai.com/other/christmas/music/bg.mp3" preload="auto" style="display:none"></audio>
+
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src='https://static.souyidai.com/other/christmas/mui.min.js'></script>
+<script src="https://static.souyidai.com/other/christmas/jquery.min.js"></script>
+<script src="https://static.souyidai.com/other/christmas/jquery.transit.js"></script>
+<script src="https://static.souyidai.com/other/christmas/src/app.js"></script>
+<script src="https://static.souyidai.com/other/christmas/src/api.js"></script>
+<script src="https://static.souyidai.com/other/christmas/CCClass.js"></script>
+<script src="https://static.souyidai.com/other/christmas/src/UIController.js"></script>
+<script src="https://static.souyidai.com/other/christmas/src/controllers/exchangeController.js"></script>
+<script src="https://static.souyidai.com/other/christmas/src/controllers/gameController.js?v=11"></script>
+<script src="https://static.souyidai.com/other/christmas/src/controllers/guideController.js"></script>
+<script src="https://static.souyidai.com/other/christmas/src/controllers/helpmainController.js"></script>
+<script src="https://static.souyidai.com/other/christmas/src/controllers/helpresultController.js"></script>
+<script src="https://static.souyidai.com/other/christmas/src/controllers/introController.js"></script>
+<script src="https://static.souyidai.com/other/christmas/src/controllers/loadingController.js"></script>
+<script src="https://static.souyidai.com/other/christmas/src/controllers/mainController.js"></script>
+<script src="https://static.souyidai.com/other/christmas/src/controllers/qrcode1Controller.js"></script>
+<script src="https://static.souyidai.com/other/christmas/src/controllers/regController.js"></script>
+<script src="https://static.souyidai.com/other/christmas/src/controllers/resultController.js"></script>
+
+
+<script src="https://static.souyidai.com/other/christmas/main.js?v=10"></script>
+<script src="https://static.souyidai.com/pv/spv_new.js"></script>
+
+</body>
+</html>

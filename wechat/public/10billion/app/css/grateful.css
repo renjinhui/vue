@@ -1,0 +1,17 @@
+html,
+body,
+.bg {
+  height: 100%;
+}
+.head {
+  background-image: url(../images/third_phase/grateful.png);
+  background-repeat: no-repeat;
+  background-size: 54% 100%;
+  background-position: center;
+  height: 4.09rem;
+  margin-top: 0.4rem;
+}
+
+.section {
+  margin-bottom: 4rem;
+}

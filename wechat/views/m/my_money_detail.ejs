@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="">
+<%- include('../common/head', {title: '我的资金'}) %>
+<body class="wechat">
+  <ul class="tab-view tab-list wechat-tab">
+    <li>
+      <a href="/m/my_money" >资金概览</a>
+    </li>
+    <li class="tab-active">
+      <a href="/m/my_money/detail" >资金明细</a>
+    </li>
+  </ul>
+  <!--资金明细-->
+  <div class="wechat-myac-details">
+  </div>
+  <!--资金明细end-->
+  <!--底部-->
+  <div class="btn-bottom">
+    <div class="row">
+      <a class="text col-6" href="/m/recharge">充值</a>
+      <a class="text col-6 border-left" href="https://m.souyidai.com/account/select_card">取现</a>
+    </div>
+  </div>
+  <!--底部end-->
+  <%- include('../common/foot') %>
+  <script>
+  $(function() {
+    var pageNo = 0;
+    var pageSize = 15;
+    var updateStatus = 0;
+    var dataUpdate = function() {
+      if (updateStatus) {
+        return;
+      }
+      updateStatus = 1;
+      $.ajax({
+        url: '/m/my_money/detail',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          pageNo: pageNo,
+          pageSize: pageSize
+        },
+        success: function(res) {
+          if (errorHandle(res)) {
+            if (res.data.length ===0) {
+              return;
+            }
+            dataRender(res.data);
+            pageNo++;
+            updateStatus = 0;
+          }
+        }
+      })
+    };
+    var dataRender = function(list) {
+      var listHtml = '';
+      for (var i = 0; i < list.length; i++) {
+        var amountType = list[i].outAmount ? 'draw' : 'included';
+        var amount = 0;
+        if (amountType === 'included') {
+          amount = '+' + fmtMoney(list[i].inAmount / 100);
+        } else {
+          amount = '-' + fmtMoney(list[i].outAmount / 100);
+        }
+        list[i].businessType = list[i].businessType || '&nbsp;';
+        listHtml += '<div class="wechat-myac-row"><span><strong>' + list[i].businessType + '</strong><em>'+ fmtDate(list[i].balanceTime) + '</em></span><span class="' + amountType + '"><strong>' + amount + '元</strong><em>余' + fmtMoney(list[i].currentTotalBalance / 100) + '元</em></span></div>';
+      };
+      $('.wechat-myac-details').append(listHtml);
+    };
+    var fmtMoney = function(money) {
+      if (typeof money === 'number') {
+        money = money.toFixed(2);
+      } else {
+        money = '0.00';
+      }
+      money = money.replace(/(\d)(?=(?:\d{3})+(?:\.\d+)?$)/g, "$1,");
+      return money;
+    };
+    var fmtDate = function(date) {
+      var dateObj = new Date();
+      dateObj.setTime(date);
+      var year = dateObj.getFullYear();
+      var month = dateObj.getMonth() + 1;
+      var day = dateObj.getDate();
+      var hour = dateObj.getHours();
+      var minute = dateObj.getMinutes();
+      return year + '-' + fmtTime(month) + '-' + fmtTime(day) + ' ' + fmtTime(hour) + ':' + fmtTime(minute);
+    };
+    var fmtTime = function(num) {
+      if (num.toString().length === 1) {
+        return '0' + num;
+      }
+      return num
+    }
+    dataUpdate();
+    $(window).on('scroll', function() {
+      if($(document).height() - $(window).scrollTop() < $(window).height() * 1.3) {
+        dataUpdate();
+      }
+    });
+  });
+  </script>
+  <%- include('../common/pv') %>
+</body>
+</html>

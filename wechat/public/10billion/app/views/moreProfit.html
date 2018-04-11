@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>新手项目再升级</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://static.souyidai.com/wap/2.0/styles/index.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/moreProfit.css">
+    <script src="https://static.souyidai.com/wap/2.0/scripts/flexible.js"></script>
+
+  </head>
+  <body class="body-sticky">
+    <div class="bg">
+      <div class="cloud sm-cloud" style="left: -0.2rem; top: 3rem;"></div>
+      <div class="cloud sm-cloud" style="right: 0.36rem; top: 1rem;"></div>
+      <div class="cloud sm-cloud" style="right: -0.7rem; top: 2.5rem;"></div>
+
+      <div class="head"></div>
+      <section class="section">
+        <h2 class="title">活动时间</h2>
+        <div class="content">
+          <p>
+            2016年4月6日至4月30日
+          </p>
+        </div>
+        <h2 class="title">活动规则</h2>
+        <div class="content">
+          <p>
+            新手专享项目加息1%，预期年化收益率高达10.88%
+          </p>
+        </div>
+        <div class="content">
+          <p>
+            特别说明：<br>
+            新手专享项目单笔最多可投1万元，仅限累计投资不满1万元（不含债权转让项目）的用户投资。
+          </p>
+        </div>
+        <div id="registerWrap" class="content" style="margin-top: 1rem; text-align: center">
+          <p>
+            还没成为搜易贷会员？加入我们，享新手福利！
+          </p>
+          <div class="row">
+            <button id="register" class="btn btn-block btn-yellow col-12" type="button" name="button">立即注册</button>
+          </div>
+        </div>
+      </section>
+      <p class="copyright">
+        *本活动在法律允许范围内解释权归搜易贷所有
+      </p>
+    </div>
+    <script src="https://static.souyidai.com/wap/js/zepto.min.js"></script>
+    <script src="https://static.souyidai.com/wap/2.0/scripts/util.js"></script>
+    <script src="https://static.souyidai.com/pv/spv_new.js"></script>
+    <script type="text/javascript">
+      var go = function(url) {
+        var data = {
+          url: url
+        };
+        SYDBridge.openNative('route', data);
+      };
+
+      var showOrHideRegisterBtn = function(selector) {
+        if(window.uid || getCookie('syd_auth_verify')) {
+          $(selector).hide();
+        }
+      }
+
+      Zepto(function($){
+        showOrHideRegisterBtn('#registerWrap');
+
+        $('#register').on('tap', function(e) {
+          var t = e.target;
+          if(window.isClient) {
+            go("/regist");
+          } else {
+            window.location.href = 'https://passport.souyidai.com/regist.html';
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

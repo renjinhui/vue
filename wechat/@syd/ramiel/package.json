@@ -1,0 +1,101 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "@syd/ramiel@^0.0.8",
+        "scope": "@syd",
+        "escapedName": "@syd%2framiel",
+        "name": "@syd/ramiel",
+        "rawSpec": "^0.0.8",
+        "spec": ">=0.0.8 <0.0.9",
+        "type": "range"
+      },
+      "/Users/liuxuewen/project/soeasy-wechat"
+    ]
+  ],
+  "_cnpm_publish_time": 1479290475139,
+  "_from": "@syd/ramiel@>=0.0.8 <0.0.9",
+  "_id": "@syd/ramiel@0.0.8",
+  "_inCache": true,
+  "_location": "/@syd/ramiel",
+  "_nodeVersion": "7.0.0",
+  "_npmUser": {
+    "name": "playing",
+    "email": "wangyitong@souyidai.com"
+  },
+  "_npmVersion": "3.10.9",
+  "_phantomChildren": {},
+  "_publish_on_cnpm": true,
+  "_requested": {
+    "raw": "@syd/ramiel@^0.0.8",
+    "scope": "@syd",
+    "escapedName": "@syd%2framiel",
+    "name": "@syd/ramiel",
+    "rawSpec": "^0.0.8",
+    "spec": ">=0.0.8 <0.0.9",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "http://registry.soydai.me/@syd/ramiel/download/@syd/ramiel-0.0.8.tgz",
+  "_shasum": "1c6a4ebe7394fc7af93f0a8df5746aa8c68ebdd4",
+  "_shrinkwrap": null,
+  "_spec": "@syd/ramiel@^0.0.8",
+  "_where": "/Users/liuxuewen/project/soeasy-wechat",
+  "author": {
+    "name": "playing"
+  },
+  "dependencies": {
+    "q": "~1.4.1",
+    "request": "~2.67.0"
+  },
+  "description": "souyidai app api nodejs version",
+  "devDependencies": {
+    "coveralls": "*",
+    "expect.js": "*",
+    "istanbul": "*",
+    "mocha": "*",
+    "mocha-lcov-reporter": "*",
+    "muk": "*",
+    "rewire": "*",
+    "travis-cov": "*"
+  },
+  "dist": {
+    "shasum": "1c6a4ebe7394fc7af93f0a8df5746aa8c68ebdd4",
+    "size": 6251,
+    "key": "/@syd/ramiel/-/@syd/ramiel-0.0.8.tgz",
+    "tarball": "http://registry.soydai.me/@syd/ramiel/download/@syd/ramiel-0.0.8.tgz"
+  },
+  "gitHead": "af6b6fd5376ba818284f061b7b4f67b383c108b2",
+  "keywords": [
+    "api",
+    "node",
+    "souyidai"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "playing",
+      "email": "wangyitong@souyidai.com"
+    },
+    {
+      "name": "zhaotai",
+      "email": "zhaotai5541@gmail.com"
+    }
+  ],
+  "name": "@syd/ramiel",
+  "optionalDependencies": {},
+  "publish_time": 1479290475139,
+  "readme": "ERROR: No README data found!",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git@git.soydai.cn:wangyitong/soeasy-ramiel.git"
+  },
+  "scripts": {
+    "test": "make test-all"
+  },
+  "version": "0.0.8"
+}

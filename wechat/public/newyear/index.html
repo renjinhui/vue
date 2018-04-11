@@ -1,0 +1,145 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>时光红包</title>
+    <script src="https://static.souyidai.com/wap/2.0/scripts/flexible.js"></script>
+
+
+
+    <link rel="stylesheet" href="https://static.souyidai.com/other/newyear/styles/index.css">
+    <link rel="stylesheet" href="https://static.souyidai.com/other/newyear/styles/main.css">
+
+  </head>
+  <body class="yellow">
+    <div class="container">
+      <div class="coupon-icon"></div>
+      <div class="sec">
+        <section class="sec01 page-content page-loading sec-load">
+          <p class="main-title" id="create_time">--</p>
+          <p class="sub-title">我在搜易贷的<br><span class="num" id="create_day">--</span>天</p>
+          <div class="walk"></div>
+          <div class="road"></div>
+          <div class="time-text"></div>
+          <div class="loading-text"></div>
+          <div class="madeby"></div>
+          <div class="scroll"></div>
+        </section>
+      </div>
+    </div>
+    <div class="toast-wrap">
+      <div class="toast"></div>
+    </div>
+    <div class="share-overlay">
+      <img src="https://static.souyidai.com/wap/2.0/images/share@2x.png" alt="" class="share-guide">
+    </div>
+    <script id="new-user" type="text/x-handlebars-template">
+      <section class="sec02 page-content sec-syd-1">
+        <div class="text-1"></div>
+        <div class="img-1"></div>
+        <div class="scroll"></div>
+      </section>
+      <section class="sec03 page-content sec-syd-2">
+        <div class="text-2"></div>
+        <div class="img-2"></div>
+        <div class="scroll"></div>
+      </section>
+      <section class="sec04 page-content sec-syd-3">
+        <div class="text-3"></div>
+        <div class="img-3"></div>
+        <div class="scroll"></div>
+      </section>
+      <section class="sec05 page-content sec-syd-4">
+        <div class="text-4"></div>
+        <div class="img-4"></div>
+        <div class="hand-4"></div>
+        <div class="btn-4" id="download"></div>
+      </section>
+    </script>
+    <script id="invest-user" type="text/x-handlebars-template">
+      <section class="sec02 page-content sec-bid">
+        <p class="main-title" id="first_bid_time">{{date first_bid_time}}</p>
+        <p class="sub-title">第一次在搜易贷投资<br><span class="num" id="first_bid_amount">{{money first_bid_amount}}</span>元</p>
+        <div class="first-planet-1"></div>
+        <div class="first-planet-2"></div>
+        <div class="first-text"></div>
+        <div class="madeby"></div>
+        <div class="scroll"></div>
+      </section>
+      <section class="sec03 page-content sec-repay">
+        <p class="main-title">{{date first_receipt_time}}</p>
+        <p class="sub-title">第一次收到回款{{money first_receipt_total}} <br>本金<span class="num">{{money first_receipt_principal}}</span>元 收益<span class="num">{{money first_receipt_interest}}</span>元</p>
+        <div class="repay-main"></div>
+        <div class="repay-line"></div>
+        <div class="repay-text"></div>
+        <div class="madeby"></div>
+        <div class="scroll"></div>
+      </section>
+      <section class="sec04 page-content sec-invite">
+        <p class="main-title">这一年</p>
+        <p class="sub-title">成功邀请<span class="num">{{invite_num}}</span>位好友注册并投资</p>
+        <div class="friend-main"></div>
+        <div class="friend-text"></div>
+        <div class="madeby"></div>
+        <div class="scroll"></div>
+      </section>
+      <section class="sec05 page-content sec-percent">
+        <p class="main-title">这一年</p>
+        <p class="sub-title">我在搜易贷累计投资<span class="num">{{money ubid_amount}}</span>元</p>
+        <div class="percent-line"></div>
+        <div class="percent-main"><p>直投项目<br><span>{{bid_percent}}%</span></p></div>
+        <div class="percent-second"><p>转让项目<br><span>{{credit_change_percent}}%</span></p></div>
+        <div class="percent-third"><p>定期宝<br><span>{{dqb_percent}}%</span></p></div>
+        <div class="percent-sub">
+          <p>月薪宝<br>{{#if yxb_status}}开通{{else}}未开通{{/if}}</p>
+        </div>
+        <div class="percent-sub-2">
+          <p>活期宝<br>{{#if hqb_hold_amount}}加入{{else}}未加入{{/if}}</p>
+        </div>
+        <div class="madeby"></div>
+        <div class="scroll"></div>
+      </section>
+      <section class="sec06 page-content sec-radar">
+        <p class="main-title">这一年</p>
+        <p class="sub-title">我在搜易贷共赚取收益<span class="num">{{money receipt_sum}}</span>元</p>
+        <div class="radar-back">
+          <canvas id="radarChart"></canvas>
+          <p class="radar-score">{{rank_score}}<br><span>综合理财指数</span></p>
+        </div>
+        <div class="radar-btn"></div>
+        <div class="radata-text">*以上数据统计截止至2015年12月31日23:59:59</div>
+        <div class="scroll"></div>
+      </section>
+      <section class="sec07 page-result sec-coupon">
+        <p class="main-title" id="coupon-tip" style="display:none"></p>
+        <p class="sub-title" id="coupon-num" style="display:none">还有<span class="num">-</span>个红包等你拆</p>
+        <div class="user-tag-box">
+          {{#each tagList}}
+            <div class="user-tag">{{this}}</div>
+          {{/each}}
+        </div>
+        <div class="coupon-main"></div>
+        <div class="coupon-line"></div>
+        <div class="coupon first">
+          <p class="coupon-num"></p>
+        </div>
+        <div class="coupon second">
+          <p class="coupon-num"></p>
+        </div>
+        <div class="coupon third">
+          <p class="coupon-num"></p>
+        </div>
+        <div class="coupon-text-1"></div>
+        <div class="coupon-text-2"></div>
+        <div class="madeby"></div>
+      </section>
+    </script>
+    <script src="https://static.souyidai.com/other/newyear/scripts/vendor.js"></script>
+    <script src="https://static.souyidai.com/wap/2.0/scripts/util.js"></script>
+    <script src="https://static.souyidai.com/other/newyear/scripts/main.js"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="https://static.souyidai.com/pv/spv_new.js"></script>
+  </body>
+</html>

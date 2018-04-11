@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="">
+<%- include('../common/head', {title: '充值'}) %>
+<body class="wechat">
+  <div class="wechat-wrap">
+    <div class="wechat-top-bar no-fixed row">
+      <i class="icon-md icon-tip-blue col-2"></i>
+      <span class="gray col-10">
+        单笔最高可充值20万元，支持14家银行，<a href="javascript:void(0)" id="bankList">点击查看</a>
+      </span>
+    </div>
+    <div class="form-group input-group">
+      <input type="tel" class="form-control" placeholder="请输入充值金额" id="money">
+      <p class="help-block"></p>
+      <div class="input-group-addon unit">元</div>
+    </div>
+  </div>
+  <div class="btn-box">
+    <button class="btn btn-default btn-block" id="doRecharge">充值</button>
+  </div>
+  <input type="hidden" name="" id="card_no">
+  <form action="" id="reqForm" method="POST" style="display:none">
+     <input type="text" id="req" name="req_data">
+  </form>
+  <div class="dialog-back"></div>
+  <div class="dialog" id="bank">
+    <div class="dialog-simple">
+      <p class="dialog-simple-header">支持银行列表</p>
+      <table class="bank-table">
+        <tbody>
+          <tr>
+            <td><img src="https://static.souyidai.com/ico/banks/nyyh.png" alt="">农业银行</td>
+            <td><img src="https://static.souyidai.com/ico/banks/gsyh.png" alt="">工商银行</td>
+            <td><img src="https://static.souyidai.com/ico/banks/zsyh.png" alt="">招商银行</td>
+          </tr>
+          <tr>
+            <td><img src="https://static.souyidai.com/ico/banks/zgyh.png" alt="">中国银行</td>
+            <td><img src="https://static.souyidai.com/ico/banks/jsyh.png" alt="">建设银行</td>
+            <td><img src="https://static.souyidai.com/ico/banks/gdyh.png" alt="">光大银行</td>
+          </tr>
+          <tr>
+            <td><img src="https://static.souyidai.com/ico/banks/hxyh.png" alt="">华夏银行</td>
+            <td><img src="https://static.souyidai.com/ico/banks/zxyh.png" alt="">中信银行</td>
+            <td><img src="https://static.souyidai.com/ico/banks/xyyh.png" alt="">兴业银行</td>
+          </tr>
+          <tr>
+            <td><img src="https://static.souyidai.com/ico/banks/payh.png" alt="">平安银行</td>
+            <td><img src="https://static.souyidai.com/ico/banks/pfyh.png" alt="">浦发银行</td>
+            <td><img src="https://static.souyidai.com/ico/banks/yzcx.png" alt="">邮政储蓄</td>
+          </tr>
+          <tr>
+            <td><img src="https://static.souyidai.com/ico/banks/gfyh.png" alt="">广发银行</td>
+            <td><img src="https://static.souyidai.com/ico/banks/msyh.png" alt="">民生银行</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="dialog-btn-box row">
+      <button class="btn-dialog btn-second btn-single close col-12">我知道了</button>
+    </div>
+  </div>
+  <%- include('../common/foot') %>
+  <script>
+  $(function() {
+    $('#doRecharge').on('click', function() {
+      var money = $('#money').val();
+
+      if (money === '' || money < 100) {
+        toastShow('充值金额最低为100元');
+        return;
+      }
+      if (money > 200000 ) {
+        toastShow('单笔最多充值20万元');
+        return;
+      }
+      if ($('#card_no').val() === '') {
+        location.href = '/m/bind_card#' + money;
+        return;
+      }
+      disBtn($(this));
+      $(this).text('充值处理中');
+      recharge();
+    });
+    $('#bankList').on('click', function() {
+      dialogShow('#bank');
+    });
+    var getCardInfo = function(){
+      $.post('/m/card_info', {time:new Date()}, function(data) {
+        if (data.errorCode === 2) {
+          location.href = '/m/id5_tip';
+          return;
+        } else {
+          if (typeof data.data.cardNo !== 'undefined') {
+            $('#card_no').val(data.data.cardNo);
+          }
+        }
+      },'json');
+    };
+    var recharge = function () {
+      $.post('/m/recharge', {amount:$('#money').val()}, function(data){
+        if (data.errorCode === 0) {
+          $('#req').val(data.data.req_data);
+          $('#reqForm').attr('action', data.data.post_url);
+          $('#reqForm').submit();
+        }else{
+          $('#errorMsg').text(data.errorMessage).show();
+        }
+      },'json');
+      enBtn($('#doRecharge'));
+      $('#doRecharge').text('充值');
+    }
+    getCardInfo();
+  });
+  </script>
+  <%- include('../common/pv') %>
+</body>
+</html>

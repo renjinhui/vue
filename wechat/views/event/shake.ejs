@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="">
+<%- include('../common/head_event', {title: '全民摇奖一起嗨'}) %>
+<body class="weixin_shake">
+  <style>
+  #no-support{
+    position: absolute;
+    top: 12.6666666667rem;
+    width: 100%;
+    text-align: center;
+    display: none;
+  }
+  #no-support-btn {
+    width: 6.44rem;
+    height: 1.62rem;
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(https://static.souyidai.com/wap/2.0/images/weixin_shake/btn_1.png);
+  }
+  </style>
+  <div class="shake_wrap">
+    <div class="shake_tree"></div>
+    <div class="shake_coin shake_coin1"></div>
+    <div class="shake_coin shake_coin2"></div>
+    <div class="shake_coin shake_coin3"></div>
+    <div class="shake_coin shake_coin4"></div>
+    <div class="shake_coin shake_coin5"></div>
+    <!-- <div class="shake_coin shake_coin6"></div> -->
+    <div class="shake_box"></div>
+    <div class="shake_shine shake_shine1"></div>
+    <div class="shake_shine shake_shine2"></div>
+    <div class="shake_phone_bg"></div>
+    <div class="shake_phone"></div>
+    <div id="no-support">
+      <button id="no-support-btn"></button>
+    </div>
+    <audio src="/media/shake.mp3" id="shakeEffect"></audio>
+  </div>
+  <%- include('../common/foot') %>
+  <script>
+  (function(global, factory) {
+    if (typeof define === 'function' && define.amd) {
+      define(function() {
+        return factory(global, global.document);
+      });
+    } else if (typeof module !== 'undefined' && module.exports) {
+      module.exports = factory(global, global.document);
+    } else {
+      global.Shake = factory(global, global.document);
+    }
+  }(typeof window !== 'undefined' ? window : this, function(window, document) {
+
+    'use strict';
+
+    function Shake(options) {
+  //feature detect
+      this.hasDeviceMotion = 'ondevicemotion' in window;
+
+      this.options = {
+        threshold: 10, //default velocity threshold for shake to register
+        timeout: 1000 //default interval between events
+      };
+
+      if (typeof options === 'object') {
+        for (var i in options) {
+          if (options.hasOwnProperty(i)) {
+            this.options[i] = options[i];
+          }
+        }
+      }
+
+  //use date to prevent multiple shakes firing
+      this.lastTime = new Date();
+
+  //accelerometer values
+      this.lastX = null;
+      this.lastY = null;
+      this.lastZ = null;
+
+  //create custom event
+      if (typeof document.CustomEvent === 'function') {
+        this.event = new document.CustomEvent('shake', {
+          bubbles: true,
+          cancelable: true
+        });
+      } else if (typeof document.createEvent === 'function') {
+        this.event = document.createEvent('Event');
+        this.event.initEvent('shake', true, true);
+      } else {
+        return false;
+      }
+    }
+
+  //reset timer values
+    Shake.prototype.reset = function() {
+      this.lastTime = new Date();
+      this.lastX = null;
+      this.lastY = null;
+      this.lastZ = null;
+    };
+
+  //start listening for devicemotion
+    Shake.prototype.start = function() {
+      this.reset();
+      if (isClient) {
+        if (isiOS && this.hasDeviceMotion) {
+          window.addEventListener('devicemotion', this, false);
+        } else if (isAndroid) {
+          if (window.JsCommunication.isSupportAccelerometerSensor()) {
+            window.JsCommunication.registerAccelerometerSensor();
+          } else {
+            $('.shake_phone').hide();
+            $('.shake_phone_bg').hide();
+            $('#no-support').show();
+          }
+        } else {
+          $('.shake_phone').hide();
+          $('.shake_phone_bg').hide();
+          $('#no-support').show();
+        }
+      } else {
+        if (this.hasDeviceMotion) {
+          window.addEventListener('devicemotion', this, false);
+        } else {
+          $('.shake_phone').hide();
+          $('.shake_phone_bg').hide();
+          $('#no-support').show();
+        }
+      }
+    };
+
+  //stop listening for devicemotion
+    Shake.prototype.stop = function() {
+      if (this.hasDeviceMotion) {
+        window.removeEventListener('devicemotion', this, false);
+      } else {
+        if (isClient && isAndroid) {
+          window.JsCommunication.unregisterAccelerometerSensor();
+        }
+      }
+      this.reset();
+    };
+
+  //calculates if shake did occur
+    Shake.prototype.devicemotion = function(e) {
+      var current = e.accelerationIncludingGravity || e;
+      var currentTime;
+      var timeDifference;
+      var deltaX = 0;
+      var deltaY = 0;
+      var deltaZ = 0;
+
+      if ((this.lastX === null) && (this.lastY === null) && (this.lastZ === null)) {
+        this.lastX = current.x;
+        this.lastY = current.y;
+        this.lastZ = current.z;
+        return;
+      }
+
+      deltaX = Math.abs(this.lastX - current.x);
+      deltaY = Math.abs(this.lastY - current.y);
+      deltaZ = Math.abs(this.lastZ - current.z);
+
+      if (((deltaX > this.options.threshold) && (deltaY > this.options.threshold)) || ((deltaX > this.options.threshold) && (deltaZ > this.options.threshold)) || ((deltaY > this.options.threshold) && (deltaZ > this.options.threshold))) {
+  //calculate time in milliseconds since last shake registered
+        currentTime = new Date();
+        timeDifference = currentTime.getTime() - this.lastTime.getTime();
+
+        if (timeDifference > this.options.timeout) {
+          window.dispatchEvent(this.event);
+          this.lastTime = new Date();
+        }
+      }
+
+      this.lastX = current.x;
+      this.lastY = current.y;
+      this.lastZ = current.z;
+
+    };
+
+  //event handler
+    Shake.prototype.handleEvent = function(e) {
+      if (typeof(this[e.type]) === 'function') {
+        return this[e.type](e);
+      }
+    };
+
+    return Shake;
+  }));
+  </script>
+  <script>
+  var ShakeEvent = {};
+  $(function() {
+    toastShow('活动已结束');
+    var audio = document.getElementById('shakeEffect');
+    audio.load();
+    ShakeEvent = new Shake();
+    //ShakeEvent.start();
+    window.addEventListener('shake', function () {
+      //audio.play();
+      //ShakeEvent.stop();
+      //shakeDo();
+    }, false);
+    $('#no-support-btn').on('click', function() {
+      //audio.play();
+      //shakeDo();
+    });
+    var shakeDo = function () {
+      var unionId = '';
+      if (isWechat) {
+        unionId = getCookie('syd_event_id') || ''
+      }
+      $.ajax({
+        url: '/event/shake',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          time : new Date().getTime(),
+          unionid : unionId
+        },
+        success: function(res) {
+          var resultUrl = '/event/shake/gift';
+          if (isWechat) {
+            resultUrl = '/event/shake/gift_wechat'
+          }
+          if (res.errorCode === 0) {
+            location.href = resultUrl + '?giftId=' + res.data.id;
+          } else {
+            location.href = resultUrl + '?giftId=0';
+          }
+        }
+      });
+    }
+  });
+  </script>
+  <%- include('../common/pv') %>
+</body>
+</html>

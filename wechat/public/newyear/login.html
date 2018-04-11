@@ -1,0 +1,83 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>开启时光红包</title>
+    <script src="https://static.souyidai.com/wap/2.0/scripts/flexible.js"></script>
+
+
+
+    <link rel="stylesheet" href="https://static.souyidai.com/other/newyear/styles/index.css">
+    <link rel="stylesheet" href="https://static.souyidai.com/other/newyear/styles/login.css">
+
+  </head>
+  <body>
+    <div class="container">
+      <img src="https://static.souyidai.com/other/newyear/images/login/logo.png" alt="" class="logo">
+      <img src="https://static.souyidai.com/other/newyear/images/login/main.png" alt="" class="banner">
+      <div class="form-wrap">
+        <div id="username-form">
+          <div class="form-group">
+            <input type="tel" class="form-control" placeholder="请输入手机号" id="username">
+            <span class="input-icon"></span>
+          </div>
+          <div class="btn-box row">
+            <button class="btn btn-block col-12" id="btn-open"></button>
+          </div>
+        </div>
+        <div id="regist-form" style="display:none">
+          <div class="row">
+            <div class="col-8">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="请输入短信验证码" id="smsCode">
+                <span class="input-icon"></span>
+              </div>
+            </div>
+            <div class="col-4">
+              <button id="re-send" class="btn btn-block btn-second">发送短信</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="请设置登录密码" id="password">
+            <span class="icon-eye"></span>
+          </div>
+          <div class="sms-agree">
+            <input type="checkbox" checked="ture">
+            <span>我已阅读并同意<a href="https://passport.souyidai.com/protocol.html">《搜易贷在线服务协议》</a></span>
+          </div>
+          <div class="btn-box">
+            <button id="btn-regist" class="btn btn-block col-12"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="toast-wrap">
+      <div class="toast"></div>
+    </div>
+    <div class="dialog-back"></div>
+    <div class="dialog dialog-top" id="login">
+      <div class="dialog-simple">
+        <p class="dialog-simple-header">输入搜易贷登录密码</p>
+      </div>
+      <div class="dialog-form">
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="输入搜易贷账户登录密码" id="login-password">
+        </div>
+      </div>
+      <div class="dialog-btn-box row">
+        <button class="btn-dialog col-6 close" >取消</button>
+        <button class="btn-dialog btn-default col-6" id="login-btn">确定</button>
+      </div>
+    </div>
+    <div class="share-overlay">
+      <img src="https://static.souyidai.com/wap/2.0/images/share@2x.png" alt="" class="share-guide">
+    </div>
+    <script src="https://static.souyidai.com/wap/js/zepto.min.js"></script>
+    <script src="https://static.souyidai.com/wap/2.0/scripts/util.js"></script>
+    <script src="https://static.souyidai.com/other/newyear/scripts/login.js"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="https://static.souyidai.com/pv/spv_new.js"></script>
+  </body>
+</html>

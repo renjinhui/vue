@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="">
+<%- include('../common/head', {title: '绑定银行卡'}) %>
+<body class="wechat">
+  <div class="wechat-wrap">
+    <p class="bindcard-name">开户人姓名：<span id="userName"></span></p>
+    <div class="form-group">
+      <input type="tel" class="form-control" id="card_no" maxlength="19" placeholder="请输入银行卡号">
+      <p class="help-block"></p>
+      <span class="input-icon"></span>
+    </div>
+    <div class="bindcard-desc">
+      <p class="baincard-tip"><i class="icon-warn-blue"></i>说明</p>
+      <ol class="baincard-list">
+        <li>
+          为了保障您的资金安全，您当前的操作将同时绑定一张银行卡，作为充值和取现操作的安全卡。
+        </li>
+        <li>
+          该银行卡开户姓名必须与平台认证姓名一致。
+        </li>
+        <li>
+          绑定后在移动端充值取现只能用该卡进行操作（网银+提供的小额充值及通过网站进行网银充值除外）
+        </li>
+        <li>
+          如需解绑请联系客服提交解绑材料<br>客服电话：<span>4000-168-866</span>。
+        </li>
+      </ol>
+      <div class="form-group">
+        <input type="checkbox" name="agree" id="agree" checked="true">
+        <label for="agree">我已阅读并同意此说明</label>
+      </div>
+    </div>
+  </div>
+  <div class="btn-box">
+    <button class="btn btn-default btn-block" id="doRecharge">充值</button>
+  </div>
+  <form action="" id="reqForm" method="POST" style="display:none">
+   <input type="text" id="req" name="req_data">
+  </form>
+  <%- include('../common/foot') %>
+  <script type="text/javascript">
+  var getCardInfo = function(){
+    $.post('/m/card_info', {time:new Date()}, function(data) {
+      $('#userName').text(data.data.username);
+    },'json');
+  };
+  getCardInfo();
+  $('#doRecharge').on('click', function(event) {
+    if (!$('#agree').prop('checked')) {
+      toastShow('请同意绑卡说明');
+      return;
+    }
+    disBtn($(this));
+    $(this).text('充值处理中');
+    recharge();
+  });
+  var recharge = function () {
+    var money = location.hash.replace('#','') || 100;
+    $.post('/m/recharge', {card_no:$('#card_no').val(),amount:money}, function(data) {
+      if (errorHandle(data)) {
+        $('#req').val(data.data.req_data);
+        $('#reqForm').attr('action', data.data.post_url);
+        $('#reqForm').submit();
+      }
+    },'json');
+    enBtn($('#doRecharge'))
+    $('#doRecharge').text('充值');
+  }
+  </script>
+  <%- include('../common/pv') %>
+</body>
+</html>

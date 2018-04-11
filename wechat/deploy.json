@@ -1,0 +1,31 @@
+{
+  "deploy" : {
+    "pro1" : {
+      "user": "root",
+      "host" : "10.10.15.161",
+      "ref"  : "origin/master",
+      "repo" : "git@git.soydai.cn:wangyitong/soeasy-wechat.git",
+      "path" : "/opt/wwwroot/soeasy-wechat",
+      "post-deploy" : "snpm install -d && pm2 startOrReload processesPRO.json --env production"
+    },
+    "pro2" : {
+      "user": "root",
+      "host" : "10.10.233.199",
+      "ref"  : "origin/develop",
+      "repo" : "git@git.soydai.cn:wangyitong/soeasy-wechat.git",
+      "path" : "/opt/wwwroot/soeasy-wechat",
+      "post-deploy" : "snpm install -d && pm2 startOrReload processesPRO.json --env production"
+    },
+    "dev" : {
+      "user" : "root",
+      "host" : "192.168.10.15",
+      "ref"  : "origin/feature/service",
+      "repo" : "git@git.soydai.me:wangyitong/soeasy-wechat.git",
+      "path" : "/opt/wwwroot/soeasy-wechat",
+      "post-deploy" : "pm2 startOrRestart processesDEV.json --env dev",
+      "env"  : {
+        "NODE_ENV": "dev"
+      }
+    }
+  }
+}

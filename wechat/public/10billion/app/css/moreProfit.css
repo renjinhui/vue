@@ -1,0 +1,13 @@
+html,
+body,
+.bg {
+  height: 100%;
+}
+.head {
+  background-image: url(../images/ac4.png);
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-position: center;
+  height: 4rem;
+  margin-top: 0.4rem;
+}

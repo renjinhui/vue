@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="">
+<%- include('../common/head_event', {title: '全民摇奖一起嗨'}) %>
+<body class="shake-index">
+  <div id="share" style="position:absolute;right:0.4rem;top:0.2rem"><img src="https://static.souyidai.com/wap/2.0/images/weixin_shake/share_icon.png" alt="" style="width:1.28rem"/></div>
+  <img src="https://static.souyidai.com/wap/2.0/images/weixin_shake/shake_index.jpg" alt="" class="shake-index-img">
+  <div class="shake-time index-time">
+    <p>我还有<i class="time time-<%= data %>"></i>次摇奖机会</p>
+    <button class="shake-btn"></button>
+  </div>
+  <ul class="tab-view tab-list">
+    <li class="rule tab-active"></li>
+    <li class="my-price"></li>
+  </ul>
+  <div class="tab-container">
+    <div class="rule-content">
+      <p class="rule-title left">活动时间</p>
+      <p class="text">2015年7月15日 - 2015年7月31日</p>
+      <p class="rule-title right">奖品列表</p>
+      <img src="https://static.souyidai.com/wap/2.0/images/weixin_shake/shake_price.jpg" alt="" class="price-img">
+      <p class="rule-title left" style="width:78%">如何获得抽奖机会？</p>
+      <p class="text">1. 手机App登录用户每人每天可抽奖1次</p>
+      <p class="text">2. 当日在手机App内单笔投资≥1000元(投资项目范围不包含转让项目，定期宝项目，货币基金等)即增加一次抽奖机会，每日仅限1次</p>
+      <p class="text">3. 成功分享活动页面或中奖页面至"微信好友"或"朋友圈"即可增加1次抽奖机会，每日仅限1次</p>
+      <p class="text">听说，把抽奖结果分享到微信后，自己可以到分享界面再抽第4次哦!</p>
+      <p class="rule-title right" style="width:60%;left:4.3rem">活动方式与规则</p>
+      <p class="text">1. 用户进入“全民摇奖一起嗨”活动页面，按照“摇一摇，抢红包”文字提示，摇动手机即可参与游戏，并有机会获得奖品</p>
+      <p class="text">2. 摇一摇抽奖机会每日24:00清零，抽奖机会不累计</p>
+      <p class="text">3. 客户端内每人每天依据活动条件最多可获得3次抽奖机会，当日抽奖机会用完，第2天可继续参加</p>
+      <p class="text">本次活动最终解释权归搜易贷所有</p>
+    </div>
+  </div>
+  <div class="tab-container" style="display:none" id="awardList">
+    <img src="https://static.souyidai.com/wap/2.0/images/weixin_shake/empty.png" alt="" class="no-price-img">
+    <p class="no-price-text">暂时还没摇到</p>
+  </div>
+  <div class="shake-time">
+    <p>我还有<i class="time time-<%= data %>"></i>次摇奖机会</p>
+    <button class="shake-btn"></button>
+  </div>
+  <div class="dialog-back"></div>
+  <div class="dialog" id="rule-6">
+    <div class="dialog-simple">
+      <p class="dialog-simple-header">使用规则</p>
+      <p class="dialog-simple-content text-left">
+        登录www.freshfresh.com直接兑换澳洲优选草饲西冷牛排 150g，邮费自理，不与其它优惠共享。
+      </p>
+    </div>
+    <div class="dialog-btn-box row">
+      <button class="btn-dialog btn-default close btn-single col-12">我知道了</button>
+    </div>
+  </div>
+  <div class="dialog" id="rule-7">
+    <div class="dialog-simple">
+      <p class="dialog-simple-header">使用规则</p>
+      <p class="dialog-simple-content text-left">
+        1、仅限爱鲜蜂新用户绑定使用
+        <br>2、限购买"精选"标签类商品，限在爱鲜蜂微信或APP平台使用
+        <br>3、兑换地区：北上广深(郊区县除外)
+        <br>4、优惠码有效期至2015年8月15日，使用时间：9:00-22:00
+        <br>5、每个订单仅限使用一张优惠券
+        <br>6、仅支持在线支付
+      </p>
+    </div>
+    <div class="dialog-btn-box row">
+      <button class="btn-dialog btn-default close btn-single col-12">我知道了</button>
+    </div>
+  </div>
+  <div class="dialog" id="rule-8">
+    <div class="dialog-simple">
+      <p class="dialog-simple-header">使用规则</p>
+      <p class="dialog-simple-content text-left">
+        <br>1、登录www.LifeVC.com，注册为会员；
+        <br>2、点击“购物车”，在“礼品兑换”栏，输入兑换码，即可领取。
+        <br>APP用户：
+        <br>1、在应用市场搜索“丽芙家居APP”，注册为会员；
+        <br>2、进入“账户中心”，点击“礼品兑换”，输入兑换码，即可领取。
+        <br>*兑换码有效期截至2015.8.3
+        <br>*此优惠限新会员使用
+      </p>
+    </div>
+    <div class="dialog-btn-box row">
+      <button class="btn-dialog btn-default close btn-single col-12">我知道了</button>
+    </div>
+  </div>
+  <div class="dialog" id="no-chance">
+    <div class="dialog-simple">
+      <p class="dialog-simple-header">抽奖机会用光啦</p>
+      <p class="dialog-simple-content">
+        查看活动规则,赚取更多摇奖机会
+      </p>
+    </div>
+    <div class="dialog-btn-box row">
+      <button class="btn-dialog close col-6">朕不在乎</button>
+      <button class="btn-dialog btn-default close col-6" id="go-rule">查看活动规则</button>
+    </div>
+  </div>
+  <%- include('../common/foot') %>
+  <script>
+    $(function() {
+      $.ajax({
+        url: '/event',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          time : new Date().getTime()
+        },
+        success: function(res) {
+          if (errorHandle(res)) {
+            var priceList = res.data;
+            if (priceList.length !== 0) {
+              $('.no-price-img').hide();
+              $('.no-price-text').hide();
+              var priceListArr = [];
+              for (var i = 0; i < priceList.length; i++) {
+                var awardItem = JSON.parse(priceList[i].awardDesc);
+                if (awardItem.hasOwnProperty('type')) {
+                  if (awardItem.id === 6) {
+                    priceListArr.push('<div class="price-item">' +
+                      '<div class="price-left">' +
+                        '<img src="https://static.souyidai.com/wap/2.0/images/weixin_shake/liangxian.png" alt="" class="logo-liangxian">' +
+                      '</div>' +
+                      '<div class="price-right">' +
+                        '<p class="price-title sm">两鲜网-澳洲优选<br>草饲西冷牛排抵用券</p>' +
+                        '<p class="price-detail">仅限上海地区使用</p>' +
+                        '<p class="price-detail"><strong>兑换码：'+awardItem.code+'</strong></p>' +
+                        '<p class="price-detail"><a href="javascript:void(0)" class="rule-6">点击查看使用规则</a></p>' +
+                      '</div>' +
+                    '</div>');
+                  }
+                  if (awardItem.id ===7) {
+                    priceListArr.push('<div class="price-item">' +
+                      '<div class="price-left">' +
+                        '<img src="https://static.souyidai.com/wap/2.0/images/weixin_shake/aixianfeng.png" alt="" class="logo-aixianfeng">' +
+                      '</div>' +
+                      '<div class="price-right">' +
+                        '<img src="https://static.souyidai.com/wap/2.0/images/weixin_shake/amount_10.png" alt="" class="amount">' +
+                        '<p class="price-title">爱鲜蜂优惠券</p>' +
+                        '<p class="price-detail"><strong>兑换码：'+awardItem.code+'</strong></p>' +
+                        '<p class="price-detail"><a href="javascript:void(0)" class="rule-7">点击查看使用规则</a></p>' +
+                      '</div>' +
+                    '</div>');
+                  }
+                  if (awardItem.id ===8) {
+                    priceListArr.push('<div class="price-item">' +
+                      '<div class="price-left">' +
+                        '<img src="https://static.souyidai.com/wap/2.0/images/weixin_shake/lifu.jpg" alt="" class="logo-lifu">' +
+                      '</div>' +
+                      '<div class="price-right">' +
+                        '<img src="https://static.souyidai.com/wap/2.0/images/weixin_shake/amount_59.jpg" alt="" class="amount-lg">' +
+                        '<p class="price-title">云雾安睡枕兑换券</p>' +
+                        '<p class="price-detail"><strong>兑换码：'+awardItem.code+'</strong></p>' +
+                        '<p class="price-detail"><a href="javascript:void(0)" class="rule-8">点击查看使用规则</a></p>' +
+                      '</div>' +
+                    '</div>');
+                  }
+                  if (awardItem.id ===9) {
+                    priceListArr.push('<div class="price-item">' +
+                      '<img src="https://static.souyidai.com/wap/2.0/images/weixin_shake/apple_watch.png" alt="" style="width:100%">' +
+                    '</div>');
+                  }
+                } else {
+                  if (awardItem.couponType === 'CASH_COUPON') {
+                    priceListArr.push('<div class="price-item coupon">' +
+                      '<div class="price-left">' +
+                        '<p><span class="unit">¥</span><span class="num">'+(awardItem.amount/100)+'</span></p>' +
+                      '</div>' +
+                      '<div class="price-right">' +
+                        '<p class="price-title">摇一摇'+(awardItem.amount/100)+'元红包</p>' +
+                        '<p class="price-detail">有效期:'+dateFmt(awardItem.beginTime)+'-'+dateFmt(awardItem.expiredTime)+'</p>' +
+                        '<p class="price-detail">使用条件:单笔投资满'+(awardItem.minBidAmount/100)+'元可用</p>' +
+                      '</div>' +
+                    '</div>');
+                  }
+                  if (awardItem.couponType === 'RAISE_INTEREST_COUPON') {
+                    priceListArr.push('<div class="price-item jiaxi">' +
+                      '<div class="price-left">' +
+                        '<p><span class="unit">+</span><span class="num">'+(awardItem.raiseInterest/100)+'</span><span class="unit">%</span></p>' +
+                      '</div>' +
+                      '<div class="price-right">' +
+                        '<p class="price-title">摇一摇'+(awardItem.raiseInterest/100)+'%加息券</p>' +
+                        '<p class="price-detail">有效期:'+dateFmt(awardItem.beginTime)+'-'+dateFmt(awardItem.expiredTime)+'</p>' +
+                        '<p class="price-detail">使用条件:定期宝和转让项目不可用</p>' +
+                      '</div>' +
+                    '</div>');
+                  }
+                }
+              }
+              $('#awardList').append(priceListArr.join(''));
+            }
+          }
+        }
+      });
+      $('.shake-btn').on('click', function() {
+        //if ($('.time-0').length !== 0) {
+        //  dialogShow('#no-chance');
+        //} else {
+        //  location.href = '/event/shake';
+        //}
+        toastShow('活动已结束');
+      });
+      $('#go-rule').on('click', function() {
+        $(window).scrollTop($('.rule-content .rule-title').eq(2).offset().top);
+      });
+      $(".tab-list li").on("click", function() {
+        $(".tab-list li").removeClass("tab-active"), $(this).addClass("tab-active"), $(".tab-container").hide().eq($(".tab-list li").index($(this))).show();
+        $(window).scrollTop($(this).offset().top);
+      });
+      $('#awardList').on('click', '.rule-6', function() {
+        dialogShow('#rule-6');
+      });
+      $('#awardList').on('click', '.rule-7', function() {
+        dialogShow('#rule-7');
+      });
+      $('#awardList').on('click', '.rule-8', function() {
+        dialogShow('#rule-8');
+      });
+      $('#share').on('click', function() {
+        toastShow('活动已结束');
+      });
+      var dateFmt = function (time) {
+        var date = new Date();
+        date.setTime(time);
+        return date.getFullYear() + '/' + numFmt(date.getMonth() + 1) + '/' + numFmt(date.getDate());
+      }
+      var numFmt = function(num) {
+        if (num.toString().length === 1) {
+          return '0' + num;
+        }
+        return num
+      }
+    });
+  </script>
+  <%- include('../common/pv') %>
+</body>
+</html>

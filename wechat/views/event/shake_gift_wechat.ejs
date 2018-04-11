@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="">
+<%- include('../common/head_event', {title: '全民摇奖一起嗨'}) %>
+<body class="shake-result" style="padding-bottom:0">
+<style>
+  .register {
+    padding: 0 0.4rem 0.2rem;
+    background-color: #192549;
+    text-align: left;
+  }
+  .reg_input {
+    position: relative;
+    border-radius: 0.16rem;
+    background-color: #fff;
+    padding: 0.33rem 0.4rem;
+  }
+  .reg_input .icon {
+    display: inline-block;
+    width: 0.49rem;
+    height: 0.53rem;
+    margin-right: 0.17rem;
+    background-image: url("https://static.souyidai.com/wap/2.0/images/weixin_guide/phone.png");
+    background-size: 0.49rem 0.53rem;
+    vertical-align: middle;
+  }
+  .reg_vali {
+    margin-top: 0.4rem;
+  }
+  .reg_vali .icon {
+    background-image: url("https://static.souyidai.com/wap/2.0/images/weixin_guide/bao.png");
+  }
+  .reg_input input {
+    outline: 0;
+    border: 0;
+    border-radius: 0;
+    border-left: 1px solid #c2c2c2;
+    font-size: 0.4rem;
+    height: 0.53rem;
+    line-height: 0.53rem;
+    padding-left: 0.27rem;
+    color: #333;
+    vertical-align: middle;
+  }
+  .register .help-block,
+  .sms-input .help-block {
+    color: #ee5930;
+    font-size: 0.32rem;
+    line-height: 0.6rem;
+    display: none;
+    margin: 0;
+  }
+  .reg_vali .kaptcha-img {
+    position: absolute;
+    right: 0.24rem;
+    top: 0.2rem;
+    width: 2.06rem;
+    height: 0.84rem;
+  }
+  .submit {
+    margin-top: 0.67rem;
+    margin-bottom: 0.4rem;
+    border-radius: 0.16rem;
+  }
+  .submit div {
+    background-color: #efbc02;
+    border-radius: 0.16rem;
+    height: 1.33rem;
+    line-height: 1.33rem;
+    font-size: 0.53rem;
+    font-weight: bold;
+    color: #824200;
+    border: 1px #824200 solid;
+    text-align: center;
+  }
+</style>
+<style>
+  .guide-sms {
+    padding: 0.1rem 0.4rem 1rem;
+    background-color: #1a3871;
+    height: 100%;
+  }
+  .sms-tip{
+    color: #53a0e3;
+    font-size: 0.4rem;
+    text-align: center;
+  }
+  .sms-input >div {
+    margin-top: 0.4rem;
+    padding: 0.32rem 0.4rem;
+    border-radius: 0.16rem;
+    background: #fff;
+    position: relative;
+  }
+  .sms-input >div a {
+    height: 0.53rem;
+    line-height: 0.53rem;
+    position: absolute;
+    right: 0.4rem;
+    top: 50%;
+  }
+  .sms-input input {
+    border: 0;
+    font-size: 0.4rem;
+    height: 0.53rem;
+    line-height: 0.53rem;
+    outline: 0;
+    padding-right: 0.2rem;
+  }
+  .sms-input .sms-msg a {
+    border-left: 1px solid #c2c2c2;
+    padding-left: 0.4rem;
+    color: #006ac7;
+    font-size: 0.48rem;
+    text-decoration: none;
+    margin-top: -0.25rem;
+  }
+  .sms-input .sms-pwd a {
+    width: 1.33rem;
+    height: 1.17rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url("https://static.souyidai.com/wap/2.0/images/weixin_guide/pwd_eye.png");
+    background-size: 0.493rem 0.293rem;
+    top: 0;
+    right: 0;
+  }
+
+  .sms-agree {
+    margin-top: 0.37rem;
+    margin-bottom: 0.8rem;
+    font-size: 0.4rem;
+    color: #fff;
+  }
+  .sms-agree a {
+    text-decoration: none;
+    color: #fff;
+  }
+  .sms-agree i {
+    display: inline-block;
+    width: 0.4rem;
+    height: 0.4rem;
+    background-repeat: no-repeat;
+    background-image: url("https://static.souyidai.com/wap/2.0/images/weixin_guide/checked.png");
+    background-size: 0.4rem 0.4rem;
+    vertical-align: middle;
+  }
+  .sms-agree i.unchecked {
+    background-image: url("https://static.souyidai.com/wap/2.0/images/weixin_guide/unchecked.png");
+  }
+  .sms-submit {
+    border-radius: 0.16rem;
+  }
+  .sms-submit p {
+    background-color: #efbc02;
+    border-radius: 0.16rem;
+    height: 1.33rem;
+    line-height: 1.33rem;
+    font-size: 0.53rem;
+    font-weight: bold;
+    color: #824200;
+    border: 1px #824200 solid;
+    text-align: center;
+  }
+</style>
+  <div class="shake-gift-wrap" id="box">
+      <div class="shake-bg"></div>
+      <div class="gift-box">
+        <div class="shine shine1"></div>
+        <div class="shine shine2"></div>
+      </div>
+      <div class="gift"></div>
+      <a href="javascript:void(0);" class="shake_open" id="open"></a>
+  </div>
+  <div class="shake-result-wrap" id="res" style="display:none">
+    <% if (giftId === '0') {%>
+      <p class="res-desc">手抖了一下，木有抢到<br>换个姿势再来一次！</p>
+      <img class="res-img" src="https://static.souyidai.com/wap/2.0/images/weixin_shake/gift0.png" alt="">
+    <% } %>
+    <% if (giftId === '1') {%>
+      <p class="res-succ-desc"><span class="res-gift-name">摇中加息券</span><br><span class="res-gift-desc">摇到手软也值得</span></p>
+      <div class="res-bg">
+        <img class="res-img" src="https://static.souyidai.com/wap/2.0/images/weixin_shake/gift1.png" alt="">
+      </div>
+    <% } %>
+    <% if (giftId === '2') {%>
+      <p class="res-succ-desc"><span class="res-gift-name">摇中200元红包</span><br><span class="res-gift-desc">摇到手软也值得</span></p>
+      <div class="res-bg">
+        <img class="res-img" src="https://static.souyidai.com/wap/2.0/images/weixin_shake/gift2.png" alt="">
+      </div>
+    <% } %>
+    <% if (giftId === '3') {%>
+      <p class="res-succ-desc"><span class="res-gift-name">摇中50元红包</span><br><span class="res-gift-desc">摇到手软也值得</span></p>
+      <div class="res-bg">
+        <img class="res-img" src="https://static.souyidai.com/wap/2.0/images/weixin_shake/gift3.png" alt="">
+      </div>
+    <% } %>
+    <% if (giftId === '4') {%>
+      <p class="res-succ-desc"><span class="res-gift-name">摇中20元红包</span><br><span class="res-gift-desc">摇到手软也值得</span></p>
+      <div class="res-bg">
+        <img class="res-img" src="https://static.souyidai.com/wap/2.0/images/weixin_shake/gift4.png" alt="">
+      </div>
+    <% } %>
+    <% if (giftId === '5') {%>
+      <p class="res-succ-desc"><span class="res-gift-name">摇中5元红包</span><br><span class="res-gift-desc">摇到手软也值得</span></p>
+      <div class="res-bg">
+        <img class="res-img" src="https://static.souyidai.com/wap/2.0/images/weixin_shake/gift5.png" alt="">
+      </div>
+    <% } %>
+    <% if (giftId === '6') {%>
+      <p class="res-succ-desc"><span class="res-gift-name">摇中两鲜网牛排抵用券</span><br><span class="res-gift-desc">摇到手软也值得</span></p>
+      <div class="res-bg">
+        <img class="res-img" src="https://static.souyidai.com/wap/2.0/images/weixin_shake/gift6.png" alt="">
+      </div>
+    <% } %>
+    <% if (giftId === '7') {%>
+      <p class="res-succ-desc"><span class="res-gift-name">摇中爱鲜蜂抵用券</span><br><span class="res-gift-desc">摇到手软也值得</span></p>
+      <div class="res-bg">
+        <img class="res-img" src="https://static.souyidai.com/wap/2.0/images/weixin_shake/gift7.png" alt="">
+      </div>
+    <% } %>
+    <% if (giftId === '8') {%>
+      <p class="res-succ-desc"><span class="res-gift-name">摇中云雾安睡枕兑换券</span><br><span class="res-gift-desc">摇到手软也值得</span></p>
+      <div class="res-bg">
+        <img class="res-img" src="https://static.souyidai.com/wap/2.0/images/weixin_shake/gift8.png" alt="">
+      </div>
+    <% } %>
+    <% if (giftId === '0') {%>
+      <p class="share-desc no-gift">分享活动,下次中奖概率会翻倍哦</p>
+      <a href="javascript:void(0);" class="shake_open" id="share"></a>
+    <% } else {%>
+      <img src="https://static.souyidai.com/wap/2.0/images/weixin_shake/share_guide.png" alt="" class="share-tip" style="width:3.7rem;position:absolute;top:8.8rem;left:0.8rem"/>
+      <a href="javascript:void(0);" class="shake_open" id="share" style="margin-right:0;margin-top:1.2rem;width:6.42rem;background-image:url(https://static.souyidai.com/wap/2.0/images/weixin_shake/share_btn_lg.png)"></a>
+      <p class="share-desc" id="get-tip" style="display:none">输入手机号领取奖品</p>
+    <% } %>
+    <div class="submit down-app" style="padding:0 0.4rem;display:none">
+      <div>下载搜易贷理财APP</div>
+    </div>
+    <div class="register" style="display:none;">
+      <div class="reg_input reg_phone">
+        <span class="icon"></span>
+        <input type="text" placeholder="请输入手机号" id="tel">
+      </div>
+      <p class="help-block"></p>
+      <div class="reg_input reg_vali">
+        <span class="icon"></span>
+        <input type="text" placeholder="图形验证码" id="code">
+        <img class="kaptcha-img" src="/captcha.jpg" alt="">
+      </div>
+      <p class="help-block"></p>
+      <div class="submit">
+        <div id="smsSend">下一步</div>
+      </div>
+    </div>
+  </div>
+  <div class="guide-sms" style="display:none;">
+    <p class="sms-tip">填写信息即可注册搜易贷并领取礼包</p>
+    <div class="sms-input">
+      <div class="sms-msg">
+        <input type="text" placeholder="请输入短信验证码" id="telCode">
+        <a href="javascript:;" id="retel">点击获取</a>
+      </div>
+      <p class="help-block"></p>
+      <div class="sms-pwd">
+        <input type="password" placeholder="请输入登录密码" id="password">
+        <a href="javascript:;"></a>
+      </div>
+      <p class="help-block"></p>
+    </div>
+    <div class="sms-submit">
+      <p id="registSubmit">领取奖励</p>
+    </div>
+  </div>
+  <div class="share-overlay">
+    <img src="https://static.souyidai.com/wap/2.0/images/share@2x.png" alt="" class="share-guide">
+  </div>
+  <div class="dialog-back"></div>
+  <div class="dialog" id="already">
+    <div class="dialog-simple">
+      <p class="dialog-simple-header">提示</p>
+      <p class="dialog-simple-content">
+        您今天已经领过奖励啦,换个姿势明天继续
+      </p>
+    </div>
+    <div class="dialog-btn-box row">
+      <button class="btn-dialog close col-6">换个帐号领奖</button>
+      <button class="btn-dialog btn-default col-6" id="back">返回首页</button>
+    </div>
+  </div>
+  <%- include('../common/foot') %>
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <script>
+    $(function() {
+      $.ajax({
+        url: '/serve/jssign',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+          url: location.href
+        },
+        success: function(res) {
+          if (res.errorCode === 0) {
+            wx.config(res.result);
+          }
+        }
+      });
+      $('#open').on('click', function() {
+        $('#box').hide();
+        $('#res').show();
+      });
+      $('#share').on('click', function() {
+        if (isWechat) {
+          $('.share-overlay').show();
+        }
+      });
+      $('.share-overlay').on('click', function() {
+        $(this).hide();
+      });
+      wx.ready(function() {
+        wx.onMenuShareTimeline({
+          title: '全民摇奖一起High,少你一个玩儿不起来',
+          link: 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5ff6c76bdf3b5cce&redirect_uri=http%3A%2F%2Fweixin.souyidai.com%2Foauth%2F&response_type=code&scope=snsapi_base&state=shake#wechat_redirect',
+          imgUrl: 'https://help.souyidai.com/upload/2015/07/13/1436788915424.png',
+          success: function() {
+            if ($('.no-gift').length === 0) {
+              $('.share-overlay').hide();
+              $('#share').hide();
+              $('.share-tip').hide();
+              $('.register').show();
+              $('#get-tip').show();
+            }
+          },
+          cancel: function() {
+
+          }
+        });
+        wx.onMenuShareAppMessage({
+          title: '全民摇奖一起High,少你一个玩儿不起来',
+          desc: '红包投资即可返现, 1元起投, 新手专享30天年化收益9.88%!好收益, 赚起来!',
+          link: 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5ff6c76bdf3b5cce&redirect_uri=http%3A%2F%2Fweixin.souyidai.com%2Foauth%2F&response_type=code&scope=snsapi_base&state=shake#wechat_redirect',
+          imgUrl: 'https://help.souyidai.com/upload/2015/07/13/1436788915424.png',
+          type: 'link',
+          success: function() {
+            if ($('.no-gift').length === 0) {
+              $('.share-overlay').hide();
+              $('#share').hide();
+              $('.share-tip').hide();
+              $('.register').show();
+              $('#get-tip').show();
+            }
+          },
+          cancel: function() {
+          }
+        });
+      });
+      $('.down-app').on('click', function() {
+        location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.souyidai.investment.android&ckey=CK1289998290990';
+      });
+      $('#back').on('click', function() {
+        location.href = '/event/index_wechat';
+      });
+    });
+  </script>
+  <script>
+$(function(){
+
+    var registAuthConfig = [{
+        id: "tel",
+        eventList: {
+          blur: function() {
+            var a = $(this).val() || "",
+              b = /^1[34578][0-9]{9}$/;
+            return "" === a ? void errorMsgShow(this, "请输入手机号码") : b.test(a) ? void errorMsgHide(this) : void errorMsgShow(this, "请输入有效的手机号")
+          },
+          focus: function() {
+            errorMsgHide(this)
+          }
+        }
+      }, {
+        id: "password",
+        eventList: {
+          blur: function() {
+            var a = $(this).val() || "",
+              b = /[^a-zA-Z0-9~`!@#$%^&*()_=+\[{\]}\|;:\'\",<.>\/?-]/;
+            return "" === a ? void errorMsgShow(this, "请输入密码") : a.length > 20 || a.length < 6 ? void errorMsgShow(this, "密码长度应为6-20个字符") : b.test(a) ? void errorMsgShow(this, "请勿使用特殊字符") : void errorMsgHide(this)
+          },
+          focus: function() {
+            errorMsgHide(this)
+          }
+        }
+      }, {
+        id: "rePassword",
+        eventList: {
+          blur: function() {
+            var a = $(this).val() || "",
+              b = /[^a-zA-Z0-9~`!@#$%^&*()_=+\[{\]}\|;:\'\",<.>\/?-]/;
+            return "" === a ? void errorMsgShow(this, "请再次确认密码") : a.length > 20 || a.length < 6 ? void errorMsgShow(this, "密码长度应为6-20个字符") : b.test(a) ? void errorMsgShow(this, "请勿使用特殊字符") : a !== $("#password").val() ? void errorMsgShow(this, "两次输入密码不一致") : void errorMsgHide(this)
+          },
+          focus: function() {
+            errorMsgHide(this)
+          }
+        }
+      }, {
+        id: "code",
+        eventList: {
+          blur: function() {
+            var a = $(this).val() || "";
+            "" === a ? errorMsgShow(this, "请输入图形验证码") : errorMsgHide(this)
+          },
+          focus: function() {
+            errorMsgHide(this)
+          }
+        }
+      }, {
+        id: "telCode",
+        eventList: {
+          blur: function() {
+            var a = $(this).val() || "";
+            "" === a ? $(this).parent().next(".help-block").text("请输入短信验证码").show() : $(this).parent().next(".help-block").hide()
+          },
+          focus: function() {
+            $(this).parent().next(".help-block").hide()
+          }
+        }
+      }];
+
+      var refreshCode = function(a, b) {
+        $(a).attr("src", b + "?" + Math.random())
+      },
+      disBtn = function(a) {
+        $(a).addClass("disabled")
+      },
+      reBtn = function(a) {
+        $(a).removeClass("disabled")
+      },
+      reSendSms = function(a, b) {
+        disBtn($(a));
+        var c = setInterval(function() {
+          $(a).text("重新发送(" + b + ")"), b--, 0 === b && (clearInterval(c), $(a).text("重新发送"), reBtn($(a)))
+        }, 1e3)
+      },
+      errorMsgShow = function(a, b) {
+        $(a).parent().next(".help-block").text(b).show()
+      },
+      errorMsgHide = function(a) {
+        $(a).parent().next(".help-block").hide()
+      },
+      formAuth = function(a) {
+        $.each(a, function(a, b) {
+          $.each(b.eventList, function(a, c) {
+            if(a == "blur"){
+              //trigger blur不执行，设置一个自定义事件
+              $(document).on("submit", "#" + b.id, c)
+            }
+            $(document).on(a, "#" + b.id, c)
+          })
+        })
+      };
+      formAuth(registAuthConfig);
+      //点击图片验证码切换
+      $(".kaptcha-img").on("click", function() {
+        refreshCode(this, "/captcha.jpg")
+      })
+
+})
+$(function(){
+  function disBtn(obj){
+    obj.attr("disabled", "disabled");
+  }
+  function reBtn(obj){
+    obj.removeAttr('disabled');
+  }
+
+  //注册接口
+  var registAjaxConfig = function(succ){
+      $.ajax({
+        type: "POST",
+        url: "/m/regist",
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        dataType: "json",
+        beforeSend: function(a, b) {
+          b.data = $.param({
+            username: $("#tel").val(),
+            password: $("#password").val(),
+            confirmPassword: $("#password").val(),
+            smscode: $("#telCode").val()
+          }), disBtn($("#registSubmit"))
+        },
+        success: function(a) {
+          if (0 === a.errorCode){
+            succ && succ(a);
+          }else if (-1 === a.errorCode) {
+            toastShow("尝试次数过多,请稍后再试.");
+          }
+          else toastShow(a.errorMessage);
+        },
+        error: function() {
+          toastShow("网络连接失败,请重新尝试");
+        },
+        complete: function() {
+          reBtn($("#registSubmit"))
+        }
+      })
+    },
+    //发送短信接口
+    smsAjaxConfig = function (succ){
+      $.ajax({
+          type: "POST",
+          url: "/m/registsms",
+          contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+          dataType: "json",
+          beforeSend: function(a, b) {
+            b.data = $.param({
+              username: $("#tel").val(),
+              kaptcha: $("#code").val()
+            }), disBtn($("#smsSend"))
+          },
+          success: function(a) {
+            if(a.errorCode == 1){
+              toastShow(a.errorMessage);
+              $(".kaptcha-img").trigger("click")
+              $('#code').text('');
+            }else{
+              succ && succ(a);
+            }
+          },
+          error: function() {
+            toastShow("网络连接失败,请重新尝试");
+          },
+          complete: function() {
+            reBtn($("#smsSend"))
+          }
+      })
+
+    },
+    //重新发送短信接口
+    reSmsAjaxConfig = function(){
+      $.ajax({
+        type: "POST",
+        url: "/m/registsms",
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        dataType: "json",
+        data:{
+          username: $('#tel').val()
+        },
+        success: function(a) {
+          if(a.errorCode == 0){
+            $('#telCode').val('');
+            smstimer(a.data.needWaitTime);
+          } else{
+            toastShow(a.errorMessage || a.data.desc);
+          }
+        },
+        error: function() {
+          toastShow("网络连接失败,请重新尝试");
+        }
+      })
+    };
+
+      //标签切换
+      var tabs = $('.tab>div');
+      var tab_cons = $('.tab-wrap>div');
+      tabs.each(function(i, item){
+        $(this).on('click', function(){
+          tabs.removeClass('current')
+          $(this).addClass('current');
+          tab_cons.hide();
+          tab_cons.eq($(this).index()).show();
+        })
+      });
+      //抢红包
+      $("#smsSend").on('click', function(){
+        var $sms = $('.guide-sms');
+        var $register = $('.guide_wrap');
+        var $input = $register.find('.register input');
+        for (var i = 0; i < $input.length; i++) {
+          $($input[i]).trigger('submit');
+        };
+
+        if($('.register .help-block').css("display") == "block"){
+          return;
+        }
+        //先check一次用户状态
+        var unionId = '';
+        if (isWechat) {
+          unionId = getCookie('syd_event_id') || '';
+        }
+        $.ajax({
+          url: '/event/shake/user_status',
+          type: 'POST',
+          dataType: 'json',
+          data: {
+            mobile : $('#tel').val()
+          },
+          success: function(res) {
+            if (res.data === 2) {
+              //是我们的用户但没抽过
+              $.ajax({
+                url: '/event/shake/regist',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                  mobile : $("#tel").val(),
+                  unionid : unionId
+                },
+                success: function(res) {
+                  if (errorHandle(res)) {
+                    $('.res-succ-desc').html('<span class="res-gift-name">奖品已放入您的搜易贷账户</span><br><span class="res-gift-desc">开启搜易贷理财APP,活动页面即可查看</span>');
+                    $('.register').hide();
+                    $('.share-desc').hide();
+                    $('.down-app').show();
+                  }
+                }
+              });
+            } else if (res.data ===3) {
+              //我们的用户抽过了
+              dialogShow('#already');
+            } else {
+              smsAjaxConfig(function(data){
+                smstimer(data.data.needWaitTime);
+                $('#res').hide();
+                $sms.show();
+              });
+            }
+          }
+        });
+      })
+      //重新获取短信验证码倒计时
+      $('#retel').on('click', function(){
+        //ajax
+        reSmsAjaxConfig();
+      })
+      function smstimer(num){
+        if($('#retel').hasClass('disabled')){
+          return;
+        }
+
+        clearInterval(timer);
+        var $retel = $('#retel');
+        $retel.addClass('disabled').css('color', '#999');
+        $retel.text(num);
+        var timer = setInterval(function(){
+          num--;
+          $retel.text(num);
+          if(num <= 1){
+            clearInterval(timer);
+            $retel.removeClass('disabled').css('color', '#006ac7').text('重新发送');
+          }
+        },1000)
+      }
+      //打开红包
+      $('#registSubmit').on('click', function(){
+        var $input = $('.sms-input input');
+        for (var i = 0; i < $input.length; i++) {
+          $($input[i]).trigger('submit');
+        };
+        if($('.sms-input .help-block').css('display') == 'block'){
+          return;
+        }
+        //ajax
+        registAjaxConfig(function(res){
+          var unionId = '';
+          if (isWechat) {
+            unionId = getCookie('syd_event_id') || '';
+          }
+          $.ajax({
+            url: '/event/shake/regist',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+              mobile : $("#tel").val(),
+              unionid : unionId
+            },
+            success: function(res) {
+              if (errorHandle(res)) {
+                location.href = '/event/shake/result_wechat';
+              }
+            }
+          });
+        })
+
+      })
+    //查看密码按钮点击
+    $('.sms-pwd a').on('click', function(){
+      var $input = $(this).parent().find('input');
+      if($input.attr("type") == "text"){
+        $input.attr('type', 'password');
+      }else{
+        $input.attr('type', 'text');
+      }
+    })
+})
+  </script>
+  <%- include('../common/pv') %>
+</body>
+</html>

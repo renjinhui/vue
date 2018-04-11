@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="">
+<%- include('../common/head', {title: '详情'}) %>
+<body class="wechat">
+  <!--1-->
+  <div class="wechat-myac-details bd-bottom pd-justify">
+    <!--<1>-->
+    <section class="wechat-myac-degree" data-id="<%= data.bidId %>">
+      <span>
+        <strong><%= data.titleCopy %></strong> <em><%= data.statusStr %></em>
+      </span>
+    </section>
+    <!--<1>end-->
+    <!--<2>-->
+    <section class="wechat-myac-entry">
+      <% for(var i = 0; i< data.detail.length; i++) {%>
+        <span>
+          <em><%=data.detail[i].key%></em>
+          <strong><%=data.detail[i].value%>
+          <% if(data.detail[i].hasOwnProperty('valueIconsI')) {%>
+            <img src="<%=data.detail[i].valueIconsI%>" alt="" style="width:0.4rem;vertical-align:text-bottom;">
+          <% } %>
+          </strong>
+        </span>
+      <% } %>
+    </section>
+    <!--<2>end--></div>
+  <!--1-end-->
+  <!--2-->
+  <% if(data.hasOwnProperty('currentRepayItem')) {%>
+    <div class="wechat-myac-details bd-bottom pd-justify md-top relative">
+    <!--上标-->
+    <span class="wechat-myac-superscript">&nbsp;</span>
+    <!--上标end-->
+    <!--<1>-->
+    <% if(data.currentRepayItem[0] !== undefined ) {%>
+    <section class="wechat-myac-degree issue">
+      <span class="issue-lt">
+        <strong><%=data.currentRepayItem[0].name%></strong>
+        <% for(var i = 0; i< data.currentRepayItem[0].bodyList.length; i++) {%>
+          <em class="text-lighter"><%= data.currentRepayItem[0].bodyList[i].name %></em>
+        <% } %>
+      </span>
+      <span class="issue-lt">
+        <strong><%=data.currentRepayItem[0].time %></strong>
+        <% for(var i = 0; i< data.currentRepayItem[0].bodyList.length; i++) {%>
+          <em><%= data.currentRepayItem[0].bodyList[i].val %></em>
+        <% } %>
+      </span>
+      <span class="rt">
+        <strong class="text-green" style="color:#<%=data.currentRepayItem[0].statusColor%>"><%=data.currentRepayItem[0].statusDesc%></strong>
+        <em>&nbsp;</em>
+      </span>
+    </section>
+    <% } %>
+    <!--<1>end-->
+    <!--<2>-->
+    <% if(data.currentRepayItem[1] !== undefined ) {%>
+    <section class="wechat-myac-entry">
+      <span>
+        <em><%=data.currentRepayItem[1].name%></em>
+        <strong><%=data.currentRepayItem[1].time %></strong>
+      </span>
+      <% for(var i = 0; i< data.currentRepayItem[1].bodyList.length; i++) {%>
+        <span>
+          <em><%= data.currentRepayItem[1].bodyList[i].name %></em>
+          <strong><%= data.currentRepayItem[1].bodyList[i].val %></strong>
+        </span>
+      <% } %>
+    </section>
+    <% } %>
+    </div>
+  <% } %>
+  <!--2-end-->
+  <!--底部-->
+  <div class="btn-bottom">
+    <div class="text muilt-line">
+      下载搜易贷理财APP<br>
+      <span>查看完整还款列表</span>
+    </div>
+  </div>
+  <!--底部end-->
+  <%- include('../common/foot') %>
+  <script>
+  $(function() {
+    $('.btn-bottom').on('click', function() {
+      location.href = 'https://events.souyidai.com/static/app/index_3.html?from=wechat&client=serve'
+    });
+  });
+  </script>
+  <%- include('../common/pv') %>
+</body>
+</html>

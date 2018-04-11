@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="">
+<%- include('../common/head', {title: '关于搜易贷'}) %>
+<body class="about">
+<ul class="tab-view tab-list wechat-tab">
+  <li class="tab-active" onclick="tab_click(this)" tag="0">
+    <a href="javascript:;">关于我们</a>
+  </li>
+  <li onclick="tab_click(this)" tag="1">
+    <a href="javascript:;">大事记</a>
+  </li>
+  <li onclick="tab_click(this)" tag="2">
+    <a href="javascript:;">团队介绍</a>
+  </li>
+</ul>
+<div class="about-index-silde">
+  <div class="about-index-list">
+    <div class="about-index-card">
+      <div class="about_logo"></div>
+      <span class="about_introduce">
+        搜易贷是搜狐集团（NASDAQ：SOHU）旗下的互联网金融平台，致力于推动中国信贷行业的市场化、平民化及高效化，搭建中国最大、用户体验最好的个人及中小企业的互联网信贷平台。搜易贷是中国互联网金融行业的领跑者之一。
+      </span>
+      <div class="about_mission">
+        <span class="about-bid-tag">我们的使命</span>
+        <span class="about_mission_content">
+          以满足员工物质和精神两方面幸福的同时，成为中国最大，
+          用户体验最好的个人及中小企业的互联网信贷平台公司，
+          推动中国信贷行业的市场化、平民化及高效化。
+        </span>
+      </div>
+      <div class="about_advantage">
+        <span class="about-bid-tag">平台优势</span>
+        <div class="about_advantage_item one">
+          <div class="about_advantage_item_icon"></div>
+          <div class="about_advantage_item_article">
+            <span class="article_header">超低门槛</span><br/>
+            <span class="article_body">大众理财，超低门槛，普惠大众，1元起投资理财，享收益！</span>
+          </div>
+        </div>
+        <div class="about_advantage_item four">
+          <div class="about_advantage_item_icon"></div>
+          <div class="about_advantage_item_article">
+            <span class="article_header">透明安全</span><br/>
+            <span class="article_body">搜易贷提供专业,透明的理财服务
+搜易贷为投资项目设立多重投资保障措施,降低投资风险，信息高效透明，投资无忧！</span>
+          </div>
+        </div>
+        <div class="about_advantage_item three">
+          <div class="about_advantage_item_icon"></div>
+          <div class="about_advantage_item_article">
+            <span class="article_header">资金灵活</span><br/>
+            <span class="article_body">多种期限1-36个月理财产品，随意选择。丰富产品供选择，总有一款适合您，30天即可转让，资金灵活周转!</span>
+          </div>
+        </div>
+        <div class="about_advantage_item two">
+          <div class="about_advantage_item_icon"></div>
+          <div class="about_advantage_item_article">
+            <span class="article_header">新手福利</span><br/>
+            <span class="article_body">新手专享项目，预期年化收益率9.88%，期限1个月，1000元起投，每位新注册用户最高可投1万元，仅限1次机会。</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-index-card">
+      <div class="about-sideCatalog-sidebar"></div>
+      <div class="about-sideCatalog" id="syd_big_event">
+      </div>
+    </div>
+    <div class="about-index-card whitebg">
+      <div class="about-our-head">
+        <div class="about-our-photo"></div>
+        <div class="about-our-content">
+          <div class="about-our-name">何捷</div>
+          <div class="about-our-position">狐狸金服集团创始人、CEO</div>
+          <div class="about-our-article">
+          具有20年互联网行业及财务管理行业实战经验，是美国注册会计师协会及香港会计师公会会员。曾任搜狐畅游（NASDAQ：CYOU）CFO，管理资金超50亿元。何捷同时是长城证券股份有限公司独立董事，策划过众多重大资本运作、投资与并购，在2016至2017年期间连续两次被评为“胡润中国新金融行业年度风云人物”，并获得由《21世纪经济报道》主办的21世纪亚洲金融年会颁发的“2016年度创新人物”。
+          </div>
+        </div>
+      </div>
+      <div class="about-our-middle">
+        <div class="about-our-middle-1">
+          <div class="about-our-middle-content">
+            <div class="about-our-middle-name">周霖</div>
+            <div class="about-our-middle-position">狐狸金服集团联合创始人、CTO</div>
+            <div class="about-our-middle-article">
+              周霖的经历则颇具传奇性，16年IT领域经验，是中国技术领军人物，学生时期是高校最大社区水木清华站长，对Linux安全和攻击很有研究。曾任搜狐集团高级副总裁，负责技术产品运营工作。在北京奥运会期间全面负责奥运官网的网络架构和安全工作，现为“国家互联网金融安全技术专家委员会”委员。
+            </div>
+          </div>
+          <div class="about-our-middle-photo one"></div>
+        </div>
+        <div class="about-our-middle-2">
+          <div class="about-our-middle-content">
+            <div class="about-our-middle-name">范学红</div>
+            <div class="about-our-middle-position">狐狸金服集团CRO</div>
+            <div class="about-our-middle-article">
+              拥有近20年金融行业从业经验，长期从事金融行业分析管理工作，曾于中国银行和淡马锡合作的中银富登项目中任高管，经历多个金融项目核心数据分析及风险管理业务。
+            </div>
+          </div>
+          <div class="about-our-middle-photo two"></div>
+        </div>
+      </div>
+      <div class="about-our-coredepart" style="margin-bottom: 0.3rem;">
+        <!-- <span class="about-bid-tag">核心部门</span>
+        <div class="about-our-total">
+          <div class="about-our-littleitem">
+            <span>产品</span><br/>
+            <span>技术部</span>
+          </div>
+          <div class="about-our-littleitem">
+            <span>风险</span><br/>
+            <span>管理部</span>
+          </div>
+          <div class="about-our-littleitem">
+            <span>法律</span><br/>
+            <span>支持部</span>
+          </div>
+          <div class="about-our-littleitem">
+            <span>用户</span><br/>
+            <span>满意部</span>
+          </div>
+        </div>
+        <div class="about-our-item blue">
+          <div class="about-our-item-flag"></div>
+          <span class="about-our-item-title">产品技术部</span>
+          <div class="about-our-item-article">
+          搜易贷拥有一支由来自国内众多互联网知名企业尖端人才组成的资深技术产品团队，
+            他们是软件开发、安全、大数据、用户交互体验等各个方面的专家，拥有网站开发、
+            信息安全、数据管理、用户体验等领域的丰富经验。
+            由他们支持的安全、稳定、高效的搜易贷平台将给用户带来安全、可靠、放心的用户体验。
+          </div>
+        </div>
+        <div class="about-our-item yellowgreen">
+          <div class="about-our-item-flag"></div>
+          <span class="about-our-item-title">风险管理部</span>
+          <div class="about-our-item-article">
+            搜易贷拥有一支专业独立的风险管理团队，团队成员多来自渣打银行、
+            中银富登、捷信、安永等国际知名商业银行、消费信贷机构、专业评级及风控咨询等机构，
+            在金融业务风险控制领域具有丰富的从业经验。管理人员均曾亲自负责所在机构风控体系创建、
+            信审流程及规则制定、风险评级及风控模型研发等工作，熟悉所有关键节点和难点突破口。
+            此外，团队核心成员均具有P2P行业一线审批、分控及反欺诈经验，
+            灵活掌握各类风险识别和控制技术，为搜易贷平台用户建立起一道坚不可摧的金融防火墙。
+          </div>
+        </div>
+        <div class="about-our-item green">
+          <div class="about-our-item-flag"></div>
+          <span class="about-our-item-title">法律支持部</span>
+          <div class="about-our-item-article">
+            搜易贷法律支持团队成员均来自国内知名律师事务所，长期从事经济法、民法、合同法等相关领域工作；
+            同时搜易贷聘请国内成立最早、规模最大的合伙制律师事务所之一的大成律师事务所担任长期法律顾问，
+            双方共同对搜易贷平台各项业务的合规要求做严格的论证和审核，为用户解决后顾之忧。
+          </div>
+        </div>
+        <div class="about-our-item pink">
+          <div class="about-our-item-flag"></div>
+          <span class="about-our-item-title">用户满意部</span>
+          <div class="about-our-item-article">
+            搜易贷用户满意团队秉承“真诚、专业、信赖”的服务理念，
+            依托行业领先的用户服务支持系统，通过科学管理、规范运营，
+            致力于为搜易贷平台打造最优的用户服务体验。
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+  <p class="text-small text-center" style="margin-bottom:0;">出借有风险，选择需谨慎</p>
+  <script>
+    var thetabs;
+    var thelis;
+    function tab_click(current){
+      for(var i=0;i<thetabs.length;i++)
+      {
+        if(i==current.getAttribute("tag"))
+        {
+          thetabs[i].style.display="block";
+          if(!thelis[i].className||thelis[i].className!="")
+          {
+            thelis[i].className = thelis[i].className+" tab-active";
+          }
+        }
+        else{
+          thetabs[i].style.display="none";
+          if(thelis[i].className){
+            thelis[i].className="";
+          }
+        }
+      }
+    }
+    (function(){
+      thetabs = document.getElementsByClassName("about-index-card");
+      thelis = document.getElementsByTagName("li");
+      thetabs[1].style.display="none";
+      thetabs[2].style.display="none";
+    })();
+
+
+  </script>
+  <%- include('../common/foot') %>
+  <%- include('../common/pv') %>
+  <script>
+    
+    // 大事记
+    $(function(){
+      getBigEvent();
+      function getBigEvent(){
+          $.ajax({
+              url: "https://help.souyidai.com/element/important_event/index.json",
+              dataType: "jsonp",
+              jsonp: "callback",
+              jsonpCallback: "jsonpcallback",
+              success: function(){
+                  
+              }
+          })
+      }
+    })
+
+    function sortObj(name){
+        return function(o, p){
+            var a, b;
+            if (typeof o === "object" && typeof p === "object" && o && p) {
+                a = o[name];
+                b = p[name];
+                if (a === b) {
+                    return 0;
+                }
+                if (typeof a === typeof b) {
+                    return a < b ? 1 : -1;
+                }
+                return typeof a < typeof b ? 1 : -1;
+            }
+            else {
+                throw ("error");
+            }
+        }
+    }
+    
+    function getCon(options){
+        var fontColor = "", icon = "", parClass = "";
+        //成交额突破 增加样式
+        if(options.content.indexOf('搜易贷交易额突破') != -1){
+          fontColor = "color: #fe8230";
+          icon = "background-image: url(https://static.souyidai.com/wap/2.0/images/weixin_about/icon_sideCatalog_orange.jpg)";
+        }
+        //如果是第一条，增加底部class
+        if(options.content.indexOf('搜易贷公司正式成立') != -1){
+          parClass = 'about-sideCatalog-bg';
+        }
+
+        var html = '<div style="width: 100%;" class="' + parClass + '">\
+          <div class="about-sideCatalog-icon" style="margin-bottom: 0.2rem; ' + icon + '">\
+            <div class="about-sideCatalog-month">' + options.year + '</div>\
+            <div class="about-sideCatalog-date" style="margin-left: 0rem; text-align: center;">' + options.date + '</div>\
+          </div>\
+          <div class="about-sideCatalog-content content-201410" style="margin-top: 0.25rem; height: auto; margin-bottom: 0.25rem;' + fontColor + '">\
+            ' + options.content + '\
+          </div><div style="clear:both;"></div></div>';
+        return html;
+    }
+
+    function jsonpcallback(data){
+        if(!data) return;
+        var divHtml = '';
+
+        data.sort(sortObj('title'));
+        for(var i = 0; i < data.length; i++){
+            var arr_content = data[i].content.split('|');
+            if($.trim(arr_content) === ''){
+                continue;
+            }
+
+            for(var j = arr_content.length - 1; j >= 0; j--){
+                var arr_detail = arr_content[j].split('^');
+                if($.trim(arr_detail) === ''){
+                    continue;
+                }
+                var params = {
+                    year: data[i].title,
+                    date: arr_detail[0],
+                    content: arr_detail[1]
+                };
+                if(params.date.length > 3){
+                  params.date = params.date.replace('月', '.').replace('日', '');
+                }
+                divHtml += getCon(params);
+            }
+        }
+        $('#syd_big_event').html(divHtml);
+    }
+  </script>
+</body>
+</html>

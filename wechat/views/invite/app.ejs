@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <script src="https://static.souyidai.com/wap/2.0/scripts/flexible.js"></script>
+  <title>呼朋唤友来理财--搜易贷</title>
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <% if (uid) { %>
+  <script>
+  var uid = <%= uid %>;
+  </script>
+  <% } %>
+  <link rel="stylesheet" href="/styles/hongbao-app.css">
+
+</head>
+<body>
+  <div class="container">
+    <img src="/images/banner.jpg" alt="">
+    <div class="row my-invite">
+      <p class="invite-title">我赚的奖励：</p>
+      <a href="javascript:viod(0)" class="invite-href" style="display:none">查看奖励明细>></a>
+      <p class="invite-money" style="display:none"><span id="money">¥120</span> +<span class="ticket">1000张</span></p>
+      <p class="invite-money-no">您还没成功邀请好友哦！<br>没赚到半两碎银</p>
+      <p class="invite-text">速去邀请小伙伴，赚取更多银两！</p>
+      <button class="btn" id="wechat_share">邀请小伙伴</button>
+    </div>
+    <div class="content">
+      <p class="title" style="text-align:center;font-size:0.32rem;color:#0f599e;display:none" id="share-problem">*由于微信接口变更，暂时无法分享给微信好友及朋友圈，请选择“复制链接”发送给微信/QQ好友。</p>
+      <p class="title">邀请人将获得的奖励:</p>
+      <ol class="list">
+        <li>每邀请1位好友注册搜易贷会员，并在注册后30日内在“我的账户-安全中心”完善资料，您可获得0.3%加息券一张；</li>
+        <li>您邀请的好友在注册后30日内单笔投资直投项目或定期宝首次满1,000元（不含债权转让项目），您可获得30元投资红包（单笔投资满3,000元可用）。</li>
+      </ol>
+      <p class="title">被邀请的好友将获得的奖励:</p>
+      <ol class="list">
+        <li>好友注册成为搜易贷会员后，将获得118元红包</li>
+        <li>好友在注册后30日内单笔投资直投项目或定期宝首次满1,000元（不含债权转让项目），在投资后1小时内可再获得10元现金奖励</li>
+      </ol>
+      <p class="time">活动时间（好友投资时间）</p>
+      <p class="time">2016年10月1日起;</p>
+      <p class="text-center">对于恶意刷奖的行为，一经发现，搜易贷有权取消该用户领取活动奖励的资格，并保留相关法律权利。
+        <br>*本活动最终解释权归搜易贷所有</p>
+    </div>
+  </div>
+  <div class="share-overlay">
+    <img src="https://static.souyidai.com/wap/2.0/images/share@2x.png" alt="" class="share-guide">
+  </div>
+  <script src="https://static.souyidai.com/wap/js/zepto.min.js"></script>
+  <script src="https://static.souyidai.com/wap/2.0/scripts/util.js"></script>
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <script src="/scripts/hongbao-app.js"></script>
+  <%- include('../common/pv') %>
+  <script>
+  if (isiOS && isClient && buildNo === 2.52) {
+    $('#share-problem').show();
+  }
+  </script>
+</body>
+</html>

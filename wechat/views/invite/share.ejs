@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <script src="https://static.souyidai.com/wap/2.0/scripts/flexible.js"></script>
+  <title>呼朋唤友来理财--搜易贷</title>
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+
+
+  <link rel="stylesheet" href="/styles/share.css">
+  <style>
+    .container p.width10{
+      width: 10rem;
+    }
+  </style>
+</head>
+<body class="width10" style="margin: 0 auto;width: 10rem;">
+  <div class="container width10">
+    <p class="share-title width10">邀请1位好友投资，送您<strong style="font-size:0.5rem">0.3%加息券</strong>+<strong style="font-size:0.5rem">30元红包</strong></p>
+    <p class="rule width10" style="left: 50%; margin-left: -3rem; top: 4.6rem;">活动规则：1、好友通过您的邀请链接注册，并在注册后30日内完善资料，您可获得0.3%加息券一张；
+    2、好友在注册后30日内单笔投资直投项目或定期宝首次满1000元（不含债权转让项目），在投资后1小时内可再获得10元现金奖励
+    </p>
+    <p class="share-title-lg width10">您的邀请红包准备好了</p>
+    <p class="share-content width10">奖励将放入您的<br>搜易贷账户<%= mobile %></p>
+    <button class="btn-share"></button>
+    <p class="share-tip">*一定提醒好友领完红包直接注册哦</p>
+    <p class="time"><!-- 活动日期：2016年8月1日-8月31日 --></p>
+    <p class="text-small">*本活动最终解释权归搜易贷所有</p>
+  </div>
+  <div class="share-overlay"></div>
+  <script src="https://static.souyidai.com/wap/js/zepto.min.js"></script>
+  <script>
+  var inviteUrl = '<%= inviteUrl %>';
+  </script>
+  <script src="/scripts/share.js"></script>
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <%- include('../common/pv') %>
+</body>
+</html>

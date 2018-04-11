@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="">
+<%- include('../common/head', {title: '投资结果'}) %>
+<body class="wechat">
+  <div class="bid-invest-result">
+    <img src="https://static.souyidai.com/wap/2.0/images/invest_result@2x.jpg" class="result-image">
+    <div class="result-text">
+    </div>
+  </div>
+  <p class="invest-result-tip"></p>
+  <div class="btn-box row">
+    <a class="btn btn-second col-6" href="/m">返回</a>
+    <a class="btn btn-default col-6" href="https://events.souyidai.com/static/app/index_3.html?from=wechat&client=serve">下载APP</a>
+  </div>
+  <%- include('../common/foot') %>
+  <script>
+  var result = JSON.parse(localStorage.getItem('invest_result'));
+  if (result.hasOwnProperty('resultTip')) {
+    $('.invest-result-tip').html('<i class="icon-warn"></i>' + result.resultTip);
+  } else {
+    $('.invest-result-tip').hide();
+    $('.bid-invest-result').addClass('no-tip');
+  }
+  if (result.processItem.length === 3) {
+    $('.result-image').attr('src', 'https://static.souyidai.com/wap/2.0/images/invest_result_dqb@2x.jpg');
+  }
+  var resultText = '';
+  for (var i = 0; i < result.processItem.length; i++) {
+    resultText = resultText + '<p>' + result.processItem[i].desc + '<br>' + result.processItem[i].content + '</p>'
+  };
+  $('.result-text').html(resultText);
+  </script>
+  <%- include('../common/pv') %>
+</body>
+</html>

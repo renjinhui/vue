@@ -1,0 +1,100 @@
+.head,
+.prize,
+.user {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.head {
+  background-image: url(../images/ac3.png);
+  height: 4rem;
+  margin-top: 0.4rem;
+}
+
+.section .row {
+  margin-left: -0.167rem;
+  margin-right: -0.167rem;
+}
+
+
+.section .col-6 {
+  padding-left: 0.167rem;
+  padding-right: 0.167rem;
+}
+
+.section .content {
+  padding-bottom: 0
+}
+
+.content .panel {
+  width: 7.5rem;
+  margin: 0 auto;
+  color: #333;
+  border-radius: 0.2rem;
+}
+
+.panel-body {
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
+  background-color: #fff;
+}
+
+.panel-body .item {
+  margin: 0;
+  padding-left: 0.666rem;
+  padding-right: 0.666rem;
+  font-size: 0.32rem;
+  line-height: 1rem;
+}
+
+.panel-body .item .user {
+  background-position: left;
+  background-size: 0.666rem;
+  padding-left: 0.888rem;
+  color: #ff6351;
+}
+.panel-body .item:first-child {
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
+}
+.panel-body .item:nth-child(2n + 1) {
+  background-color: #f4f1f6;
+}
+
+.panel-body .item .price {
+  text-align: right;
+}
+
+.panel-body .item .text-medal {
+  position: absolute;
+  top: 0.01rem;
+  bottom: 0;
+  left: 0.17rem;
+  color: #fff;
+  font-size: 0.55rem;
+}
+
+.panel-foot {
+  border-bottom-left-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+  background-color: #ef4315;
+  color: #fff;
+  font-size: 0.293rem;
+  line-height: 0.666rem;
+  text-align: center;
+}
+
+.content .prize {
+  text-align: center;
+  font-size: 0.30rem;
+}
+
+.prize-img {
+  padding: 0.2rem;
+  background-color: #471466;
+}
+
+.prize-good {
+  line-height: 1.8em;
+}

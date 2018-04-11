@@ -1,0 +1,7 @@
+{
+  "errorCode": 0,
+  "data": {
+    "is_bind": 1,
+    "needWaitTime":10
+  }
+}

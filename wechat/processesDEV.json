@@ -1,0 +1,10 @@
+{
+  "apps": [{
+    "name": "soeasy-wechat",
+    "script": "bin/www",
+    "log_date_format": "YYYY-MM-DD HH:mm:ss",
+    "watch": true,
+    "port": 8098,
+    "args": ["dev"]
+  }]
+}

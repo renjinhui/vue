@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="">
+<%- include('../common/head', {title: '搜易贷理财'}) %>
+<body class="wechat">
+  <ul class="tab-view tab-list wechat-tab">
+    <li class="tab-active">
+      <a href="/m" >新手专享</a>
+    </li>
+    <li>
+      <a href="/m/more" >更多项目</a>
+    </li>
+    <li>
+      <a href="/m/invite" >邀请好友</a>
+    </li>
+  </ul>
+  <a href="javascript:void(0)"><img src="https://help.souyidai.com/upload/2015/08/14/1439550674524.gif" alt="" class="wechat-banner"></a>
+  <div class="wechat-index-silde" style="margin-top:0.4rem">
+    <div class="wechat-index-list">
+      <% for(var i = 0; i<data.list.length; i++) {%>
+        <div class="wechat-index-card" data-id="<%= data.list[i].id %>">
+          <% if (data.list[i].statusText === '已满') { %>
+            <p class="wechat-card-corner end">售罄</p>
+          <% }%>
+          <p class="wechat-bid-rate" >新手专享预期年化收益率<br>
+            <span><%= data.list[i].interestRate %><% if (data.list[i].hasOwnProperty('raiseInterestRate')) { %><%= data.list[i].raiseInterestRate.replace('%', '') %><% }%></span> %
+          </p>
+          <% if (data.list[i].leftTime !== 0) { %>
+            <span class="wechat-bid-time"><i class="icon-wechat-time icon-25"></i>剩<span data-time="<%= data.list[i].leftTime %>" class="lefttime">--时--分--秒</span></span>
+          <% }%>
+          <div class="wechat-bid-info">
+            <p>期限<br><span><%= data.list[i].periods %></span></p>
+            <p>还款方式<br><span><%= data.list[i].repayMode %></span></p>
+          </div>
+          <div class="wechat-bid-footer">
+            <i class="icon-wechat-bao icon-25"></i><%= data.list[i].guaranteeText %>
+          </div>
+          <% if (data.list[i].curUserBiddingAmount > 0) { %>
+            <div class="wechat-has-invest"><span>已投资</span></div>
+          <% }%>
+        </div>
+      <% } %>
+    </div>
+  </div>
+  <div class="slide-dot">
+  <% if (data.list.length > 1) { %>
+    <% for(var i = 0; i<data.list.length; i++) {%>
+      <span></span>
+    <% } %>
+  <% } %>
+  </div>
+  <% if (data.hasOwnProperty('currentBalance')) { %>
+    <% if (data.isInvest) { %>
+      <div class="btn-box">
+        <button class="btn btn-default btn-block" id="share">靠谱项目 岂容错过？分享给Ta</button>
+      </div>
+    <% } else {%>
+      <p class="wechat-balance">可用余额: <%= (data.currentBalance/100).toFixed(2).replace(/(\d)(?=(?:\d{3})+(?:\.\d+)?$)/g, '$1,') %>元</p>
+      <div class="btn-box roew">
+        <a class="btn btn-second col-6" href="/m/recharge">充值</a>
+        <button class="btn btn-default col-6" id="invest">立即投资</button>
+      </div>
+    <% } %>
+  <% } else {%>
+      <div class="btn-box">
+        <a class="btn btn-default btn-block" href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5ff6c76bdf3b5cce&redirect_uri=http%3A%2F%2Fweixin.souyidai.com%2Foauth%2F&response_type=code&scope=snsapi_base&state=account_regist#wechat_redirect">立即投资</a>
+      </div>
+  <% } %>
+  <div class="share-overlay">
+    <img src="https://static.souyidai.com/wap/2.0/images/share@2x.png" alt="" class="share-guide">
+  </div>
+  <%- include('../common/foot') %>
+  <script src="https://static.souyidai.com/wap/2.0/scripts/slide.js"></script>
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <script>
+  $(function() {
+    $('.wechat-index-silde').swipeSlide({
+      ul: $('.wechat-index-list'),
+      li: $('.wechat-index-card'),
+      autoSwipe : false,
+      continuousScroll:true,
+      callback: function(i){
+        $('.wechat-index-card').eq(i).addClass('select').siblings().removeClass('select');
+        $('.slide-dot').children().eq(i).addClass('cur').siblings().removeClass('cur');
+      }
+    });
+    for (var i = 0; i < $('.lefttime').length; i++) {
+      var leftTime = $('.lefttime').eq(i).attr('data-time');
+      countDown(leftTime, $('.lefttime').eq(i));
+    };
+    $.ajax({
+      url: '/serve/jssign',
+      type: 'GET',
+      dataType: 'json',
+      data: {
+        url: location.href
+      },
+      success: function(res) {
+        if (res.errorCode === 0) {
+          wx.config(res.result);
+        }
+      }
+    });
+    $('#invest').on('click', function() {
+      var selectBid = $('.select').attr('data-id');
+      location.href = '/m/invest/' + selectBid;
+    });
+    $('.wechat-index-card').on('click', function() {
+      location.href = 'https://m.souyidai.com/1.1/bid/detail/' + $(this).attr('data-id') + '?from=serve';
+    });
+    $('#share').on('click', function() {
+      $('.share-overlay').show();
+    });
+    $('.share-overlay').on('click', function() {
+      $(this).hide();
+    });
+    wx.ready(function() {
+      var userId = getCookie('syd_wechat_id') || 'syd';
+      var userName = getCookie('syd_wechat_name') || '搜易贷';
+      wx.onMenuShareTimeline({
+        title: '30天9.88%预期年化收益率投资项目，岂容错过？',
+        link: 'https://weixin.souyidai.com/m/share/' + userId,
+        imgUrl: 'https://static.souyidai.com/wap/2.0/images/wechat/share_icon@2x.jpg',
+        success: function() {
+          $('.share-overlay').hide();
+        },
+        cancel: function() {
+        }
+      });
+      wx.onMenuShareAppMessage({
+        title: userName + '向您推荐',
+        desc: '30天9.88%预期年化收益率投资项目，岂容错过？',
+        link: 'https://weixin.souyidai.com/m/share/' + userId,
+        imgUrl: 'https://static.souyidai.com/wap/2.0/images/wechat/share_icon@2x.jpg',
+        type: 'link',
+        success: function() {
+          $('.share-overlay').hide();
+        },
+        cancel: function() {
+        }
+      });
+    });
+  });
+  </script>
+  <%- include('../common/pv') %>
+</body>
+</html>

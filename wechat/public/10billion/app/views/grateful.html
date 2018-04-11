@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>百亿感恩</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://static.souyidai.com/wap/2.0/styles/index.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/grateful.css">
+    <script type='application/javascript' src="../js/fastclick.js" charset="utf-8"></script>
+    <script src="https://static.souyidai.com/wap/2.0/scripts/flexible.js"></script>
+
+  </head>
+  <body class="body-sticky">
+    <div class="bg">
+      <div class="cloud sm-cloud" style="left: -0.2rem; top: 3rem;"></div>
+      <div class="cloud sm-cloud" style="right: 0.36rem; top: 1rem;"></div>
+      <div class="cloud sm-cloud" style="right: -0.7rem; top: 2.5rem;"></div>
+
+      <div class="head"></div>
+      <section class="section">
+        <h2 class="title">活动时间</h2>
+        <div class="content">
+          <p>
+            2016年4月18日至4月20日
+          </p>
+        </div>
+        <h2 class="title">活动规则</h2>
+        <div class="content">
+          <p>
+            庆搜易贷累计成交额达成100亿！100亿成交额达成后新上线所有普通直投项目加息1%（即不含债权转让、定期宝、活期宝、新手专享，以页面显示加息项目为准）
+          </p>
+        </div>
+
+      </section>
+      <div class="row">
+        <button id="invest" class="btn btn-block btn-yellow col-12" type="button" name="button">立即投资</button>
+      </div>
+      <p class="copyright">
+        *本活动在法律允许范围内解释权归搜易贷所有
+      </p>
+    </div>
+    <script src="https://static.souyidai.com/wap/js/zepto.min.js"></script>
+    <script src="https://static.souyidai.com/wap/2.0/scripts/util.js"></script>
+    <script src="https://static.souyidai.com/pv/spv_new.js"></script>
+    <script type="text/javascript">
+      var go = function(url) {
+        var data = {
+          url: url
+        };
+        SYDBridge.openNative('route', data);
+      };
+
+      var initFastClick = function() {
+        var attachFastClick = Origami.fastclick;
+        attachFastClick(document.body);
+      }
+
+      Zepto(function($){
+        initFastClick();
+
+        $('#invest').on('click', function(e) {
+          var t = e.target;
+          if(window.isClient) {
+            if(window.uid) {
+              go('/index?appTabId=0'); // go invest
+            } else {
+              go('/login');
+            }
+          } else {
+            window.location.href = 'https://m.souyidai.com/invest';
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

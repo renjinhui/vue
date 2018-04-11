@@ -1,0 +1,134 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>时光红包</title>
+    <script src="https://static.souyidai.com/wap/2.0/scripts/flexible.js"></script>
+
+
+
+    <link rel="stylesheet" href="https://static.souyidai.com/other/newyear/styles/index.css">
+    <link rel="stylesheet" href="https://static.souyidai.com/other/newyear/styles/weixin.css">
+
+  </head>
+  <body>
+    <img src="https://static.souyidai.com/other/newyear/images/weixin/banner.gif" alt="" class="banner">
+    <div class="container">
+      <div class="form-wrap">
+        <div id="result-panel" style="display:none">
+          <p class="result-tip"></p>
+          <div class="btn-box row">
+            <button class="btn btn-block col-12" id="btn-share" style="display:none"></button>
+            <button class="btn btn-block col-12" id="btn-my" style="display:none"></button>
+          </div>
+        </div>
+        <div id="username-form">
+          <div class="form-group">
+            <input type="tel" class="form-control" placeholder="请输入手机号" id="username">
+            <span class="input-icon"></span>
+          </div>
+          <div class="btn-box row">
+            <button class="btn btn-block col-12" id="btn-open"></button>
+          </div>
+        </div>
+        <div id="regist-form" style="display:none">
+          <div class="row">
+            <div class="col-8">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="请输入短信验证码" id="smsCode">
+                <span class="input-icon"></span>
+              </div>
+            </div>
+            <div class="col-4">
+              <button id="re-send" class="btn btn-block btn-second">发送短信</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="请设置登录密码" id="password">
+            <span class="icon-eye"></span>
+          </div>
+          <div class="sms-agree">
+            <input type="checkbox" checked="ture">
+            <span>我已阅读并同意<a href="https://passport.souyidai.com/protocol.html">《搜易贷在线服务协议》</a></span>
+          </div>
+          <div class="btn-box">
+            <button id="btn-regist" class="btn btn-block col-12"></button>
+          </div>
+        </div>
+        <p class="regist-tip">提示：<br>新用户成功开包后可获得60元新手投资红包；<br>投资用户可领取“时光红包”。</p>
+      </div>
+      <img src="https://static.souyidai.com/other/newyear/images/weixin/title.png" alt="" class="title-img">
+      <div class="about-us">
+        搜易贷，搜狐集团旗下互联网金融平台。致力于为投资者提供安全、透明、便捷、低门槛、高收益的理财服务。
+      </div>
+      <div class="feature-list">
+        <div class="row">
+          <div class="col-2"><img src="https://static.souyidai.com/other/newyear/images/weixin/icon_1.png" alt="" class="feature-icon"></div>
+          <div class="col-10">
+            <span>低门槛</span>
+            <br>1元起投
+            <br>0手续费
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2"><img src="https://static.souyidai.com/other/newyear/images/weixin/icon_2.png" alt="" class="feature-icon"></div>
+          <div class="col-10">
+            <span>高收益</span>
+            <br>约34倍银行活期存款收益
+            <br>最高12%预期年化收益率
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2"><img src="https://static.souyidai.com/other/newyear/images/weixin/icon_3.png" alt="" class="feature-icon"></div>
+          <div class="col-10">
+            <span>安全有保障</span>
+            <br>多种安全保障措施
+            <br>投资更放心
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2"><img src="https://static.souyidai.com/other/newyear/images/weixin/icon_4.png" alt="" class="feature-icon"></div>
+          <div class="col-10">
+            <span>流动性高</span>
+            <br>持有债权满30天
+            <br>即可转让
+          </div>
+        </div>
+      </div>
+      <p class="risk-tip">*投资有风险  理财需谨慎</p>
+    </div>
+    <div class="toast-wrap">
+      <div class="toast"></div>
+    </div>
+    <div class="dialog-back"></div>
+    <div class="dialog dialog-top" id="login">
+      <div class="dialog-simple">
+        <p class="dialog-simple-header">输入搜易贷登录密码</p>
+      </div>
+      <div class="dialog-form">
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="输入搜易贷账户登录密码" id="login-password">
+        </div>
+      </div>
+      <div class="dialog-btn-box row">
+        <button class="btn-dialog col-6 close" >取消</button>
+        <button class="btn-dialog btn-default col-6" id="login-btn">确定</button>
+      </div>
+    </div>
+    <div class="dialog" id="coupon">
+      <img src="https://static.souyidai.com/other/newyear/images/weixin/hongbao.jpg" style="width:100%;vertical-align:middle;border-radius:0.2rem;position:absolute;">
+      <p style="position:absolute;width:100%;top:1.1rem;text-align:center;font-size:0.56rem;font-weight:bold;color:#e43312">成功帮好友拆了红包</p>
+      <button class="btn btn-default btn-block" style="display:block;width:90%;position:absolute;top:8.5rem;margin-left:0.4rem;" id="my-coupon">查看我的时光红包</button>
+    </div>
+    <div class="share-overlay">
+      <img src="https://static.souyidai.com/wap/2.0/images/share@2x.png" alt="" class="share-guide">
+    </div>
+    <script src="https://static.souyidai.com/wap/js/zepto.min.js"></script>
+    <script src="https://static.souyidai.com/wap/2.0/scripts/util.js"></script>
+    <script src="https://static.souyidai.com/other/newyear/scripts/weixin.js"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="https://static.souyidai.com/pv/spv_new.js"></script>
+  </body>
+</html>

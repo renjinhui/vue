@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <script src="https://static.souyidai.com/wap/2.0/scripts/flexible.js"></script>
+  <title>搜易贷百万迎新红包等你来抢</title>
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+
+
+  <link rel="stylesheet" href="/styles/hongbao.css">
+
+</head>
+<style>
+  .width10{
+    width: 10rem;
+  }
+</style>
+<body class="width10" style="margin:0 auto; ">
+  <div class="container width10">
+    <% if(inviteInfo.uid == '10000') {%>
+      <p class="hb-title title-lg">搜易贷百万迎新红包<br>等你来抢</p>
+      <p class="hb-content">搜易贷送你一个<br><span class="hb-money">118</span>元投资红包</p>
+    <% } else {%>
+      <p class="hb-title title-sm width10">你的好友<%= inviteInfo.mobile %>在搜易贷投资，<br>赚取最高10%年化收益，邀你一起来赚钱！</p>
+      <p class="hb-content width10">TA送你一个<br><span class="hb-money">118</span>元投资红包</p>
+    <% } %>
+    <div class="hb-form-group width10">
+      <div class="hb-form">
+        <p class="hb-label">输入手机号，红包自动放入帐号</p>
+        <input type="tel" class="hb-input" id="mobile">
+        <button class="hb-btn"></button>
+        <p class="hb-label-sm">红包可以当现金用，直接用于投资哦！</p>
+      </div>
+    </div>
+    <p class="tips width10"><strong><!-- 活动时间：2016年8月1日-8月31日 --></strong>
+      <br><% if(inviteInfo.uid == '10000') {%>
+        已注册会员请在分享给好友前,先输入自己的手机号抢红包!
+      <% } else {%>
+        领取红包后，下载搜易贷理财客户端， 投资还有返现哦！
+      <% } %></p>
+  </div>
+  <div class="time-line">
+    <img src="/images/timeline.jpg" alt="">
+  </div>
+  <div class="modal-overlay"></div>
+  <div class="modal" id="modal-old">
+    <div class="modal-content" style="padding-top:1rem;">
+      <p class="modal-text"><strong>
+        Hi，记得您，是搜易贷老朋友了！ <br>这个红包只有新伙伴才能领哦~ <br>立即分享给好友，赢取加息券和红包奖励吧！
+      </strong></p>
+      <button class="btn-modal invite-btn" style="margin-top:0.8rem">立即参与</button>
+    </div>
+  </div>
+  <div class="modal" id="modal-get">
+    <div class="modal-content" style="padding-top:0.75rem;">
+      <p class="modal-header">您抢到了118元红包</p>
+      <p class="modal-text">
+      快去搜易贷领取红包吧~ <br>↓↓↓
+      </p>
+      <div class="btn-group">
+        <button class="btn-modal-inline regist-btn">立即注册</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-hongbao" id="modal-hongbao">
+  <button class="close"><span aria-hidden="true">&times;</span></button>
+    <div class="modal-content" style="padding-top:1rem">
+      <p class="modal-header">恭喜您已成功领取<br>118元红包</p>
+      <div class="btn-group">
+        <button class="btn-modal-inline">查看红包</button>
+        <button class="btn-modal-inline">下载App</button>
+      </div>
+    </div>
+  </div>
+  <script src="https://static.souyidai.com/wap/js/zepto.min.js"></script>
+
+  <script src="/scripts/share.js"></script>
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <%- include('../common/pv') %>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="">
+<%- include('../common/head', {title: '我的投资'}) %>
+<body class="wechat">
+  <!--1-->
+  <div class="wechat-top-bar row">
+    <i class="icon-md icon-tip-blue col-2"></i>
+    <span class="col-5">
+      查看更多类别投资项目
+      <br>请下载搜易贷理财APP
+    </span>
+    <a class="btn btn-default btn-xs col-5" href="https://events.souyidai.com/static/app/index_3.html?from=wechat&client=serve">点击下载</a>
+  </div>
+  <!--1-end-->
+  <!--2-->
+  <div class="wechat-myac-amount">
+    <div class="wechat-myac-aside">
+      <div class="wechat-myac-name"><%= data.top[1].key %></div>
+      <div class="wechat-myac-value"><%= data.top[1].value %></div>
+    </div>
+    <div class="wechat-myac-aside left-line">
+      <div class="wechat-myac-name"><%= data.top[2].key %></div>
+      <div class="wechat-myac-value">
+        <%= data.top[2].value.replace('%', '')%> <em>%</em>
+      </div>
+    </div>
+  </div>
+  <!--2-end-->
+  <% for(var i in data.list) {%>
+    <section class="wechat-myac-datetit"><%= i %></section>
+    <% for(var j = 0; j< data.list[i].length; j++) {%>
+      <div class="wechat-myac-module" data-id="<%= data.list[i][j].bidId %>">
+        <span class="wechat-myac-title">
+          <i><%= data.list[i][j].title %></i>
+          <% if(data.list[i][j].status === 2) { %>
+            <strong class="settled"><%= data.list[i][j].statusText %></strong>
+          <% } else { %>
+            <strong><%= data.list[i][j].statusText %></strong>
+          <% } %>
+        </span>
+        <span class="wechat-myac-list">
+        <% for(var k = 0; k< data.list[i][j].items.length; k++) {%>
+          <span>
+            <i><%= data.list[i][j].items[k].key %></i>
+            <strong><%= data.list[i][j].items[k].value %><%= data.list[i][j].items[k].valueUnit %></strong>
+          </span>
+        <% } %>
+        </span>
+      </div>
+    <% } %>
+  <% } %>
+  <%- include('../common/foot') %>
+  <script>
+  $(function() {
+    $('.wechat-myac-module').on('click', function() {
+      location.href = '/m/my_invest/' + $(this).attr('data-id');
+    });
+  });
+  </script>
+  <%- include('../common/pv') %>
+</body>
+</html>

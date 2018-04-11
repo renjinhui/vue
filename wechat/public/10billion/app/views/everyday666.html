@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>任性排行送壕礼</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://static.souyidai.com/wap/2.0/styles/index.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/everyday666.css">
+    <script src="https://static.souyidai.com/wap/2.0/scripts/flexible.js"></script>
+
+  </head>
+  <body class="body-sticky">
+    <div class="bg">
+      <div class="cloud sm-cloud" style="left: -0.2rem; top: 3rem;"></div>
+      <div class="cloud sm-cloud" style="right: 0.36rem; top: 1rem;"></div>
+      <div class="cloud sm-cloud" style="right: -0.7rem; top: 2.5rem;"></div>
+
+      <div class="head"></div>
+      <section class="section">
+        <h2 class="title title">活动时间</h2>
+        <div class="content">
+          <p>
+            2016年4月6日至4月30日
+          </p>
+        </div>
+        <h2 class="title">活动规则</h2>
+        <div class="content">
+          <p>
+            1、活动期间，每天0:00-24:00投资直投项目、定期宝（不含转让项目、活期宝）累计金额前10名的的用户，会获得相应的实物奖品，每人最多可获得3次奖品。
+            <br>2、每日Top10最终获奖名单将于第2个工作日在搜易贷微信订阅号中公布。
+          </p>
+        </div>
+
+        <h2 class="title">今日Top10</h2>
+        <div class="content">
+          <div class="panel">
+
+            <div id="top10" class="panel-body">
+
+            </div>
+            <div class="panel-foot">
+              以上榜单每15分钟刷新一次，仅统计当日内投资金额
+            </div>
+          </table>
+        </div>
+
+        <h2 class="title">奖励设置</h2>
+        <div class="row content">
+          <div class="col-6 prize">
+            <div class="prize-img">
+              <img id="gift-picture-one" src="" width="100%" alt="" />
+            </div>
+            <p class="prize-good">
+              <span id="gift-pic-one" class="good-name"></span>
+            </p>
+          </div>
+
+          <div class="col-6 prize">
+            <div class="prize-img">
+              <img id="gift-picture-two" src="" width="100%" alt="" />
+            </div>
+            <p class="prize-good">
+              <span id="gift-pic-two" class="good-name"></span>
+            </p>
+          </div>
+        </div>
+        <div class="row content">
+          <div class="col-6 prize">
+            <div class="prize-img">
+              <img id="gift-picture-three" src="" width="100%" alt="" />
+            </div>
+            <p class="prize-good">
+              <span id="gift-pic-three" class="good-name"></span>
+            </p>
+          </div>
+
+          <div class="col-6 prize">
+            <div class="prize-img">
+              <img id="gift-picture-four" src="" width="100%" alt="" />
+            </div>
+            <p class="prize-good">
+              <span id="gift-pic-four" class="good-name"></span>
+            </p>
+          </div>
+        </div>
+      </section>
+      <div class="row">
+        <button id="invest" class="btn btn-block btn-yellow col-12" type="button" name="button">立即投资</button>
+      </div>
+      <p class="copyright">
+        *本活动在法律允许范围内解释权归搜易贷所有
+      </p>
+    </div>
+    <script src="https://static.souyidai.com/wap/js/zepto.min.js"></script>
+    <script src="https://static.souyidai.com/wap/2.0/scripts/util.js"></script>
+    <script src="https://static.souyidai.com/pv/spv_new.js"></script>
+    <script type="text/javascript">
+      var go = function(url) {
+        var data = {
+          url: url
+        };
+        SYDBridge.openNative('route', data);
+      };
+
+      var fmtNum = function (num) {
+        return num.toString().replace(/(\d)(?=(?:\d{3})+(?:\.\d+)?$)/g, '$1,');
+      };
+
+      var datas2htmlStr = function(datas) {
+        var arr = datas.map(function(item, i){
+          if(i <= 4) {
+            return '<div class="item row">' +
+              '<span class="col-5 user" style="background-image: url(../images/medal'+ (i + 1) +'.png);">'+ item.phone +'</span>' +
+              '<span class="col-7 price">'+ item.total +'</span>' +
+            '</div>'
+          } else if(i <= 8) {
+            return '<div class="item row">' +
+              '<span class="col-5 user" style="background-image: url(../images/medal.png);"><span class="text-medal">'+ (i + 1) +'</span>'+ item.phone +'</span>' +
+              '<span class="col-7 price">'+ item.total +'</span>' +
+            '</div>'
+          } else if(i === 9) {
+            return '<div class="item row">' +
+              '<span class="col-5 user" style="background-image: url(../images/medal.png);"><span class="text-medal" style="left: 0">10</span>'+ item.phone +'</span>' +
+              '<span class="col-7 price">'+ item.total +'</span>' +
+            '</div>'
+          }
+        });
+        return arr.reduce(function(pre, curr) {
+          return pre + curr;
+        });
+      }
+
+      var initTop10 = function() {
+        $.get('/billion/api/investRankList', function(response){
+          var investRankList = response.data.today;
+          var datas = investRankList.map(function(item) {
+            return {
+              phone: item.phone,
+              total: fmtNum(item.total / 100) + '元'
+            };
+          });
+          var domArray = datas2htmlStr(datas);
+
+          $('#top10').append(domArray);
+        });
+      };
+
+      var setPrizeImg = function() {
+        var config = {
+            '20160406': { date: 5, title: ['周大福小心意系列吊坠', '雀巢胶囊咖啡机', 'Bobbi brown流云眼影膏', '100亿定制移动电源' ]},
+            '20160411': { date: 2, title: ['周大福小心意系列吊坠', '雀巢胶囊咖啡机', 'Bobbi brown流云眼影膏', '100亿定制移动电源' ]},
+            '20160413': { date: 3, title: ['周大福小心意系列吊坠', '莱克无线除螨吸尘器', 'Bobbi brown流云星璨眼影眼线膏', '100亿定制移动电源' ]},
+            '20160416': { date: 2, title: ['雀巢胶囊咖啡机', '海伦凯勒太阳镜', 'IOPE三重焕采修饰乳', '100亿定制移动电源' ]},
+            '20160418': { date: 1, title: ['iPhone 6s（64GB）', '蒙牛高端牛奶卡', 'Bobbi brown舒盈无瑕粉妆盒', '100亿定制移动电源' ]},
+            '20160419': { date: 2, title: ['蒙牛高端牛奶卡', '莱克无线除螨吸尘器', 'Bobbi brown流云星璨眼影眼线膏', '100亿定制移动电源' ]},
+            '20160421': { date: 2, title: ['蒙牛高端牛奶卡', '莱克无线除螨吸尘器', 'Bobbi brown流云眼影膏', '100亿定制移动电源' ]},
+            '20160423': { date: 2, title: ['雀巢胶囊咖啡机', '海伦凯勒太阳镜', 'IOPE三重焕采修饰乳', '100亿定制移动电源' ]},
+            '20160425': { date: 6, title: ['蒙牛高端牛奶卡', '雀巢胶囊咖啡机', 'IOPE三重焕采修饰乳', '100亿定制移动电源' ]}
+        };
+
+
+        var date = new Date();
+        var today = formatDate(date);
+        var folder = '';
+        for(var file in config){
+            folder = file;
+            var num = config[folder].date;
+            for(var i = 0; i < num; i++){
+                var newD = new Date();
+                newD.setFullYear(folder.substr(0, 4), folder.substr(4, 2) * 1 - 1, folder.substr(6, 2), 0, 0, 0);
+                newD.setDate(newD.getDate() + i);
+                if(formatDate(newD) == today){
+                    setPrizeImg();
+                    return false;
+                }
+            }
+        }
+        setPrizeImg();
+
+        function setPrizeImg(){
+            var arr = ['one', 'two', 'three', 'four'];
+            for(var i = 0; i < arr.length; i++){
+                $('#gift-picture-' + arr[i]).attr('src', '../images/prize/' + folder + '/' + (i + 1) + '.jpg');
+                $('#gift-pic-' + arr[i]).html(config[folder].title[i]);
+            }
+        }
+
+        function formatDate(date){
+          var month = date.getMonth() < 9 ? '0' + (date.getMonth() + 1) : date.getMonth();
+          var day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+          var str = '' + date.getFullYear() + month + day;
+          return str;
+        }
+
+      }
+      Zepto(function($){
+
+        setPrizeImg();
+        initTop10();
+
+        $('#invest').on('tap', function(e) {
+          var t = e.target;
+          if(window.isClient) {
+            if(window.uid) {
+              go('/index?appTabId=0'); // go invest
+            } else {
+              go('/login');
+            }
+          } else {
+            window.location.href = 'https://m.souyidai.com/';
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

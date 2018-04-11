@@ -1,0 +1,493 @@
+html,body.fg{
+	background-color: #003f66;
+	height: 100%;
+}
+
+p{
+	color: white;
+}
+
+.fg .mui-content{
+	background-color: transparent;
+}
+
+.fg .mui-table-view, .fg .mui-table-view-cell{
+	background-color: transparent;
+}
+
+.fg .mui-table-view-cell.reward{
+	
+}
+
+.fg .mui-block-80{
+	left: 10%;
+	width: 80%;
+}
+
+.fg .mui-btn.btn{
+	height: 40px;
+	padding: 5px 5px;
+	line-height: 30px;
+	border: none;
+	border-radius: 3px;
+	margin-top: 15px;
+	color: white;
+	font-size: 24px;
+	text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.fg .mui-btn.btn.red{
+	border: solid 1px rgb(153, 1, 15);
+	background: #bb393e;
+	background: -webkit-gradient(linear, left top, left bottom, from(#FB5870), to(#bb393e));
+}
+
+.fg .mui-btn.btn.blue{
+	border: solid 1px #0076a3;
+	background: #0095cd;
+	background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+
+}
+
+.fg .page{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	display: none;
+	background-image: url(../img/bg.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+	background-position: center bottom;
+}
+
+#qrcode1{
+	background-image: url(../img/7.jpg);
+	background-size: cover;
+	background-position: center top;
+}
+
+.fg .start-btn{
+	position: absolute;
+	width: 50%;
+	left: 25%;
+}
+
+.fg .text-btn{
+	color: #4b7ca1;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	height: 30px;
+	padding: 5px 5px;
+	line-height: 30px;
+}
+
+
+.fg .game-title{
+	position: relative;
+	width: 100%;
+	padding-top: 113%;
+	background-size: 100% auto;
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-image: url('../img/1.png');
+}
+
+.fg .img-title{
+	margin-top: 10px;
+	width: 80%;
+}
+
+.fg .tip{
+	color: white;
+	font-size: 18px;
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+.fg .tip .value{
+	color: #f9e15f;
+	font-size: 20px;
+}
+
+.fg .head{
+	width: 64px;
+	height: 64px;
+
+	margin-left: 20px;
+}
+
+.fg .head > img{
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+}
+
+@keyframes shine {
+	from{
+		box-shadow: 0 0 0 black;
+	}
+	to{
+		box-shadow: 0 0 30px black;
+	}
+}
+@-webkit-keyframes shine {
+	from{
+		-webkit-box-shadow: 0 0 0 black;
+	}
+	to{
+		-webkit-box-shadow: 0 0 30px black;
+	}
+}
+
+.fg .reward .mui-media-body > p{
+	text-align: left;
+	margin-left: 40px;
+	margin-top: 10px;
+}
+
+.fg .reward .mui-media-body .name{
+	color: white;
+}
+.fg .reward .mui-media-body .word{
+	color: #ebd94c;
+}
+
+
+.fg .reward.mui-table-view-cell:after{
+	background-color: #d1c84f;
+	height: 1px;
+	right: 15px;
+}
+
+.fg .mui-table-view:before, .fg .mui-table-view:after{
+	height: 0;
+}
+
+.fg .reward.mui-table-view-cell>a:not(.mui-btn).mui-active{
+	background-color: transparent;
+}
+
+.fg .page.active{
+	display: block;
+}
+
+.fg .mui-input-group{
+	background-color: transparent;
+}
+.fg .mui-input-row input{
+	background-color: white;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.fg .mui-input-row button{
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+
+	margin-left: 2%;
+}
+
+.fg .mui-input-row.mui-checkbox input{
+	width: 16px;
+	height: 16px;
+	left: 5px;
+	top: 6px;
+}
+.fg .mui-input-row.mui-checkbox input:before{
+	font-size: 16px;
+}
+
+.fg .mui-input-row.mui-checkbox label{
+	padding-left: 30px;
+}
+
+.fg .reward1 {
+	margin-top: 15px;
+	background-image: url(../img/2003.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	padding-top: 26.3%;
+	width: 100%;
+	position: relative;
+	display: none;
+}
+
+.fg .reward1.exist{
+	display: block;
+}
+
+.fg .reward1 p{
+	position: absolute;
+	top: -52px;
+}
+.fg .reward1 .type{
+	margin-top: 55px;
+	padding-left: 40px;
+	color: gray;
+}
+.fg .reward1 .value{
+	margin-top: 85px;
+	padding-left: 30%;
+	color: red;
+	font-size: 24px;
+}
+.fg .reward1 .exchange{
+	margin-top: 75px;
+	padding-left: 65%;
+	font-size: 20px;
+}
+
+.fg .reward1 .exchange:before{
+	content: '已兑换';
+	color: gray;
+}
+
+.fg .reward1 .exchange.free{
+	padding-left: 61%;
+}
+.fg .reward1 .exchange.free:before{
+	content: '立即兑换';
+
+	color: #d6be3c;
+}
+
+.fg .reward1 .exchange.free.none:before{
+	content: '立即兑换';
+
+	color: gray;
+}
+
+.fg .reward1 .extra{
+	margin-left: 12%;
+	color: black;
+	padding-top: 32%;
+	font-size: 10px;
+;
+}
+
+.fg .alert-outter{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: none;
+	z-index: 10;
+}
+
+.fg .alert{
+	width: 80%;
+	padding-top: 64%;
+	position: absolute;
+	top: 30%;
+	left: 10%;
+	background-image: url(../img/3005.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+
+}
+
+.fg .alert-outter.active{
+	display: block;
+}
+
+
+
+.fg .alert .content{
+	position: absolute;
+	padding-left: 10px;
+	padding-right: 10px;
+	top: -100%;
+	margin-top: 100%;
+	text-align: center;
+	width: 100%;
+	font-size: 32px;
+}
+
+.fg .alert .btn-group{
+	position: absolute;
+	top: -100%;
+	margin-top: 135%;
+	text-align: center;
+	width: 100%;
+}
+
+
+.fg .alert .btn-group a{
+	background-color: #fcb44c;
+	border: 1px solid #fcb44c;
+	text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+	box-shadow: 0 1px 2px rgba(0,0,0,.9);
+}
+
+.fg .alert .btn-group .left{
+	width: 60%;
+	color: white;
+}
+
+.fg .alert .btn-group .right{
+	display: none;
+	color: white;
+}
+
+.fg .alert .btn-group .left.two{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 40%;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+}
+
+.fg .alert .btn-group .right.two{
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 40%;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	display: block;
+}
+
+#main, #helpmain{
+	text-align: center;
+	background-image: none;
+}
+
+#game-top{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	width: 100%;
+}
+#game-bottom{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	width: 100%;
+}
+
+#game-timer{
+	position: absolute;
+	left: 5%;
+	top: 10%;
+	font-size: 30px;
+	z-index: 2;
+	margin-bottom: 0;
+	margin-top: 3px;
+	height: 30px;
+	line-height: 30px;
+}
+#game-music{
+	position: absolute;
+	right: 5%;
+	text-align: center;
+	top: 10%;
+	z-index: 2;
+	width: 30px;
+	height: 30px;
+}
+#game-score{
+	position: absolute;
+	width: 10%;
+	left: 48%;
+	bottom: 8%;
+	z-index: 2;
+	font-size: 36px;
+	font-weight: 500;
+	color: white;
+}
+#game-ready{
+	position: absolute;
+	width: 60%;
+	left: 20%;
+	top: 45%;
+	-webkit-transform: scale(0, 0);
+	-moz-transform: scale(0, 0);
+	-ms-transform: scale(0, 0);
+	-o-transform: scale(0, 0);
+	transform: scale(0, 0);
+	z-index: 3;
+}
+#game-go{
+	position: absolute;
+	width: 40%;
+	left: 30%;
+	top: 45%;
+	-webkit-transform: scale(0, 0);
+	-moz-transform: scale(0, 0);
+	-ms-transform: scale(0, 0);
+	-o-transform: scale(0, 0);
+	transform: scale(0, 0);
+	z-index: 3;
+}
+
+#game-gift{
+	position: absolute;
+	bottom: 5px;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	z-index: 3;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#game-get-gift{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 4;
+	background-color: rgba(0, 0, 0, 0.7);
+	display: none;
+}
+
+#stuffs{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.stuff{
+	position: absolute;
+	width: 22.5%;
+	top: 0;
+	left: 0;
+	/*animation: stuff-fall 4s linear 1s 1;*/
+}
+
+.stuff.pause{
+	-webkit-transition: none;
+	-moz-transition: none;
+	-ms-transition: none;
+	-o-transition: none;
+	transition: none;
+}
+
+#rules{
+	bottom: 12px;
+}
+#play{
+	bottom: 50px;
+}
+
+#help-rules{
+	bottom: 12px;
+}
+#help-play{
+	bottom: 40px;
+}

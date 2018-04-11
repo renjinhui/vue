@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="">
+<%- include('../common/head', {title: '我的资金'}) %>
+<style>
+  .wechat-myac-aslist .wechat-myac-samlltit{
+    font-weight: bold;
+  }
+  .wechat-myac-aslist, .wechat-myac-details{
+    border-top: 0;
+    margin-top: 0;
+  }
+  .wechat-myac-amount, .wechat-myac-aslist, .wechat-myac-datetit, .wechat-myac-module{
+    border-bottom: 0;
+  }
+  .wechat-myac-aslist .wechat-myac-column .wechat-myac-title strong,.wechat-myac-aslist .wechat-myac-column .wechat-myac-title em{
+    font-size: 0.45rem;
+    font-weight: bold;
+    color: #333;
+  }
+</style>
+<body class="wechat">
+  <!--当前资产列表-->
+  <div class="wechat-myac-aslist">
+    <span class="wechat-myac-samlltit">当前资产价值</span>
+    <div class="wechat-myac-column">
+      <span class="wechat-myac-title">
+        <strong><%= data.amountHuli %>元</strong>
+        <em>理财</em>
+      </span>
+      <span>
+        <strong><%= data.willGainPrincipalForHuli %>元</strong>
+        <em>待收本金</em>
+      </span>
+      <span>
+        <strong><%= data.blockedBalanceHuli %>元</strong>
+        <em>冻结金额</em>
+      </span>
+      <span>
+        <strong><%= data.currentBalanceHuli %>元</strong>
+        <em>可用余额</em>
+      </span>
+    </div>
+  </div>
+  <div class="wechat-myac-aslist">
+    <div class="wechat-myac-column">
+      <span class="wechat-myac-title">
+        <strong><%= data.amountP2P %>元</strong>
+        <em>网贷</em>
+      </span>
+      <span>
+        <strong><%= data.willGainPrincipalForP2P %>元</strong>
+        <em>待收本金</em>
+      </span>
+      <span>
+        <strong><%= data.blockedBalanceP2P %>元</strong>
+        <em>冻结金额</em>
+      </span>
+      <span>
+        <strong><%= data.currentBalanceP2P %>元</strong>
+        <em>可用余额</em>
+      </span>
+    </div>
+  </div>
+  <div class="wechat-myac-aslist">
+    <div class="wechat-myac-column">
+      <span class="wechat-myac-title">
+        <strong><%= data.amountXjg %>元</strong>
+        <em>小金罐</em>
+      </span>
+      <span>
+        <strong><%= data.willGainPrincipalForXjg %>元</strong>
+        <em>待收本金</em>
+      </span>
+      <span>
+        <strong><%= data.blockedBalanceXjg %>元</strong>
+        <em>冻结金额</em>
+      </span>
+      <span>
+        <strong><%= data.redeemingBalanceXjg %>元</strong>
+        <em>可用余额</em>
+      </span>
+    </div>
+    <span class="wechat-myac-total">
+      <strong><%= data.currentCapital %>元</strong>
+      <em>合计</em>
+    </span>
+  </div>
+  <!--当前资产列表-end-->
+  <!--底部-->
+  <div class="btn-bottom">
+    <div class="row">
+      <a class="text col-6" href="/m/recharge">充值</a>
+      <a class="text col-6 border-left" href="https://m.souyidai.com/account/select_card">取现</a>
+    </div>
+  </div>
+  <!--底部end-->
+  <%- include('../common/foot') %>
+  <%- include('../common/pv') %>
+</body>
+</html>

@@ -7,6 +7,8 @@
 <template>
     <div class="activity">
         抽奖活动1
+        {{this.$store.state.userinfo.name}}
+        {{this.$store.state.userinfo.age}}
     </div>
 </template>
 
@@ -17,6 +19,9 @@ export default {
         return {
             
         }
+    },
+    mounted(){
+        console.log(this)
     },
     methods:{
         

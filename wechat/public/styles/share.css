@@ -1,0 +1,125 @@
+body,div,p,ul,li,table,tbody,tr,td,textarea,form,input,h1,h2,h3,h4,h5,dl,dt,dd,img,iframe,header,nav,section,article,footer,figure,figcaption,menu {
+  margin: 0;
+  padding: 0
+}
+
+body {
+  font-family: "\5FAE\8F6F\96C5\9ED1",Helvetica;
+  -webkit-user-select: none;
+  -webkit-text-size-adjust: none;
+  line-height: 1.6
+}
+
+a {
+  text-decoration: none;
+  color: #fff
+}
+
+header,nav,section,article,footer,figure,figcaption {
+  display: block
+}
+
+ol,ul {
+  margin: 0
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0
+}
+
+i,em,u,b {
+  font-style: normal
+}
+
+html,body {
+  width: 100%;
+  height: 100%
+}
+
+body,html {
+  background-color: #bd0007
+}
+
+.container {
+  background: url("/images/share.jpg") no-repeat;
+  background-size: 100%;
+  height: 100%;
+  text-align: center
+}
+
+.container p {
+  width: 100%
+}
+
+.share-title {
+  font-size: .359rem;
+  color: #fff;
+  position: absolute;
+  top: 3.6rem
+}
+
+.rule {
+  font-size: .3125rem;
+  color: #fdf6a8;
+  position: absolute;
+  top: 5.15rem;
+  width: 6.875rem!important;
+  text-align: left;
+  left: 2.34rem
+}
+
+.share-title-lg {
+  font-size: .68rem;
+  color: #fff;
+  font-weight: 700;
+  position: absolute;
+  top: 9.375rem
+}
+
+.share-content {
+  font-size: .437rem;
+  color: #fff;
+  position: absolute;
+  top: 10.46rem
+}
+
+.btn-share {
+  border: none;
+  background: url("/images/btn2.jpg") no-repeat;
+  background-size: 100% 100%;
+  width: 6.625rem;
+  height: 1.29rem;
+  margin-top: 13rem
+}
+
+.share-tip {
+  font-size: .3125rem;
+  color: #fdf6a8;
+  margin-top: .2rem
+}
+
+.time {
+  font-size: .4rem;
+  color: #fdf6a8;
+  font-weight: 700;
+  margin-top: 1.1rem
+}
+
+.text-small {
+  font-size: .28rem;
+  color: #fefefe
+}
+
+.share-overlay {
+  height: 100%;
+  background: url("/images/share-overlay.png") no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: none;
+}

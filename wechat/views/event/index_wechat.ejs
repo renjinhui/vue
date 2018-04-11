@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="">
+<%- include('../common/head_event', {title: '全民摇奖一起嗨'}) %>
+<body class="shake-index">
+  <% if(data === 0 || data === 2){ %>
+    <img src="https://static.souyidai.com/wap/2.0/images/wechat/icon_default@2x.jpg" alt="" class="wechat-share-header-img">
+    <p class="wechat-share-name"><span>搜易贷</span><br>送你1次摇奖机会</p>
+    <img src="https://static.souyidai.com/wap/2.0/images/weixin_shake/shake_index.jpg" alt="" class="shake-index-img">
+    <div class="shake-time index-time">
+      <p>我还有<i class="time time-1"></i>次摇奖机会</p>
+      <button class="shake-btn"></button>
+    </div>
+  <% }%>
+  <% if(data === 1 || data ===3){ %>
+    <img src="https://static.souyidai.com/wap/2.0/images/weixin_shake/shake_index_wechat.jpg" alt="" class="shake-index-img">
+    <div class="shake-time index-time">
+      <p>我还有<i class="time time-0"></i>次摇奖机会</p>
+      <button class="share-btn"></button>
+    </div>
+  <% }%>
+  <ul class="tab-view tab-list">
+    <li class="about tab-active"></li>
+    <li class="all-price"></li>
+  </ul>
+  <div class="tab-container" >
+    <div class="rule-content">
+      <p class="text">&nbsp;&nbsp;&nbsp;&nbsp;搜易贷是搜狐集团（NASDAQ：SOHU）旗下的互联网金融平台，致力于推动中国信贷行业的市场化、平民化及高效化，搭建中国最大、用户体验最好的个人及中小企业的互联网信贷平台。搜易贷是中国互联网金融行业的领跑者之一。</p>
+      <img src="https://static.souyidai.com/wap/2.0/images/weixin_shake/about.jpg" alt="" style="width:100%">
+    </div>
+  </div>
+  <div class="tab-container" style="display:none">
+    <div class="rule-content">
+      <img src="https://static.souyidai.com/wap/2.0/images/weixin_shake/all-price.jpg" alt="" style="width:90%;margin:auto;display:block">
+      <hr style="color:#999999;margin-top:0.8rem">
+      <p class="text" style="color:#999999;font-size:0.32rem">说明：本页面所展示的奖品清单由搜易贷公司提供，并非用户个人已得的奖品。个人奖励请到“搜易贷理财App活动页面--我的奖品”查看。</p>
+    </div>
+  </div>
+  <p class="copyright">本次活动最终解释权归搜易贷所有。</p>
+  <div class="shake-time">
+    <% if(data === 0 || data === 2){ %>
+      <p>我还有<i class="time time-1"></i>次摇奖机会</p>
+      <button class="shake-btn"></button>
+    <% }%>
+    <% if(data === 1 || data === 3){ %>
+      <p>我还有<i class="time time-0"></i>次摇奖机会</p>
+      <button class="share-btn"></button>
+    <% }%>
+  </div>
+  <div class="share-overlay">
+    <img src="https://static.souyidai.com/wap/2.0/images/share@2x.png" alt="" class="share-guide">
+  </div>
+  <%- include('../common/foot') %>
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <script>
+    $(function() {
+      $.ajax({
+        url: '/serve/jssign',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+          url: location.href
+        },
+        success: function(res) {
+          if (res.errorCode === 0) {
+            wx.config(res.result);
+          }
+        }
+      });
+      $('#open').on('click', function() {
+        $('#box').hide();
+        $('#res').show();
+      });
+      $('.share-btn').on('click', function() {
+        $('.share-overlay').show();
+      });
+      $('.share-overlay').on('click', function() {
+        $(this).hide();
+      });
+      $('.shake-btn').on('click', function() {
+        toastShow('活动已结束');
+        //location.href = '/event/shake';
+      });
+      $(".tab-list li").on("click", function() {
+        $(".tab-list li").removeClass("tab-active"), $(this).addClass("tab-active"), $(".tab-container").hide().eq($(".tab-list li").index($(this))).show();
+        $(window).scrollTop($(this).offset().top);
+      });
+      wx.ready(function() {
+        wx.onMenuShareTimeline({
+          title: '全民摇奖一起High,少你一个玩儿不起来',
+          link: 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5ff6c76bdf3b5cce&redirect_uri=http%3A%2F%2Fweixin.souyidai.com%2Foauth%2F&response_type=code&scope=snsapi_base&state=shake#wechat_redirect',
+          imgUrl: 'https://help.souyidai.com/upload/2015/07/13/1436788915424.png',
+          success: function() {
+            $('.share-overlay').hide();
+          },
+          cancel: function() {
+
+          }
+        });
+        wx.onMenuShareAppMessage({
+          title: '全民摇奖一起High,少你一个玩儿不起来',
+          desc: '红包投资即可返现, 1元起投, 新手专享30天年化收益9.88%!好收益, 赚起来!',
+          link: 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5ff6c76bdf3b5cce&redirect_uri=http%3A%2F%2Fweixin.souyidai.com%2Foauth%2F&response_type=code&scope=snsapi_base&state=shake#wechat_redirect',
+          imgUrl: 'https://help.souyidai.com/upload/2015/07/13/1436788915424.png',
+          type: 'link',
+          success: function() {
+            $('.share-overlay').hide();
+          },
+          cancel: function() {
+          }
+        });
+      });
+    });
+  </script>
+  <%- include('../common/pv') %>
+</body>
+</html>

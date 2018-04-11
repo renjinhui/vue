@@ -1,0 +1,84 @@
+p {
+  margin: 0;
+}
+body {
+  padding: 0
+}
+.body-sticky {
+  width: 100%;
+}
+.bg {
+  position: relative;
+  background-color: #3b0c56;
+  padding: 0.43rem;
+  overflow-x: hidden;
+}
+
+.cloud {
+  position: absolute;
+  background-image: url(../images/yun.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.big-cloud {
+  width: 7.37rem;
+  height: 2.61rem;
+}
+.mid-cloud {
+  width: 5.27rem;
+  height: 1.88rem;
+}
+.sm-cloud {
+  width: 1.6rem;
+  height: 0.6rem;
+}
+
+.section {
+  padding-top: 0.4rem;
+  color: #fff;
+}
+
+.section .title {
+  background-image: url(../images/bg-title.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  line-height: 0.666rem;
+  font-size: 0.4rem;
+  padding-left: 0.2666rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0;
+  font-weight: bolder;
+}
+
+.section .long-title.title {
+  background-image: url(../images/bg-title-large.png);
+}
+
+.section .content {
+  font-size: 0.32rem;
+  padding: 0.4rem 0;
+}
+
+.btn-yellow {
+  height: 1.173rem;
+  background-image: url(../images/bg-button.png);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: 100%;
+  color: #72270f;
+  font-size: 0.48rem;
+
+}
+
+.copyright {
+  color: #491368;
+  margin: 0;
+  font-size: 12px;
+  margin-top: 0.43rem;
+}
+
+.clearfix:after {
+  display: block;
+  content: "";
+  clear: both;
+}

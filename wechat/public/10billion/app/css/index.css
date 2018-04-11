@@ -1,0 +1,89 @@
+.title,
+.head,
+.ac1,
+.ac2,
+.ac3,
+.ac4,
+.ac5,
+.ac6 {
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.title {
+  background-image: url(../images/title.png);
+  width: 4.73rem;
+  height: 1.33rem;
+
+}
+.head {
+  background-image: url(../images/head.png);
+  background-size: 95%;
+  height: 4rem;
+}
+
+.ac1,
+.ac2,
+.ac3,
+.ac4,
+.ac5,
+.ac6 {
+  display: block;
+}
+
+.ac1 {
+  width: 7.6rem;
+  height: 5rem;
+  margin-left: 0.8rem;
+  margin-top: 1rem;
+  background-image: url(../images/shareMillion.png);
+}
+.ac2 {
+  width: 4.84rem;
+  height: 4.56rem;
+  margin-left: 2.46rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-image: url(../images/fouth_phase/whoisone.png);
+}
+.ac3 {
+  width: 5.13rem;
+  height: 3.22rem;
+  margin-top: 1rem;
+  margin-left: 3.44rem;
+  background-image: url(../images/ac3.png);
+}
+.ac4 {
+  width: 5.3rem;
+  height: 3.1rem;
+  margin-left: 0rem;
+  margin-top: 1rem;
+  background-image: url(../images/moreProfit.png);
+}
+.ac6 {
+  width: 4.39rem;
+  height: 4.09rem;
+  margin-left: 0.46rem;
+  margin-top: 1rem;
+  background-image: url(../images/fouth_phase/grateful.png);
+}
+
+.prize-info {
+  margin-top: 0.43rem;
+  color: #7b4c95;
+}
+
+.copyright {
+  margin-top: 0
+}
+
+.icon-tip {
+  display: inline-block;
+  width: 0.266rem;
+  height: 0.266rem;
+  margin-right: 0.1rem;
+  background-image: url(../images/icon-tip.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}

@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="">
+<%- include('../common/head_event', {title: '全民摇奖一起嗨'}) %>
+<body>
+  <style>
+  *{ margin: 0; padding: 0;}
+  .cf:before,.cf:after{content:" ";display:table}.cf:after{clear:both}.cf{zoom:1}
+  body{
+    background-color: #1a3871
+  }
+  .guide_res{
+    height: 4.93rem;
+    background: #3070c3;
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+  }
+  .guide_res .res1{
+    margin-bottom: 0.53rem;
+  }
+  .guide_res .res1 img{
+    width: 1.34rem;
+    height: 1.34rem;
+  }
+  .guide_res .res2{
+    font-size: 0.53rem;
+    color: #ffd25e;
+    font-weight: bold;
+  }
+  .guide_res .res2 span{
+    font-size: 0.34rem;
+    font-weight: normal;
+  }
+  .guide-download{
+    padding: 0.67rem;
+    padding-bottom: 1.2rem;
+    background-color: #1a3871;
+    position: relative;
+  }
+  .guide-download .triangle{
+      position: absolute;
+      left: 50%;
+      top: 0;
+      margin-left: -0.4rem;
+      width:0;
+      height:0;
+      border-width:0.4rem 0.4rem 0;
+      border-style:solid;
+      border-color:#3070c3 transparent transparent;/*灰 透明 透明 */
+  }
+  .dl-title{
+    font-size: 0.4rem;
+    color: #fff;
+    height: 0.56rem;
+    line-height: 0.56rem;
+    margin-bottom: 0.4rem;
+  }
+  .dl-profit{
+    list-style: none;
+    padding-bottom: 0.8rem;
+  }
+  .dl-profit li{
+    color: #fff;
+    float: left;
+    width: 50%;
+  }
+  .dl-profit li p:nth-of-type(1){
+    font-size: 0.29rem;
+    height: 0.56rem;
+    line-height: 0.56rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .dl-profit .profit1 p{
+    font-size: 0.91rem;
+  }
+  .dl-profit .profit1 p span{
+    font-size: 0.29rem;
+  }
+  .dl-profit .profit2 p{
+    font-size: 0.53rem;
+  }
+  .dl-profit .profit2 p:nth-of-type(2){
+    padding-top: 0.28rem;
+  }
+  .dl-invest{
+    display: block;
+    height: 1.28rem;
+    line-height: 1.28rem;
+    color: #fff;
+    text-align: center;
+    border: 1px solid #85c6ff;
+    border-radius: 0.16rem;
+    font-size: 0.53rem;
+    margin-bottom: 0.4rem;
+    text-decoration: none;
+  }
+  .dl-download{
+      background-color: #d47800;
+      border-radius: 0.16rem;
+      height: 1.47rem;
+  }
+  .dl-download p{
+      background-color: #efbc02;
+      border-radius: 0.16rem;
+      height: 1.33rem;
+      line-height: 1.33rem;
+      font-size: 0.53rem;
+      font-weight: bold;
+      color: #824200;
+      text-align: center;
+  }
+  .dl-desc{
+    font-size: 0.36rem;
+    color: #53a0e3;
+    height: 0.56rem;
+    line-height: 0.56rem;
+    text-align: center;
+    margin-bottom: 0.2rem;
+  }
+  </style>
+<div class="guide_res">
+  <div class="res1">
+    <img src="https://static.souyidai.com/wap/2.0/images/weixin_guide/reg_succ.png" alt="">
+  </div>
+  <p class="res2">注册成功并获得奖品<br><span>开启搜易贷理财APP 进入摇一摇活动页-我的奖品查看奖励</span></p>
+</div>
+<div class="guide-download">
+  <span class="triangle"></span>
+  <p class="dl-desc">
+    新注册用户即得60元投资红包
+  </p>
+  <div class="dl-download">
+    <p>下载搜易贷理财APP</p>
+  </div>
+</div>
+<script>
+  $(function() {
+    $('.dl-download').on('click', function() {
+    if (/ipad|iphone|ipod/i.test(navigator.userAgent)) {
+      if (/MicroMessenger/i.test(navigator.userAgent)) {
+        location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.souyidai.investment.android&ckey=CK1289998290990';
+      } else {
+        location.href = 'https://itunes.apple.com/cn/app/sou-yi-dai-li-cai/id946672680?mt=8';
+      }
+    } else {
+      if (/MicroMessenger/i.test(navigator.userAgent)) {
+        location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.souyidai.investment.android&ckey=CK1289998290990';
+      } else {
+        location.href = 'https://static.souyidai.com/downloads/SouyidaiClient.2.4.1.apptg.apk';
+      }
+    }
+    });
+  });
+</script>
+  <%- include('../common/pv') %>
+</body>
+</html>

@@ -1,0 +1,535 @@
+.bg {
+  background-color: #3d0a5e;
+}
+.head,
+.share-million,
+.img0,
+.jiaxiquan,
+.cash,
+.lucky-money,
+.start-btn,
+.ac-rules {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+.img0 {
+  background-size: auto 100%;
+  margin-left: 0.14rem;
+}
+.head {
+  background-image: url(../images/banner.jpg);
+  height: 7.667rem;
+  margin: -0.43rem;
+  text-align: center;
+}
+.ac-data {
+  color: #fff;
+  position: relative;
+  top: -0.8rem;
+  font-size: 0.32rem;
+}
+
+.ac-data .people {
+  padding-left: 0.1rem;
+}
+
+.ac-data .title {
+  margin-bottom: 0.1rem;
+}
+.ac-data .comma {
+  font-size: 0.64rem;
+}
+.ac-data .num {
+  background-color: #ff8500;
+  padding: 0.03rem 0.1rem;
+  font-size: 0.64rem;
+  border-radius: 0.1rem;
+}
+
+.ac-rules {
+  position: relative;
+  padding-left: 0.35rem;
+  background-image: url(../images/the_second_phase/bulb.png);
+  background-position: left;
+  background-size: contain;
+  text-decoration: underline;
+  top: 5.6rem;
+  color: #fffb04;
+}
+.share-million {
+  background-image: url(../images/the_second_phase/prizePool.png);
+  height: 2.88rem;
+  margin-top: -0.5rem;
+}
+.share-million .text {
+  position: absolute;
+  color: #fffb04;
+  bottom: 0.83rem;
+  font-size: 0.64rem;
+}
+
+.start-btn {
+  display: block;
+  width: 6.72rem;
+  height: 1.6rem;
+  margin: 0 auto;
+  top: -0.03rem;
+}
+.start-btn.join {
+    background-image: url(../images/join.png);
+}
+.start-btn.start {
+    background-image: url(../images/start.png);
+}
+.start-btn.invite {
+    background-image: url(../images/invite.png);
+}
+.start-btn.invite2 {
+    background-image: url(../images/invite2.png);
+}
+.start-btn.invest {
+    background-image: url(../images/invest.png);
+}
+.start-btn.last {
+    background-image: url(../images/last.png);
+}
+.start-btn.end1 {
+    background-image: url(../images/end-1.png);
+}
+.start-btn.end2 {
+    background-image: url(../images/end-2.png);
+}
+.content {
+  position: relative;
+  color: #d18bff;
+}
+
+.content .left {
+  position: relative;;
+  float: left;
+  text-align: center;
+  width: 1.5rem;
+}
+
+.content .left.double-0 {
+  width: 2.5rem;
+}
+
+.content .left.double-0 .img0.first {
+  float: right;
+}
+
+.content .right {
+  font-size: 0.32rem;
+  margin-left: 2.5rem;
+}
+
+.content .right.first {
+  margin-top: 0.6rem;
+  margin-left: 1.5rem;
+}
+
+.content .ac-rules {
+  top: 0.1rem;
+}
+
+.content .lucky-money-mask {
+  position: absolute;
+  top: 0.13rem;
+  right: -0.4rem;
+  width: 0.576rem;
+  height: 0.666rem;
+  background-color: #000;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.content .lucky-money {
+  position: absolute;
+  top: 0.13rem;
+  right: -0.4rem;
+  background-size: contain;
+  background-image: url(../images/the_second_phase/luckyMoney.png);
+  width: 0.576rem;
+  height: 0.666rem;
+  color: #ffc000;
+  font-size: 0.227rem;
+  padding-top: 0.3rem;
+  z-index: 0
+}
+
+
+.content .treasure-mask,
+.content .treasure {
+  position: absolute;
+  top: 0.13rem;
+  right: -0.5rem;
+  width: 0.666rem;
+  height: 0.666rem;
+}
+.content .treasure-mask {
+  background-color: #000;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.content .treasure{
+  background-size: contain;
+  background-image: url(../images/the_second_phase/treasure.png);
+  z-index: 0
+}
+
+.content .right.double-0 {
+  margin-left: 3.7rem;
+}
+
+.content .jiaxiquan-mask {
+  position: absolute;
+  width: 1.067rem;
+  height: 0.547rem;
+  background-color: #000;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.content .jiaxiquan {
+  background-image: url(../images/the_second_phase/jiaxiquan.png);
+  width: 1.067rem;
+  height: 0.547rem;
+  line-height: 0.547rem;
+  padding-left: 0.2rem;
+  color: #fff;
+  z-index: 0;
+}
+
+
+.content .cash {
+  background-image: url(../images/the_second_phase/cash.png);
+  width: 1.067rem;
+  height: 0.547rem;
+  line-height: 0.547rem;
+  padding-left: 0.2rem;
+  color: #fff;
+  z-index: 0;
+}
+
+.jiaxiquan .percent,
+.cash .percent {
+  font-size: 0.2rem;
+}
+
+.content .jiaxiquan1 {
+  position: absolute;
+  top: 0.13rem;
+  right: -1rem;
+}
+
+.content .jiaxiquan2 {
+  position: absolute;
+  top: 0.8rem;
+  right: -1rem;
+}
+
+.content.tabs {
+  background-color: #32084e;
+  margin: 0 -0.43rem;
+}
+
+.tabs .tablist {
+
+}
+
+.tabs .tablist:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.tabs .tab {
+  float: left;
+  width: 50%;
+  line-height: 1.2rem;
+  font-size: 0.4267rem;
+  color: #ffc106;
+  font-weight: bolder;
+  text-align: center;
+  background-color: #711aaa;
+}
+
+.tabs .tab.active {
+  background-color: #ffc106;
+  color: #711aaa;
+}
+
+.tabs .tab-panel {
+  padding-bottom: 0.43rem;
+  background-color: #501179;
+}
+
+.tab-panel .item {
+  padding: 0.43rem;
+  padding-bottom: 0rem;
+}
+
+.tab-panel .item .left {
+  float: left;
+  text-align: left;
+  width: 4.13rem;
+}
+
+.tab-panel .item .main {
+  text-align: right;
+  margin-left: 4.13rem;
+}
+
+.tab-panel#panel1 .item .left,
+.tab-panel#panel1 .item .main {
+  color: #ffc106;
+}
+
+.tab-panel#panel2 .item .left {
+  color: #ffc106;
+}
+
+.content.wechat {
+  background-color: #501179;
+  margin-left: -0.43rem;
+  margin-right: -0.43rem;
+  padding: 0.43rem;
+}
+
+.wechat h2 {
+  text-align: center;
+  color: #ffc106;
+  font-weight: bolder;
+  margin: 0;
+}
+
+.content.wechat .img,
+.tab-panel .img {
+  display: none;
+}
+
+
+
+.content.nofans .img,
+.tab-panel.noprize .img,
+.tab-panel.finished .img {
+  display: block;
+  padding-top: 0.4rem;
+  text-align: center;
+}
+
+.content .img > img {
+  width: 5rem;
+}
+.content.nofans .avatar-list{
+  display: none;
+}
+.content.nofans .investor-list{
+  display: none;
+}
+.wechat .avatar-list {
+  padding: 0;
+  margin-left: -0.133rem;
+  margin-right: -0.133rem;
+}
+
+.wechat .avatar-list:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.avatar-list .avatar {
+  float: left;
+  display: block;
+  width: 20%;
+  height: 1.6rem;
+  padding-left: 0.133rem;
+  padding-right: 0.133rem;
+  margin-bottom: 0.266rem;
+  box-sizing: border-box;
+}
+
+.avatar-list .avatar > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.wechat .investor-list {
+  padding: 0;
+  color: #ffc116;
+}
+
+.investor-list .investor {
+  list-style: none;
+  line-height: 0.666rem;
+}
+
+.investor .left {
+  float: left;
+  width: 2.6rem;
+  display: block;
+  text-align: left;
+}
+
+.investor .main {
+  display: block;
+  margin-left: 2.6rem;
+  text-align: right;
+}
+
+
+
+/* light */
+.content.light .left .text.dark {
+  display: none;
+}
+.content.light .left .text.light {
+  display: block;
+}
+.content.light .left .text.normal {
+  display: none;
+}
+
+.content.light .left .img0 {
+  background-image: url(../images/the_second_phase/light0.jpg);
+  width: 1.28rem;
+  height: 1.67rem;
+}
+
+.content.light .lucky-money-mask {
+  display: none;
+}
+
+.content.light .jiaxiquan-mask {
+  display: none;
+}
+
+.content.light .treasure-mask {
+  display: none;
+}
+
+.content.light .ac-rules {
+  display: none;
+}
+
+
+/* dark */
+.content.dark .left .text.dark {
+  display: block;
+}
+.content.dark .left .text.light {
+  display: none;
+}
+.content.dark .left .text.normal {
+  display: none;
+}
+
+.content.dark .left .img0 {
+  background-image: url(../images/the_second_phase/dark0.png);
+  width: 1.28rem;
+  height: 1.67rem;
+}
+
+.content.dark .lucky-money-mask {
+  display: block;
+}
+
+.content.dark .jiaxiquan-mask {
+  display: block;
+}
+
+.content.dark .treasure-mask {
+  display: block;
+}
+
+.content.dark .ac-rules {
+  display: inline-block;
+}
+
+
+/* normal */
+.content.normal .left .text.dark {
+  display: none;
+}
+.content.normal .left .text.light {
+  display: none;
+}
+.content.normal .left .text.normal {
+  display: block;
+  color: #fffb04;
+}
+
+.content.normal .left .img0 {
+  background-image: url(../images/the_second_phase/normal0.png);
+  width: 1.28rem;
+  height: 1.67rem;
+}
+.content.normal .lucky-money-mask {
+  display: block;
+}
+.content.normal .jiaxiquan-mask {
+  display: block;
+}
+.content.normal .treasure-mask {
+  display: block;
+}
+.content.normal .ac-rules {
+  display: inline-block;
+}
+
+.dialog {
+  background-color: #3c015c;
+  color: #fff;
+}
+
+.dialog .btn-dialog.btn-default {
+  background-color: #ffe000;
+  color: #3c015c;
+  border-radius: 0.2rem;
+}
+
+.dialog .dialog-simple .dialog-simple-content {
+  padding-top: 0.53rem;
+}
+
+.dialog .dialog-btn-box {
+  padding: 20px;
+  border: 0;
+}
+
+.dialog .dialog-close {
+  position: absolute;
+  top: -0.3rem;
+  right: -0.3rem;
+  width: 1rem;
+  height: 1rem;
+  background-image: url(../images/the_second_phase/close.png);
+  background-size: 100%;
+  background-position: center;
+}
+
+.dialog .dialog-simple .dialog-simple-header.miji {
+  background-image: url(../images/the_second_phase/lightIt.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 1rem;
+  margin: 0;
+  margin-top: -0.5rem;
+}
+
+.dialog .dialog-simple .dialog-simple-header.prelight {
+  background-image: url(../images/the_second_phase/prelight.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 1rem;
+  margin: 0;
+  margin-top: -0.5rem;
+}

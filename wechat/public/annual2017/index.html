@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>2017-狐力全开</title>
+  <script src="https://static.souyidai.com/wap/2.0/scripts/flexible.js"></script>
+  <link rel="stylesheet" href="https://static.souyidai.com/wap/2.0/styles/main.css">
+</head>
+<body>
+  <div class="wechat-login">
+    <img src="https://static.souyidai.com/wap/2.0/images/souyidai_logo@2x.png" alt="" class="logo">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="姓名" id="name">
+      <p class="help-block"></p>
+      <span class="input-icon"></span>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="工号" id="employeeId">
+      <p class="help-block"></p>
+      <span class="input-icon"></span>
+    </div>
+  </div>
+  <div class="btn-box">
+    <button class="btn btn-default btn-block" id="login">签到</button>
+  </div>
+  <div class="toast-wrap">
+    <div class="toast"></div>
+  </div>
+  <script src="https://static.souyidai.com/wap/js/zepto.min.js"></script>
+  <script src="https://static.souyidai.com/wap/2.0/scripts/util.js"></script>
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <script>
+  $(function() {
+    $.ajax({
+      url: '/serve/jssign',
+      type: 'GET',
+      dataType: 'json',
+      data: {
+        url: location.href
+      },
+      success: function(res) {
+        if (res.errorCode === 0) {
+          wx.config(res.result);
+        }
+      }
+    });
+    wx.ready(function() {
+      wx.hideOptionMenu();
+    });
+    $('#login').on('click', function() {
+      const openid = parserUrl(location.href).search.openid || '';
+      if (openid === '') {
+        toastShow('微信信息获取失败, 请退出重试!');
+        return;
+      }
+      if ($('#name').val() === '') {
+        toastShow('请输入正确的姓名!');
+        return;
+      }
+      if ($('#employeeId').val() === '') {
+        toastShow('请输入正确的工号!');
+        return;
+      }
+      disBtn($(this));
+      $(this).text('提交中');
+      $.ajax({
+        url: '/page/annual',
+        type: 'POST',
+        data: {
+          openid: openid,
+          name: $('#name').val(),
+          employeeId: $('#employeeId').val().toLocaleLowerCase()
+        },
+        dataType: 'json',
+        success: function(res) {
+          if (res.errorCode === 0) {
+            toastShow('签到成功!');
+            setTimeout(function () {
+              wx.closeWindow();
+            },1000);
+          } else {
+            toastShow(res.errorMessage);
+            enBtn($('#login'));
+          }
+        }
+      });
+    });
+  });
+  </script>
+</body>
+</html>

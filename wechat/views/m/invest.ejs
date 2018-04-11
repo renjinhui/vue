@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="">
+<%- include('../common/head', {title: '买入项目'}) %>
+<body class="wechat">
+  <div class="wechat-wrap">
+    <div class="wechat-top-bar no-fixed row">
+      <i class="icon-md icon-tip-blue col-2"></i>
+      <span class="col-10">
+        新手专享项目最高可投10,000元，每位新手用户仅有1次购买机会
+      </span>
+    </div>
+    <p style="font-size:0.32rem;">可用余额：<%= (data.currentBalance/100).toFixed(2).replace(/(\d)(?=(?:\d{3})+(?:\.\d+)?$)/g, '$1,') %>元</p>
+    <div class="form-group">
+      <input type="tel" class="form-control" placeholder="请输入投资金额" id="amount" value="10000">
+      <p class="help-block"></p>
+      <span class="input-icon"></span>
+    </div>
+    <p style="font-size:0.32rem;"><a href="<%= data.protocolUrl %>">《借款协议》</a></p>
+  </div>
+  <input type="hidden" value="<%= data.bidId %>" id="bid_id">
+  <div class="btn-box">
+    <button class="btn btn-default btn-block" id="invest">同意协议并确认投资</button>
+  </div>
+  <div class="dialog-back"></div>
+  <div class="dialog" id="charge">
+    <div class="dialog-simple">
+      <p class="dialog-simple-header">提示</p>
+      <p class="dialog-simple-content">余额不足! 请充值后再投资</p>
+    </div>
+    <div class="dialog-btn-box row">
+      <button class="btn-dialog btn-second close col-6">暂不充值</button>
+      <button class="btn-dialog btn-default col-6" onclick="location.href='/m/recharge'">立即充值</button>
+    </div>
+  </div>
+  <%- include('../common/foot') %>
+  <script>
+  $(function() {
+    $('#invest').on('click', function() {
+      disBtn($(this));
+      $(this).text('投标中');
+      $.ajax({
+        url: '/m/invest',
+        type: 'POST',
+        data: {
+          bidId: $('#bid_id').val(),
+          bidAmount: $('#amount').val(),
+          serverVersion: 1.1,
+          interestTicketId: 0
+        },
+        dataType: 'json',
+        success: function(res) {
+          if (res.errorCode === 2) {
+            dialogShow('#charge');
+            return;
+          };
+          if (res.data.retCode === 0) {
+            localStorage.setItem('invest_result', JSON.stringify(res.data.result));
+            location.href = '/m/invest_result/';
+          } else {
+            toastShow(res.data.retMessage);
+          }
+        },
+        complete: function() {
+          enBtn($('#invest'));
+          $('#invest').text('同意协议并确认投资');
+        }
+      });
+    });
+  });
+  </script>
+  <%- include('../common/pv') %>
+</body>
+</html>

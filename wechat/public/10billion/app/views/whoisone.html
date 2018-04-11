@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>幸运投资赢大奖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://static.souyidai.com/wap/2.0/styles/index.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/whoisone.css">
+    <script src="https://static.souyidai.com/wap/2.0/scripts/flexible.js"></script>
+
+
+  </head>
+  <body class="body-sticky">
+    <div class="bg">
+      <div class="cloud sm-cloud" style="left: -0.2rem; top: 3rem;"></div>
+      <div class="cloud sm-cloud" style="right: 0.36rem; top: 1rem;"></div>
+      <div class="cloud sm-cloud" style="right: -0.7rem; top: 2.5rem;"></div>
+
+      <div class="head"></div>
+      <section class="section">
+        <h2 class="title long-title">搜易贷累计成交额</h2>
+        <div class="content">
+          <p id="turnover" style="font-size: 1.06rem; text-align: center">
+            <span style="font-size: 0.6rem">￥</span>
+          </p>
+        </div>
+        <h2 class="title">活动规则</h2>
+        <div class="content">
+          <p>
+            1.投资达成第97亿/第98亿/第99亿/第100亿成交额的用户，将获得相应实物奖品。（成交额以本页显示累计成交额为准）
+          </p>
+          <p>
+            2.获奖用户名单，将于成交额达成的第2个工作日公示于搜易贷微信订阅号（微信号：souyidai)中。
+          </p>
+        </div>
+        <h2 class="title">奖励设置</h2>
+        <div class="row content">
+          <div class="col-6 prize">
+            <h2 class="prize-title">97亿</h2>
+            <p class="prize-user">
+              成交额达成用户<br>
+              188*****019
+            </p>
+            <p class="prize-good">
+              <span class="good-name">海伦凯勒太阳镜</span><br>
+              <span class="good-value">价值500元</span>
+            </p>
+          </div>
+
+          <div class="col-6 prize">
+            <h2 class="prize-title">98亿</h2>
+            <p class="prize-user">
+              成交额达成用户<br>
+              130*****358
+            </p>
+            <p class="prize-good">
+              <span class="good-name">雀巢胶囊咖啡机</span><br>
+              <span class="good-value">价值1500元</span>
+            </p>
+          </div>
+        </div>
+        <div class="row content">
+          <div class="col-6 prize">
+            <h2 class="prize-title">99亿</h2>
+
+            <p class="prize-user">
+              成交额达成用户<br>
+              139*****987
+            </p>
+            <p class="prize-good">
+              <span class="good-name">蒙牛高端牛奶卡</span><br>
+              <span class="good-value">价值2888元</span>
+            </p>
+          </div>
+
+          <div class="col-6 prize">
+            <h2 class="prize-title">100亿</h2>
+            <p class="prize-user">
+              成交额达成用户<br>
+              137****490
+            </p>
+            <p class="prize-good">
+              <span class="good-name">iPad Pro（12.9英寸)</span><br>
+              <span class="good-value">价值6888元</span>
+            </p>
+          </div>
+        </div>
+      </section>
+      <p class="copyright">
+        *本活动在法律允许范围内解释权归搜易贷所有
+      </p>
+    </div>
+    <script src="https://static.souyidai.com/wap/js/zepto.min.js"></script>
+    <script src="https://static.souyidai.com/wap/2.0/scripts/util.js"></script>
+    <script src="https://static.souyidai.com/pv/spv_new.js"></script>
+    <script type="text/javascript">
+      Zepto(function($){
+        String.prototype.splice = function(start, delCount, newSubStr) {
+          return this.slice(0, start) + newSubStr + this.slice(start + Math.abs(delCount));
+        };
+        var fmtNum = function (num) {
+          return num.toString().replace(/(\d)(?=(?:\d{3})+(?:\.\d+)?$)/g, '$1,');
+        };
+
+        $.get('/billion/api/sydIndexData', function(response){
+          var turnover = Math.floor(response.data.turnover / 100);
+          $('#turnover').append(fmtNum(turnover));
+        });
+
+      });
+    </script>
+  </body>
+</html>

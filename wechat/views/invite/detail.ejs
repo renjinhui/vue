@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>奖励明细</title>
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+
+
+  <link rel="stylesheet" href="/styles/hongbao-app.css">
+
+</head>
+<body style="background-color: #e7e7e7;">
+  <ul class="tab-justify tab-list">
+    <li class="tab-active">
+      <a href="javascript:void(0)" >加息券奖励</a>
+    </li>
+    <li>
+      <a href="javascript:void(0)" >现金奖励</a>
+    </li>
+    <li>
+      <a href="javascript:void(0)" >红包奖励</a>
+    </li>
+  </ul>
+  <div class="detail-container">
+    <p class="detail-header">
+      共获得加息券<span class="money"><%= gift.ticketList.length %>张</span>
+      <button class="btn-red">继续邀请</button>
+    </p>
+    <% if(gift.ticketList.length) {%>
+    <ul class="detail-list">
+      <% for(var i=0; i<gift.ticketList.length; i++) {%>
+        <li>
+          <span><%= gift.ticketList[i].give_time %></span>
+          <span><%= gift.ticketList[i].mobile %>完善资料</span>
+          <span>奖励<%= gift.ticketList[i].gift_amount/100 %>%加息券</span>
+        </li>
+      <% } %>
+    </ul>
+    <% } %>
+  </div>
+  <div class="detail-container" style="display:none">
+    <p class="detail-header">
+      共获得现金奖励<span class="money"><%= gift.cashSum %>元</span>
+      <button class="btn-red">继续邀请</button>
+    </p>
+    <% if(gift.cashList.length) {%>
+    <ul class="detail-list">
+      <% for(var i=0; i<gift.cashList.length; i++) {%>
+        <li>
+          <span><%= gift.cashList[i].give_time %></span>
+          <span><%= gift.cashList[i].mobile %>投资成功</span>
+          <span>奖励<%= gift.cashList[i].gift_amount/100 %>元现金</span>
+        </li>
+      <% } %>
+    </ul>
+    <% } %>
+  </div>
+  <div class="detail-container" style="display:none">
+    <p class="detail-header">
+      共获得投资红包<span class="money"><%= gift.couponSum %>元</span>
+      <button class="btn-red">继续邀请</button>
+    </p>
+    <% if(gift.couponList.length) {%>
+    <ul class="detail-list">
+      <% for(var i=0; i<gift.couponList.length; i++) {%>
+        <li>
+          <span><%= gift.couponList[i].give_time %></span>
+          <span><%= gift.couponList[i].mobile %>投资成功</span>
+          <span>奖励<%= gift.couponList[i].gift_amount/100 %>元红包</span>
+        </li>
+      <% } %>
+    </ul>
+    <% } %>
+  </div>
+  <div class="share-overlay">
+    <img src="https://static.souyidai.com/wap/2.0/images/share@2x.png" alt="" class="share-guide">
+  </div>
+  <script src="https://static.souyidai.com/wap/js/zepto.min.js"></script>
+  <script src="https://static.souyidai.com/wap/2.0/scripts/util.js"></script>
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <script src="/scripts/hongbao-app.js"></script>
+  <%- include('../common/pv') %>
+</body>
+</html>

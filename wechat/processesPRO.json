@@ -1,0 +1,15 @@
+{
+  "apps": [{
+    "name": "soeasy-wechat",
+    "script": "bin/www",
+    "log_date_format": "YYYY-MM-DD HH:mm:ss",
+    "merge_logs": true,
+    "watch": false,
+    "instances": 0,
+    "exec_mode": "cluster_mode",
+    "port": 9000,
+    "args": ["pro"],
+    "error_file": "/opt/wechat_log/soeasy-wechat-err.log",
+    "out_file": "/opt/wechat_log/soeasy-wechat-out.log",
+  }]
+}

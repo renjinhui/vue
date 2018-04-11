@@ -1,0 +1,195 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>euro2016</title>
+    <script src="https://static.souyidai.com/wap/2.0/scripts/flexible.js"></script>
+
+    <link rel="stylesheet" href="https://static.souyidai.com/wap/2.0/styles/index.css">
+    <style>
+    body {
+      padding: 0;
+      background-color: #f46026
+    }
+    .banner {
+      vertical-align: middle;
+      width: 100%
+    }
+    .container {
+      padding: .4rem .8rem;
+      margin-top: .2rem;
+    }
+    .dialog {
+      top: 2rem
+    }
+    .dialog-simple-header {
+      padding: 0 0.4rem;
+    }
+    .form-wrap {
+      padding: 0 .6rem;
+      margin-top: 0.8rem;
+    }
+    .form-wrap .col-4 {
+      padding-left: .2rem
+    }
+    .form-wrap .btn-box {
+      padding: 0;
+      margin-top: 0.4rem;
+    }
+    .form-wrap .btn-box .btn {
+      background-color: transparent;
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 6.8rem;
+      height: 1.25rem;
+      margin-top: .1333333333rem;
+      background-position: center
+    }
+    .form-wrap .btn-box .btn.btn-disabled {
+      opacity: .6
+    }
+    .form-wrap .btn-box .btn#btn-open {
+      background-image: url(images/btn.png)
+    }
+    .title-img {
+      width: 5.7066666667rem;
+      height: 1.28rem;
+      display: block;
+      margin: auto;
+      position: relative;
+      top: .4rem
+    }
+    .about-us {
+      background-color: #f9f0e5;
+      font-weight: bold;
+      font-size: .4rem;
+      padding: .5rem .4rem .4rem;
+      border-radius: .16rem;
+      border: 2px solid #333333
+    }
+    .about-us span {
+      color: #e7423b;
+    }
+    .logo {
+      position: absolute;
+      vertical-align: middle;
+      width: 7.66rem;
+      top: 5.7rem;
+      left: 1.1rem;
+    }
+    </style>
+
+  </head>
+  <body>
+
+    <div class="share-overlay">
+      <img src="https://static.souyidai.com/wap/2.0/images/share@2x.png" alt="" class="share-guide">
+    </div>
+    <script src="https://static.souyidai.com/wap/js/zepto.min.js"></script>
+    <script src="https://static.souyidai.com/wap/2.0/scripts/util.js"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script>
+    'use strict';
+    $(function() {
+      var WX_DEFAULT_SHARE = {
+        'title': '纳尼？！2015我居然在搜易贷赚了这么多？',
+        'desc': '快来帮我拆红包!我心目中最棒的理财平台哟!来看看你错过多少收益！',
+        'timelineDesc': '纳尼？！2015我居然在搜易贷赚了这么多？快来帮我拆红包，看看你错过多少收益！',
+        'imgUrl': 'https://weixin.souyidai.com/newyear/images/share.png',
+        'link': location.href
+      };
+
+      if (isWechat) {
+        $.ajax({
+          url: '/serve/jssign',
+          type: 'GET',
+          dataType: 'json',
+          data: {
+            url: location.href
+          },
+          success: function(res) {
+            if (res.errorCode === 0) {
+              wx.config(res.result);
+            }
+          }
+        });
+        wx.ready(function() {
+          wx.onMenuShareTimeline({
+            title: WX_DEFAULT_SHARE.timelineDesc,
+            link: WX_DEFAULT_SHARE.link,
+            imgUrl: WX_DEFAULT_SHARE.imgUrl,
+            success: function() {
+              $('.share-overlay').hide();
+            }
+          });
+          wx.onMenuShareAppMessage({
+            title: WX_DEFAULT_SHARE.title,
+            desc: WX_DEFAULT_SHARE.desc,
+            link: WX_DEFAULT_SHARE.link,
+            imgUrl: WX_DEFAULT_SHARE.imgUrl,
+            success: function() {
+              $('.share-overlay').hide();
+            }
+          });
+        });
+      }
+
+      $('#btn-share').on('click', function() {
+        $('.share-overlay').show();
+      });
+      $('.share-overlay').on('click', function() {
+        $(this).hide();
+      });
+
+      $('#btn-open').on('click', function() {
+        var username = $('#username').val();
+        if (username === '') {
+          toastShow('手机号不能为空');
+          return;
+        }
+        if (!/^1[34578][0-9]{9}$/.test(username)) {
+          toastShow('请输入有效的手机号');
+          return;
+        }
+        disBtn($('#btn-open'));
+        $.ajax({
+          url: '/event/eventNew',
+          type: 'POST',
+          dataType: 'json',
+          data: {
+            username: username
+          },
+          success: function(res) {
+            if (errorHandle(res)) {
+              if (res.resCode === 0) {
+                dialogShow('#regist');
+              }
+              if (res.resCode === 1) {
+                dialogShow('#old');
+              }
+              if (res.resCode === 2) {
+                dialogShow('#success');
+              }
+              if (res.resCode === 3) {
+                dialogShow('#repeat');
+              }
+            }
+          },
+          error: function() {
+            toastShow('网络连接失败,请重新尝试');
+          },
+          complete: function() {
+            enBtn($('#btn-open'));
+          }
+        });
+      });
+      $('#btn-regist').on('click', function() {
+        location.href = 'https://events.souyidai.com/info/221.htm?suc=110210101';
+      });
+    });
+    </script>
+    <script src="https://static.souyidai.com/pv/spv_new.js"></script>
+  </body>
+</html>

@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="">
+<%- include('../common/head', {title: '注册'}) %>
+<body class="wechat">
+  <div id="step1">
+    <div class="wechat-wrap">
+    <img src="https://static.souyidai.com/wap/2.0/images/souyidai_logo@2x.png" alt="" style="width:4.13rem;margin-bottom:0.2rem;">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="请输入手机号码" id="tel">
+        <p class="help-block"></p>
+        <span class="input-icon"></span>
+      </div>
+      <div class="form-group input-group">
+        <input type="text" class="form-control" placeholder="输入图片验证码" id="code">
+        <p class="help-block"></p>
+        <div class="input-group-addon"><img class="img-code" src="/captcha.jpg" alt="验证码"></div>
+      </div>
+    </div>
+    <div class="btn-box">
+      <button class="btn btn-default btn-block" id="smsSend">注册</button>
+    </div>
+    <div class="register-backpwd">
+      <p>已有帐号, <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5ff6c76bdf3b5cce&redirect_uri=http%3A%2F%2Fweixin.souyidai.com%2Foauth%2F&response_type=code&scope=snsapi_base&state=account_serve#wechat_redirect">立即登录</a></p>
+    </div>
+  </div>
+  <div id="step2" style="display:none">
+    <div class="wechat-id5-tip"> <i class="icon-check-green"></i>
+      <p class="regist-tip-text">已向您的手机发送验证短信</p>
+      <div class="setpwd-phone">
+        <span id="telNum">--</span>
+        <a href="javascript:void(0);" id="back2step1">修改</a>
+      </div>
+    </div>
+    <div class="wechat-wrap">
+      <div class="form-group input-group">
+        <input type="text" class="form-control" placeholder="输入短信验证码" id="telCode">
+        <p class="help-block"></p>
+        <div class="input-group-btn">
+          <button class="btn btn-second" id="sendCode">重新发送</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="设置登录密码" id="password">
+        <p class="help-block"></p>
+        <span class="input-icon"></span>
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="确认密码" id="rePassword">
+        <p class="help-block"></p>
+        <span class="input-icon"></span>
+      </div>
+    </div>
+    <div style="padding-left:0.4rem">
+      <input type="checkbox" checked="ture" id="agreement">
+      <span>我已阅读并同意<a href="https://passport.souyidai.com/protocol.html">《搜易贷在线服务协议》</a></span>
+    </div>
+    <div class="btn-box">
+      <button class="btn btn-default btn-block" id="registSubmit">提交</button>
+    </div>
+  </div>
+  <%- include('../common/foot') %>
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <script>
+  'use strict';
+  $.ajax({
+    url: '/serve/jssign',
+    type: 'GET',
+    dataType: 'json',
+    data: {
+      url: location.href
+    },
+    success: function(res) {
+      if (res.errorCode === 0) {
+        wx.config(res.result);
+      }
+    }
+  });
+  wx.ready(function() {
+    wx.hideOptionMenu();
+  });
+
+  var refreshCode = function(el, src) {
+    $(el).attr('src', src + '?' + Math.random());
+  };
+  var reSendSms = function(el, times) {
+    disBtn($(el));
+    var reSendCountDown = setInterval(function() {
+      $(el).text('重新发送(' + times + ')');
+        times--;
+        if (times === 0) {
+          clearInterval(reSendCountDown);
+          $(el).text('重新发送');
+          enBtn($(el));
+        }
+    }, 1000);
+  };
+  var errorMsgShow = function(el, msg) {
+    $(el).parent().addClass('has-error').find('.help-block').text(msg).show();
+  };
+  var errorMsgHide = function(el) {
+    $(el).parent().find('.help-block').hide();
+  };
+  var formAuth = function(authConfig) {
+    $.each(authConfig, function(index, item) {
+      $.each(item.eventList, function(key, value) {
+        $('#' + item.id).on(key, value);
+      });
+    });
+  };
+  var registAuthConfig = [{
+    id: 'tel',
+    eventList: {
+      blur: function(events) {
+        var inputVal = $(this).val() || '';
+        var regex = /^1[34578][0-9]{9}$/;
+
+        if (inputVal === '') {
+          errorMsgShow(this, '请输入手机号码');
+          return;
+        }
+        if (!regex.test(inputVal)) {
+          errorMsgShow(this, '请输入有效的手机号');
+          return;
+        }
+        errorMsgHide(this);
+      },
+      focus: function(events) {
+        errorMsgHide(this);
+      }
+    }
+  }, {
+    id: 'password',
+    eventList: {
+      blur: function(events) {
+        var inputVal = $(this).val() || '';
+        var regp = /[^a-zA-Z0-9~`!@#$%^&*()_=+\[{\]}\|;:\'\",<.>\/?-]/;
+        if (inputVal === '') {
+          errorMsgShow(this, '请输入密码');
+          return;
+        }
+        if (inputVal.length > 20 || inputVal.length < 6) {
+          errorMsgShow(this, '密码长度应为6-20个字符');
+          return;
+        }
+        if (regp.test(inputVal)) {
+          errorMsgShow(this, '请勿使用特殊字符');
+          return;
+        }
+        errorMsgHide(this);
+      },
+      focus: function(events) {
+        errorMsgHide(this);
+      }
+    }
+  }, {
+    id: 'rePassword',
+    eventList: {
+      blur: function(events) {
+        var inputVal = $(this).val() || '';
+        var regp = /[^a-zA-Z0-9~`!@#$%^&*()_=+\[{\]}\|;:\'\",<.>\/?-]/;
+        if (inputVal === '') {
+          errorMsgShow(this, '请再次确认密码');
+          return;
+        }
+        if (inputVal.length > 20 || inputVal.length < 6) {
+          errorMsgShow(this, '密码长度应为6-20个字符');
+          return;
+        }
+        if (regp.test(inputVal)) {
+          errorMsgShow(this, '请勿使用特殊字符');
+          return;
+        }
+        if (inputVal !== $('#password').val()) {
+          errorMsgShow(this, '两次输入密码不一致');
+          return;
+        }
+        errorMsgHide(this);
+      },
+      focus: function(events) {
+        errorMsgHide(this);
+      }
+    }
+  }, {
+    id: 'code',
+    eventList: {
+      blur: function(events) {
+        var inputVal = $(this).val() || '';
+        if (inputVal === '') {
+          errorMsgShow(this, '请输入图形验证码');
+        } else {
+          errorMsgHide(this);
+        }
+      },
+      focus: function(events) {
+        errorMsgHide(this);
+      }
+    }
+  }, {
+    id: 'telCode',
+    eventList: {
+      blur: function(events) {
+        var inputVal = $(this).val() || '';
+        if (inputVal === '') {
+          //errorMsgShow(this, '请输入短信验证码');
+          $(this).parent().next('.help-block').text('请输入短信验证码').show();
+        } else {
+          //errorMsgHide(this);
+          $(this).parent().next('.help-block').hide();
+        }
+      },
+      focus: function(events) {
+        //errorMsgHide(this);
+        $(this).parent().next('.help-block').hide();
+      }
+    }
+  }, {
+    id: 'agreement',
+    eventList: {
+      change: function(events) {
+        var inputVal = $(this).prop('checked');
+        if (!inputVal) {
+          errorMsgShow(this, '请同意注册协议');
+        } else {
+          errorMsgHide(this);
+        }
+      },
+    }
+  }];
+
+  var registAjaxConfig = {
+    type: 'POST',
+    url: '/m/regist',
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    dataType: 'json',
+    beforeSend: function(xhr, settings) {
+      settings.data = $.param({
+        username: $('#tel').val(),
+        password: $('#password').val(),
+        confirmPassword: $('#rePassword').val(),
+        smscode: $('#telCode').val(),
+        openid: parserUrl(location.href).search.openid
+        //backurl: parserUrl(location.href).search['backurl'] || 'https://m.souyidai.com',
+        //ditch: parserUrl(location.href).search['ditch'] || ''
+      });
+      disBtn($('#registSubmit'));
+    },
+    success: function(data, status, xhr) {
+      if (data.errorCode === 0) {
+        window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5ff6c76bdf3b5cce&redirect_uri=http%3A%2F%2Fweixin.souyidai.com%2Foauth%2F&response_type=code&scope=snsapi_base&state=regist_result#wechat_redirect';
+        return;
+      } else if (data.errorCode === -1) {
+        toastShow('尝试次数过多,请返回上一步修改手机号重新注册');
+        var t = setTimeout(function() {
+          $('#step1').show();
+          $('#step2').hide();
+          $('.kaptcha-img').trigger('click');
+        }, 2000);
+      } else {
+        toastShow(data.errorMessage);
+      }
+    },
+    error: function(xhr, errorType, error) {
+      toastShow('网络连接失败,请重新尝试');
+    },
+    complete: function(xhr, status) {
+      enBtn($('#registSubmit'));
+    }
+  };
+
+  var smsAjaxConfig = {
+    type: 'POST',
+    url: '/m/registsms',
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    dataType: 'json',
+    beforeSend: function(xhr, settings) {
+      settings.data = $.param({
+        username: $('#tel').val(),
+        kaptcha: $('#code').val()
+      });
+      disBtn($('#smsSend'));
+    },
+    success: function(data, status, xhr) {
+      if (data.errorCode === 0) {
+        $('#telNum').text($('#tel').val());
+        if (typeof(data.data.needWaitTime) === undefined) {
+          reSendSms($('#sendCode'), 60);
+        } else {
+          reSendSms($('#sendCode'), data.data.needWaitTime);
+        }
+        $('#step1').hide();
+        $('#step2').show();
+      } else {
+        toastShow(data.errorMessage || data.data.desc);
+        refreshCode($('.img-code'), '/captcha.jpg');
+      }
+    },
+    error: function(xhr, errorType, error) {
+      toastShow('网络连接失败,请重新尝试');
+    },
+    complete: function(xhr, status) {
+      enBtn($('#smsSend'));
+    }
+  };
+
+  var reSmsAjaxConfig = {
+    type: 'POST',
+    url: '/m/registsms',
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    dataType: 'json',
+    beforeSend: function(xhr, settings) {
+      settings.data = $.param({
+        username: $('#tel').val()
+      });
+      disBtn($('#sendCode'));
+    },
+    success: function(data, status, xhr) {
+      if (data.errorCode === 0) {
+        if (typeof(data.data.needWaitTime) === undefined) {
+          reSendSms($('#sendCode'), 60);
+        } else {
+          reSendSms($('#sendCode'), data.data.needWaitTime);
+        }
+      } else {
+        toastShow(data.errorMessage || data.data.desc);
+        enBtn($('#sendCode'));
+      }
+    },
+    error: function(xhr, errorType, error) {
+      toastShow('网络连接失败,请重新尝试');
+      enBtn($('#sendCode'));
+    }
+  };
+
+  formAuth(registAuthConfig);
+
+  $('.img-code').on('click', function(event) {
+    refreshCode(this, '/captcha.jpg');
+  });
+
+  $('#registSubmit').on('click', function(event) {
+    //$('input').trigger('blur');
+    var hasError = false;
+    for (var i = 0; i < $('.form-group').length; i++) {
+      if ($('.form-group').eq(i).css('display') === 'block' && $('.form-group').eq(i).hasClass('has-error')) {
+        hasError = true;
+      }
+    };
+    if (!hasError) {
+      $.ajax(registAjaxConfig);
+    }
+  });
+
+  $('#smsSend').on('click', function(event) {
+    //$('input').trigger('blur');
+    var hasError = false;
+    for (var i = 0; i < $('.form-group').length; i++) {
+      if ($('.form-group').eq(i).css('display') === 'block' && $('.form-group').eq(i).hasClass('has-error')) {
+        hasError = true;
+      }
+    };
+    if (!hasError) {
+      $.ajax(smsAjaxConfig);
+    }
+  });
+
+  $('#sendCode').on('click', function(event) {
+    $.ajax(reSmsAjaxConfig);
+  });
+  $('#back2step1').on('click', function(event) {
+    $('#step1').show();
+    $('#step2').hide();
+    refreshCode($('.img-code'), '/captcha.jpg');
+  });
+</script>
+<%- include('../common/pv') %>
+</body>
+</html>

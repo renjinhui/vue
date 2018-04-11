@@ -10,7 +10,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+        "/userinfo":{
+            target: 'https://www.easy-mock.com/mock/5ac045375647e2483fcc2bc8/',
+            secure: false,
+            pathRewrite: {
+                '/userinfo': '/vuetest2/userinfo'
+            }
+        }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>搜易贷100亿狂欢月</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://static.souyidai.com/wap/2.0/styles/index.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://static.souyidai.com/wap/2.0/scripts/flexible.js"></script>
+  </head>
+  <body class="body-sticky">
+    <div class="bg">
+      <div class="cloud big-cloud" style="left: -40%; top: 2.78rem;"></div>
+      <div class="cloud mid-cloud" style="right: -20%; top: 2.8rem;"></div>
+      <div class="cloud mid-cloud" style="right: -2.5rem; bottom: 7.36rem;"></div>
+      <div class="cloud mid-cloud" style="left: -30%; bottom: 3rem;"></div>
+      <div class="cloud sm-cloud" style="left: 5%; top: 7rem;"></div>
+      <div class="cloud sm-cloud" style="right: -0.26rem; top: 7rem;"></div>
+      <div class="cloud sm-cloud" style="width:3rem; height: 2rem; right: 1rem; top: 12.72rem;"></div>
+
+      <div class="title"></div>
+      <div class="head"></div>
+      <div class="ac">
+        <a data-href="https://weixin.souyidai.com/10billion/app/views/shareMillion.html" class="ac1" href="javascript:void(0)"></a>
+        <a data-href="https://weixin.souyidai.com/10billion/app/views/moreProfit.html" class="ac4" href="javascript:void(0)"></a>
+        <a data-href="https://weixin.souyidai.com/10billion/app/views/everyday666.html" class="ac3" href="javascript:void(0)"></a>
+        <a id="grateful" class="ac6" href="javascript:void(0)"></a>
+        <a id="whoisone" class="ac2" href="javascript:void(0)"></a>
+      </div>
+      <p id="prizeInfo" class="prize-info">
+        <i class="icon-tip"></i>实物奖品邮寄说明
+      </p>
+      <p class="copyright">
+        *本活动在法律允许范围内解释权归搜易贷所有
+      </p>
+    </div>
+    <div class="toast-wrap">
+      <div class="toast"></div>
+    </div>
+    <div class="dialog-back"></div>
+    <div class="dialog" id="score-rule-dialog">
+      <div class="dialog-simple">
+        <p class="dialog-simple-header">实物奖品邮寄说明</p>
+        <p class="dialog-simple-content text-left">
+          本活动中所有实物奖品，将于5月1日-5月22日按获奖顺序依次寄出。搜易贷的工作人员会提前电话通知获奖用户确认收件地址，来电显示号码010-56951888。如经3次电话联系且在5月22日前仍未提供有效地址的获奖用户，视作放弃领取奖品。
+          <br>
+          本活动在法律允许范围内解释权归搜易贷所有，如有疑问请联系在线客服或拨打4000-168-866（工作时间：周一至周日9:00-18:00)
+        </p>
+      </div>
+      <div class="dialog-btn-box row">
+        <button class="btn-dialog btn-default btn-single close btn-block col-12">知道了</button>
+      </div>
+    </div>
+    <script src="js/fastclick.js" charset="utf-8"></script>
+    <script src="https://static.souyidai.com/wap/js/zepto.min.js"></script>
+    <script src="https://static.souyidai.com/wap/2.0/scripts/util.js"></script>
+    <script src="https://static.souyidai.com/pv/spv_new.js"></script>
+    <script type="text/javascript">
+      Zepto(function($){
+        var attachFastClick = Origami.fastclick;
+        attachFastClick(document.body);
+
+        var go = function(url) {
+          var data = {
+            webViewUrl: url,
+            refresh: true
+          };
+          SYDBridge.openNative('webview', data);
+        };
+
+        $('#prizeInfo').on('click', function(e) {
+          if(window.isClient) {
+            var data = {
+              title: $('#score-rule-dialog .dialog-simple-header').text(),
+              content: $('#score-rule-dialog .dialog-simple-content').text()
+            };
+            SYDBridge.openNative('tipsAlert', data);
+          } else {
+            dialogShow('#score-rule-dialog');
+          }
+        });
+
+        $('.ac').on('click', 'a', function(e) {
+          var t = e.target;
+          if(e.target.id === 'invite') {
+            if(!window.isClient) {
+              toastShow('请下载搜易贷理财APP，邀请小伙伴参与活动');
+            } else {
+              go(t.dataset.href);
+            }
+          } else if(e.target.id === 'grateful'){
+            toastShow('活动已结束，感谢您的持续关注');
+          } else if(e.target.id === 'whoisone'){
+            toastShow('活动已结束，感谢您的持续关注');
+          } else if(window.isClient && t.dataset.href) {
+            go(t.dataset.href);
+          } else {
+            window.location.href = t.dataset.href;
+          }
+
+        });
+      });
+    </script>
+  </body>
+</html>

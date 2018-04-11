@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>点亮百亿</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://static.souyidai.com/wap/2.0/styles/index.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/shareMillion.css">
+    <script type='application/javascript' src="../js/fastclick.js" charset="utf-8"></script>
+    <script src="https://static.souyidai.com/wap/2.0/scripts/flexible.js"></script>
+
+  </head>
+  <body class="body-sticky">
+    <div class="bg">
+      <div class="cloud sm-cloud" style="left: -0.2rem; top: 3rem;"></div>
+      <div class="cloud sm-cloud" style="right: 0.36rem; top: 1rem;"></div>
+      <div class="cloud sm-cloud" style="right: -0.7rem; top: 2.5rem;"></div>
+
+      <div class="head">
+        <a id="rules" class="ac-rules" href="javascript:void(0)">活动规则</a>
+      </div>
+
+      <div class="row ac-data">
+        <div class="people col-6">
+          <div class="title">已全部点亮</div>
+          <div id="people">
+
+          </div>
+        </div>
+        <div class="avg-money col-6">
+          <div class="title">预计每人可分现金</div>
+          <div id="avgMoney">
+          </div>
+        </div>
+      </div>
+
+
+      <div class="share-million">
+        <span id="basePrize" class="text" style="left: 1.2rem; bottom: 0.88rem;"><span style="font-size: 0.32rem">￥</span></span>
+        <span id="mysteryPrize" class="text" style="left: 5.7rem"></span>
+      </div>
+      <a id="start" class="start-btn">
+      </a>
+      <section id="section" class="section">
+
+        <div class="content clearfix">
+          <div class="left">
+            <img src="../images/the_second_phase/light1.jpg" style="width: 1rem" alt="">
+          </div>
+          <div class="right first">
+            <p>每完成一个点亮任务，点亮奖励会即刻发放到您的搜易贷账户中。开始点亮百亿“0”之旅吧！</p>
+          </div>
+        </div>
+        <div id="zero0" class="content clearfix dark" style="margin-left: 1.333rem;">
+          <div class="left">
+            <div class="img0"></div>
+            <div class="lucky-money-mask"></div>
+            <div class="lucky-money">8元</div>
+            <span class="text dark">未点亮</span>
+            <span class="text light">已点亮</span>
+            <a href="javascript:void(0)" id="prelightBtn" class="text normal"><img src="../images/the_second_phase/qmark.png" style="width: 0.266rem" alt=""> 预点亮</a>
+          </div>
+          <div class="right">
+            <p>点亮奖励：<br>8元投资红包</p>
+            <a id="zeroInfo1" class="ac-rules" href="javascript:void(0)">点亮秘籍</a>
+          </div>
+        </div>
+        <div id="zero1" class="content clearfix dark" style="margin-left: 2.666rem;">
+          <div class="left">
+            <div class="img0"></div>
+            <div class="lucky-money-mask"></div>
+            <div class="lucky-money">15元</div>
+            <span class="text dark">未点亮</span>
+            <span class="text light">已点亮</span>
+            <a href="javascript:void(0)" id="prelightBtn" class="text normal"><img src="../images/the_second_phase/qmark.png" style="width: 0.266rem" alt=""> 预点亮</a>
+          </div>
+          <div class="right">
+            <p>点亮奖励：<br>15元投资红包</p>
+            <a id="zeroInfo2" class="ac-rules" href="javascript:void(0)">点亮秘籍</a>
+          </div>
+        </div>
+        <div id="zero2" class="content clearfix dark" style="margin-left: 4.33rem;">
+          <div class="left">
+            <div class="img0"></div>
+            <div class="lucky-money-mask"></div>
+            <div class="lucky-money">20元</div>
+            <span class="text dark">未点亮</span>
+            <span class="text light">已点亮</span>
+            <a href="javascript:void(0)" id="prelightBtn" class="text normal"><img src="../images/the_second_phase/qmark.png" style="width: 0.266rem" alt=""> 预点亮</a>
+          </div>
+          <div class="right">
+            <p>点亮奖励：<br>20元投资红包</p>
+            <a id="zeroInfo3" class="ac-rules" href="javascript:void(0)">点亮秘籍</a>
+          </div>
+        </div>
+        <div id="zero3" class="content clearfix dark" style="margin-left: 2.666rem;">
+          <div class="left">
+            <div class="img0"></div>
+            <div class="lucky-money-mask"></div>
+            <div class="lucky-money">25元</div>
+            <span class="text dark">未点亮</span>
+            <span class="text light">已点亮</span>
+            <a href="javascript:void(0)" id="prelightBtn" class="text normal"><img src="../images/the_second_phase/qmark.png" style="width: 0.266rem" alt=""> 预点亮</a>
+          </div>
+          <div class="right">
+            <p>点亮奖励：<br>25元投资红包</p>
+            <a id="zeroInfo4" class="ac-rules" href="javascript:void(0)">点亮秘籍</a>
+          </div>
+        </div>
+        <div id="zero4" class="content clearfix dark" style="margin-left: 0.533rem;">
+          <div class="left double-0">
+            <div>
+              <div class="img0 first"></div>
+              <div class="img0"></div>
+            </div>
+            <div class="jiaxiquan-mask jiaxiquan1"></div>
+            <div class="jiaxiquan jiaxiquan1">0.5<span class="percent">%</span></div>
+            <div class="jiaxiquan-mask jiaxiquan2"></div>
+            <div class="jiaxiquan jiaxiquan2">0.3<span class="percent">%</span></div>
+            <span class="text dark">未点亮</span>
+            <span class="text light">已点亮</span>
+            <a href="javascript:void(0)" id="prelightBtn" class="text normal"><img src="../images/the_second_phase/qmark.png" style="width: 0.266rem" alt=""> 预点亮</a>
+          </div>
+          <div class="right double-0">
+            <p>点亮奖励：<br>0.5%＋0.3%加息券(好友注册后30日内完成实名认证即可获该奖励)</p>
+            <a id="zeroInfo5" class="ac-rules" href="javascript:void(0)">点亮秘籍</a>
+          </div>
+        </div>
+        <div id="zero6" class="content clearfix dark" style="">
+          <div class="left double-0">
+            <div>
+              <div class="img0 first"></div>
+              <div class="img0"></div>
+            </div>
+            <div class="jiaxiquan-mask jiaxiquan1"></div>
+            <div class="jiaxiquan jiaxiquan1">0.3<span class="percent">%</span></div>
+            <div class="jiaxiquan-mask jiaxiquan2"></div>
+            <div class="cash jiaxiquan2">50<span class="percent">元</span></div>
+            <span class="text dark">未点亮</span>
+            <span class="text light">已点亮</span>
+            <a href="javascript:void(0)" id="prelightBtn" class="text normal"><img src="../images/the_second_phase/qmark.png" style="width: 0.266rem" alt=""> 预点亮</a>
+          </div>
+          <div class="right double-0">
+            <p>点亮奖励：<br>0.3%加息券(好友注册后30日内完成实名认证即可获该奖励)+50元返现</p>
+            <a id="zeroInfo6" class="ac-rules" href="javascript:void(0)">点亮秘籍</a>
+          </div>
+        </div>
+        <div id="zero8" class="content clearfix dark" style="margin-left: 1.333rem;">
+          <div class="left">
+            <div class="img0"></div>
+            <div class="lucky-money-mask"></div>
+            <div class="lucky-money">88元</div>
+            <span class="text dark">未点亮</span>
+            <span class="text light">已点亮</span>
+            <a href="javascript:void(0)" id="prelightBtn" class="text normal"><img src="../images/the_second_phase/qmark.png" style="width: 0.266rem" alt=""> 预点亮</a>
+          </div>
+          <div class="right">
+            <p>点亮奖励：<br>88元投资红包</p>
+            <a id="zeroInfo7" class="ac-rules" href="javascript:void(0)">点亮秘籍</a>
+          </div>
+        </div>
+        <div id="zero9" class="content clearfix dark" style="margin-left: 2.666rem;">
+          <div class="left">
+            <div class="img0"></div>
+            <div class="treasure-mask"></div>
+            <div class="treasure"></div>
+            <span class="text dark">未点亮</span>
+            <span class="text light">已点亮</span>
+            <a href="javascript:void(0)" id="prelightBtn" class="text normal"><img src="../images/the_second_phase/qmark.png" style="width: 0.266rem" alt=""> 预点亮</a>
+          </div>
+          <div class="right">
+            <p>点亮奖励：<br>平分奖金的资格</p>
+            <a id="zeroInfo8" class="ac-rules" href="javascript:void(0)">点亮秘籍</a>
+          </div>
+        </div>
+        <div class="content">
+          <p>温馨提示：2016年4月30日 24:00 准时平分奖金池(返现将于5月1日12点前到账).奖金池金额每日不断累加，最终每人平分奖金额度以活动结束后到账金额为准，敬请关注！</p>
+        </div>
+        <div id="tabs" class="content tabs">
+          <div class="tablist">
+            <span class="tab" id="tab1">获得的奖励</span>
+            <span class="tab" id="tab2">待完成任务</span>
+          </div>
+          <div id="panel1" class="tab-panel noprize">
+            <div class="img">
+              <img style="width: 3.7rem;" src="../images/the_second_phase/noprize.png" alt="">
+            </div>
+          </div>
+          <div id="panel2" class="tab-panel finished">
+            <div class="img">
+              <img style="width: 4.7rem;" src="../images/the_second_phase/finished.png" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="content wechat nofans">
+          <h2>助我点亮百亿“0”的粉丝</h2>
+          <ul id="avatarList" class="avatar-list"></ul>
+          <ul id="investorList" class="investor-list"></ul>
+          <div class="img">
+            <img src="../images/the_second_phase/nofans.png" alt="">
+          </div>
+        </div>
+
+      </section>
+      <p class="copyright">
+        *本活动在法律允许范围内解释权归搜易贷所有
+      </p>
+    </div>
+    <div class="toast-wrap">
+      <div class="toast"></div>
+    </div>
+    <div class="dialog-back"></div>
+    <!-- 技能已get -->
+    <div class="dialog" id="pre4-0">
+      <div class="dialog-simple">
+        <p class="dialog-simple-header miji"></p>
+        <p class="dialog-simple-content text-left">
+          点亮前4个“0”一共需要邀请10个新粉丝关注搜易贷微信，卖力分享哦
+        </p>
+      </div>
+      <div class="dialog-btn-box row">
+        <button class="btn-dialog btn-default btn-single close btn-block col-12" id="pre4-0-client-share">继续分享</button>
+      </div>
+      <span class="dialog-close"></span>
+    </div>
+    <!-- 微信特殊 -->
+    <div class="dialog" id="pre4-0-wechat">
+      <div class="dialog-simple">
+        <p class="dialog-simple-header miji"></p>
+        <p class="dialog-simple-content text-left">
+          生成一个专属分享链接，给朋友并邀Ta成为你的粉丝，即可完成点亮任务
+        </p>
+      </div>
+      <div class="dialog-btn-box row">
+        <button class="btn-dialog btn-default btn-single close btn-block col-12" id="pre4-0-share-btn">开始点亮</button>
+      </div>
+      <span class="dialog-close"></span>
+    </div>
+    <!-- 分享 -->
+    <div class="dialog" id="5and6-0">
+      <div class="dialog-simple">
+        <p class="dialog-simple-header miji"></p>
+        <p class="dialog-simple-content text-left">
+          让你邀请的一位未注册好友在搜易贷进行投资，首次单笔投资（不含债权转让项目和活期宝项目）金额≥1,000元且全部点亮之前的任务
+        </p>
+      </div>
+      <div class="dialog-btn-box row">
+        <button id="shareBtn" class="btn-dialog btn-default btn-single close btn-block col-12">马上告诉Ta</button>
+      </div>
+      <span class="dialog-close"></span>
+    </div>
+
+    <!-- 立即投资 -->
+    <div class="dialog" id="7-0">
+      <div class="dialog-simple">
+        <p class="dialog-simple-header miji"></p>
+        <p class="dialog-simple-content text-left">
+          参与活动的本人在搜易贷进行投资（不含债权转让项目和活期宝项目），单笔投资金额达10,000元，且全部点亮之前的任务
+        </p>
+      </div>
+      <div class="dialog-btn-box row">
+        <button id="invest" class="btn-dialog btn-default btn-single close btn-block col-12">立即投资</button>
+      </div>
+      <span class="dialog-close"></span>
+    </div>
+
+    <!-- 终极点亮 -->
+    <div class="dialog" id="8-0">
+      <div class="dialog-simple">
+        <p class="dialog-simple-header miji"></p>
+        <p class="dialog-simple-content text-left">终极点亮任务需要消耗666易积分，您的账户积分不足，无法完成本次点亮任务。赚取易积分的方式，请在"积分商城—赚取更多"中查看</p>
+      </div>
+      <div class="dialog-btn-box row">
+        <button class="btn-dialog btn-default btn-single close btn-block col-12">技能已get</button>
+      </div>
+      <span class="dialog-close"></span>
+    </div>
+
+    <!-- 终极点亮-gogogo -->
+    <div class="dialog" id="8-0-go">
+      <div class="dialog-simple">
+        <p class="dialog-simple-header miji"></p>
+        <p class="dialog-simple-content text-left">终极点亮任务需要消耗666易积分，且全部点亮之前的任务。点击"确认"，点亮吧！</p>
+      </div>
+      <div class="dialog-btn-box row">
+        <button id="finalLightGo" class="btn-dialog btn-default btn-single close btn-block col-12">确认点亮</button>
+      </div>
+      <span class="dialog-close"></span>
+    </div>
+
+    <!-- 预点亮 -->
+    <div class="dialog" id="prelight">
+      <div class="dialog-simple">
+        <p class="dialog-simple-header prelight"></p>
+        <p class="dialog-simple-content text-left">预点亮是一种未完成状态，说明在此之前有未点亮的“0”导致本任务不能完全点亮。请根据“点亮秘籍”从上至下按顺序点亮每一个百亿“0”。</p>
+      </div>
+      <div class="dialog-btn-box row">
+        <button class="btn-dialog btn-default btn-single close btn-block col-12">朕知道了</button>
+      </div>
+      <span class="dialog-close"></span>
+    </div>
+
+    <!-- 活动规则 -->
+    <div class="dialog" id="dialog-rules">
+      <div class="dialog-simple">
+        <p class="dialog-simple-header" style="margin-top: 0.4rem; margin-bottom: 0.4rem;">活动规则说明</p>
+        <p class="dialog-simple-content text-left">
+          一、点亮百亿“0”规则：
+          <br>1. 点亮第一个“0”： 找1个微信新粉丝，获赠8元投资红包
+          <br>2. 点亮第二个“0”： 再找2个微信新粉丝，另获赠15元投资红包
+          <br>3. 点亮第三个“0”： 再找3个微信新粉丝，另获赠20元投资红包
+          <br>4. 点亮第四个“0”： 再找4个微信新粉丝，另获赠25元投资红包
+          <br>5. 点亮第五+第六个“0”：邀请1个新的投资人在活动期间首次单笔投资（不含债权转让、活期宝）≥1,000元；获得0.5%加息券
+          <br>6. 点亮第七+第八个“0”：邀请1个新的投资人在活动期间首次单笔投资（不含债权转让、活期宝）≥1,000元；获得50元返现
+          <br>7. 点亮第九个“0”：4月13日- 4月30日期间，单笔投资金额（不含债权转让、活期宝）≥10,000元，可获得88元投资红包
+          <br>8. 点亮第十个“0”：根据页面引导消耗666个易积分,获取平分奖金的资格
+
+          <br>二、特别说明：
+          <br>1. 点亮“0”　的顺序为从上到下依次点亮，用户只有完成前级任务点亮相应的“0”以后，才能获得相应的奖励；
+          <br>2. 2016年4月1日至 30日活动期间，本点亮活动与平台邀请好友活动奖励可叠加获得，奖励如上所示。如邀请的好友首次单笔投资（不含债权转让、活期宝）≥10,000元，好友也可获得50元返现；
+          <br>3. 第五-第八个“0”对应的任务完成顺序不分先后，满足条件即可自动点亮“0”。
+
+          <br>三、邀请微信新粉丝操作步骤：
+          <br>1. 进入搜易贷微信订阅号（souyidai）
+          <br>2. 点击菜单【点亮百亿】-【我要加入】
+          <br>3. 生成专属分享链接
+          <br>4. 分享给你的N个微信好友，让他们通过链接关注搜易贷微信（微信好友需之前未关注过搜易贷订阅号）
+
+          <br>本活动在法律允许范围内解释权归搜易贷所有
+        </p>
+      </div>
+      <div class="dialog-btn-box row" style="margin-top: 0">
+        <button class="btn-dialog btn-default btn-single close btn-block col-12">技能已get</button>
+      </div>
+    </div>
+
+    <!-- 登录 -->
+    <div class="dialog" id="login">
+      <div class="dialog-simple">
+        <p class="dialog-simple-header">登录</p>
+        <p class="dialog-simple-content text-left">您还未登录，登录后可以实时查看您的点亮进度，不登录也可以查看平分奖金</p>
+      </div>
+      <div class="dialog-btn-box row">
+        <button id="loginBtn" class="btn-dialog btn-default btn-single close btn-block col-12">登录</button>
+      </div>
+      <span class="dialog-close"></span>
+    </div>
+
+    <!-- 开始点亮 -->
+    <div class="dialog" id="startDialog-client">
+      <div class="dialog-simple">
+        <p class="dialog-simple-header">开启点亮之旅</p>
+        <p class="dialog-simple-content text-left">点亮第1个“0”需要邀请1位新的粉丝关注搜易贷微信订阅号，马上生成你的邀请链接分享吧</p>
+      </div>
+      <div class="dialog-btn-box row">
+        <button id="startBtn-client" class="btn-dialog btn-default btn-single close btn-block col-12">生成我的邀请链接</button>
+      </div>
+      <span class="dialog-close"></span>
+    </div>
+
+    <!-- 邀请粉丝 -->
+    <div class="dialog" id="inviteDialog-client">
+      <div class="dialog-simple">
+        <p class="dialog-simple-header">邀请粉丝</p>
+        <p class="dialog-simple-content text-left">
+          点亮前4个“0”一共需要邀请10个新粉丝关注搜易贷微信，卖力分享哦
+        </p>
+      </div>
+      <div class="dialog-btn-box row">
+        <button id="shareBtn-client" class="btn-dialog btn-default btn-single close btn-block col-12">继续分享</button>
+      </div>
+      <span class="dialog-close"></span>
+    </div>
+
+    <!-- 邀请好友 -->
+    <div class="dialog" id="invite2Dialog-client">
+      <div class="dialog-simple">
+        <p class="dialog-simple-header">邀请投资人</p>
+        <p class="dialog-simple-content text-left">
+          你需要邀请2个新投资人，（不一定是之前邀请的粉丝哦），每人首次单笔投资≥1000元，就能点亮第5-第8个“0”
+        </p>
+      </div>
+      <div class="dialog-btn-box row">
+        <button id="inviteBtn-client" class="btn-dialog btn-default btn-single close btn-block col-12">邀请好友</button>
+      </div>
+      <span class="dialog-close"></span>
+    </div>
+    <div class="dialog" id="endDialog-1">
+      <div class="dialog-simple">
+        <p class="dialog-simple-header">还没到平分的时间哦</p>
+        <p class="dialog-simple-content text-left">
+          恭喜您获得了平分奖金池的资格。奖金池金额每日仍在不断增长。2016年4月30日24:00将准时平分奖金池，平分后的奖金将于2016年5月1日12点前放入您的搜易贷账户。到时记得要来喔！
+        </p>
+      </div>
+      <div class="dialog-btn-box row">
+        <button class="btn-dialog btn-default btn-single close btn-block col-12">朕知道了</button>
+      </div>
+      <span class="dialog-close"></span>
+    </div>
+    <div class="dialog" id="endDialog-2">
+      <div class="dialog-simple">
+        <p class="dialog-simple-header">奖金已到账</p>
+        <p class="dialog-simple-content text-left">
+          分得了奖金池的现金已放入您的搜易贷账户。感谢您一直以来对搜易贷的支持！
+        </p>
+      </div>
+      <div class="dialog-btn-box row">
+        <button class="btn-dialog btn-default btn-single close btn-block col-12">朕知道了</button>
+      </div>
+      <span class="dialog-close"></span>
+    </div>
+    <script src="https://static.souyidai.com/wap/js/zepto.min.js"></script>
+    <script src="https://static.souyidai.com/wap/2.0/scripts/util.js"></script>
+    <script src="https://static.souyidai.com/pv/spv_new.js"></script>
+    <script type="text/javascript">
+      window.inviteUrl = '';
+      var showTab1 = function() {
+        $('#tab1').addClass('active');
+        $('#tab2').removeClass('active');
+        $('#panel1').show();
+        $('#panel2').hide();
+      };
+
+      var showTab2 = function() {
+        $('#tab2').addClass('active');
+        $('#tab1').removeClass('active');
+        $('#panel2').show();
+        $('#panel1').hide();
+      };
+
+      var fmtNum = function (num) {
+        return num.toString().replace(/(\d)(?=(?:\d{3})+(?:\.\d+)?$)/g, '$1,');
+      };
+
+      var go = function(url) {
+        var data = {
+          url: url
+        };
+        SYDBridge.openNative('route', data);
+      };
+
+      var goLogin = function() {
+        if(window.isClient) {
+          dialogShow('#login');
+        } else if(window.isWechat) {
+          window.location.href = 'https://weixin.souyidai.com/10billion/#!/login';
+        } else {
+          window.location.href = 'https://weixin.souyidai.com/10billion/#!/login'
+        }
+      }
+
+      var shareInit = function() {
+        var syd_auth = getCookie('syd_auth_verify');
+        if (syd_auth !== null && syd_auth !== '') {
+          window.uid = syd_auth.split('|')[0]
+        }
+
+        var data = {
+          title: "送你搜易贷大红包，大家伙儿一起赚钱一起发！",
+          description: "我在搜易贷投资，感觉棒棒哒，邀你一起来赚钱！",
+          url: "https://weixin.souyidai.com/page/invite_coupon/",
+          imageUrl: "https://weixin.souyidai.com/images/logo.jpg"
+        };
+
+        $.ajax({
+          url: "/page/invite",
+          type: "POST",
+          dataType: "json",
+          data: {
+            uid: window.uid
+          },
+          success: function(res) {
+            if (errorHandle(res)) {
+              window.inviteUrl = res.inviteUrl
+              data.url += res.inviteUrl
+            }
+          },
+          error: function(res) {
+            toastShow('网络连接错误，请稍后再试');
+          }
+        });
+
+        $("#shareBtn,#inviteBtn-client").on("click", function() {
+          if (isClient) {
+            SYDBridge.openNative('share', data);
+          } else if(window.isWechat){
+            window.location.href = 'https://weixin.souyidai.com/page/invite'
+          } else {
+            toastShow('请在微信或搜易贷客户端中进行分享');
+          }
+        });
+      }
+
+      var setMissions = function(data) {
+        var missionList = {
+          zero0: {
+            action: '点亮第1个“0”',
+            bonus: '获得8元投资红包'
+          },
+          zero1: {
+            action: '点亮第2个“0”',
+            bonus: '获得15元投资红包'
+          },
+          zero2: {
+            action: '点亮第3个“0”',
+            bonus: '获得20元投资红包'
+          },
+          zero3: {
+            action: '点亮第4个“0”',
+            bonus: '获得25元投资红包'
+          },
+          zero4: {
+            action: '点亮第5个、第6个“0”',
+            bonus: '获得0.5%加息券+0.3%加息券'
+          },
+          zero6: {
+            action: '点亮第7个、第8个“0”',
+            bonus: '获得0.3%加息券+50元返现'
+          },
+          zero8: {
+            action: '成功点亮第9个“0”',
+            bonus: '获得88元投资红包'
+          },
+          zero9: {
+            action: '点亮第10个“0”',
+            bonus: '获得平分奖金池的机会'
+          }
+        };
+        var zeroIndexArr = [0,1,2,3,4,6,8,9];
+        var attr;
+        var panel2DomStr = '';
+        var panel1DomStr = '';
+        if(data) {
+          for(var i =  0; i < zeroIndexArr.length; i++) {
+            attr = 'zero' + zeroIndexArr[i];
+            if(data[attr] === 0 || data[attr] === 1) {
+              $('#panel2').removeClass('finished');
+              panel2DomStr += ('<div class="item">' +
+              '<div class="row clearfix">' +
+              '<div class="left">'+ missionList[attr].action +'</div>' +
+              '<div class="main">可'+ missionList[attr].bonus +'</div>' +
+              '</div>' +
+              '</div>');
+            } else if(data[attr] === 2) {
+              $('#panel1').removeClass('noprize');
+              panel1DomStr += ('<div class="item">' +
+              '<div class="row clearfix">' +
+              '<div class="left">成功'+ missionList[attr].action +'</div>' +
+              '<div class="main">'+ missionList[attr].bonus +'</div>' +
+              '</div>' +
+              '</div>');
+            } else {}
+          }
+        } else {
+          for(var i =  0; i < zeroIndexArr.length; i++) {
+            attr = 'zero' + zeroIndexArr[i];
+            $('#panel2').removeClass('finished');
+            panel2DomStr += ('<div class="item">' +
+            '<div class="row clearfix">' +
+            '<div class="left">'+ missionList[attr].action +'</div>' +
+            '<div class="main">可'+ missionList[attr].bonus +'</div>' +
+            '</div>' +
+            '</div>');
+          }
+        }
+        $('#panel1').append(panel1DomStr);
+        $('#panel2').append(panel2DomStr);
+      }
+
+      var initAcData = function(peopleNum, avgMoney) {
+        var peopleDomStr = '';
+        var avgDomStr = '';
+
+        //init people
+        for(var i = 0; i < peopleNum.length; i++){
+          peopleDomStr += '<span class="num">' + peopleNum[i] + '</span>\n';
+        }
+        peopleDomStr += '<span>人</span>';
+
+        //init avg money
+        for(var i = 0; i < avgMoney.length; i++){
+          if(avgMoney[i] === ',') avgDomStr += '<span class="comma">' + avgMoney[i] + '</span>\n';
+          else avgDomStr += '<span class="num">' + avgMoney[i] + '</span>\n';
+        }
+        avgDomStr += '<span>元</span>';
+
+        $('#people').append(peopleDomStr);
+        $('#avgMoney').append(avgDomStr);
+      };
+
+      var initPrize = function() {
+        //可瓜分奖金
+        $.post('/billion/api/getTotalPrize', {temp: 1}, function(response){
+          $('#basePrize').append(fmtNum(parseInt(response.data.baseAmount) + parseInt(response.data.currentAmount)));
+
+          if(response.data.finishnum && response.data.avgAmount) {
+            initAcData(response.data.finishnum + '', fmtNum(response.data.avgAmount));
+          } else {
+            $('.ac-data').hide();
+          }
+
+          if(response.data.secretAmount === '0') {
+            var secretAmount = '神秘加码';
+            $('#mysteryPrize').append(fmtNum(secretAmount));
+          } else {
+            $('#mysteryPrize').append(fmtNum(response.data.secretAmount));
+          }
+        });
+      }
+
+      var getZeroState = function() {
+        //0状态
+        $.post('/billion/api/stateOfZeros', {temp: 1}, function(response){
+          var data = response.data;
+          var zeroIndexArr = [0,1,2,3,4,6,8,9];
+          var attr;
+          if(data) {
+            for(var i =  0; i<zeroIndexArr.length; i++) {
+              attr = 'zero' + zeroIndexArr[i];
+              var zeroDom = $('#' + attr);
+              if(data[attr] === 0) {
+                zeroDom.addClass('dark');
+                zeroDom.removeClass('normal');
+                zeroDom.removeClass('light');
+              } else if(data[attr] === 1) {
+                zeroDom.addClass('normal');
+                zeroDom.removeClass('dark');
+                zeroDom.removeClass('light');
+              } else if(data[attr] === 2) {
+                zeroDom.addClass('light');
+                zeroDom.removeClass('normal');
+                zeroDom.removeClass('dark');
+              } else {}
+            }
+          }
+          var currentLight = $('.content.light').length;
+          if (currentLight === 0 && window.isLoginEvent) {
+            $('.start-btn').addClass('start');
+          }
+          if (currentLight >= 1 && currentLight < 4) {
+            $('.start-btn').addClass('invite');
+          }
+          if (currentLight >= 4 && currentLight < 6) {
+            $('.start-btn').addClass('invite2');
+          }
+          if (currentLight === 6) {
+            $('.start-btn').addClass('invest');
+          }
+          if (currentLight === 7) {
+            $('.start-btn').addClass('last');
+          }
+          if (currentLight === 8) {
+            if (new Date().getTime() <= 1462031999000) {
+              $('.start-btn').addClass('end1');
+            } else {
+              $('.start-btn').addClass('end2');
+            }
+          }
+          setMissions(data);
+        });
+      }
+
+      var initData = function() {
+
+        //投资好友
+        $.post('/billion/api/getInvestedFriends', {temp: 1}, function(response){
+          var data = response.data;
+          var domStr = '';
+          if(data.length > 0) {
+            $('.content.wechat').removeClass('nofans');
+            data.map(function(item) {
+              domStr += ('<li class="investor clearfix">' +
+                '<span class="left">'+ item.mobile +'</span>' +
+                '<span class="main">在我的邀请下成为搜易贷投资人</span>' +
+              '</li>');
+            });
+            $('#investorList').append(domStr);
+          }
+        });
+
+        //助力好友
+        $.post('/billion/api/getWechatFans', {temp: 1}, function(response){
+          var data = response.data;
+          var domStr = '';
+          if(data.length > 0) {
+            $('.content.wechat').removeClass('nofans');
+            data.map(function(item, i) {
+              if(i > 9) return false;
+              else domStr += ('<li class="avatar"><img src="'+ item.wechatFaceUrl +'" alt=""></li>');
+            });
+            $('#avatarList').append(domStr);
+          }
+        });
+
+        //查看积分
+        $.post('/billion/api/getScore', {iswap:1}, function(response){
+          var score = response.data ? response.data.currentBalance : 0;
+          var TARGET_SCORE = 666;
+          if(score >= TARGET_SCORE) {
+            window.targetDialogId = '8-0-go';
+          } else {
+            window.targetDialogId = '8-0';
+          }
+        });
+
+        //获取参与状态
+        $.post('/billion/api/getLoginLog', {iswap:1}, function(res){
+          window.isLoginEvent = res.data;
+          getZeroState();
+          if(!window.isLoginEvent) {
+            $('.start-btn').addClass('join');
+          }
+        });
+      };
+
+      Zepto(function($){
+        var attachFastClick = Origami.fastclick;
+        attachFastClick(document.body);
+
+        if (!window.isClient) {
+          // 非客户端 隐藏按钮
+          $('.start-btn').hide();
+        }
+        if(getCookie('syd_auth_verify')) {
+          initData();
+          shareInit();
+        } else {
+          $('.start-btn').addClass('join');
+          //goLogin();
+        }
+
+        showTab1();
+        initPrize();
+
+        $('#rules').on('click', function(e) {
+          if(window.isClient) {
+            var data = {
+              title: $('#dialog-rules .dialog-simple-header').text(),
+              content: $('#dialog-rules .dialog-simple-content').text()
+            };
+            SYDBridge.openNative('tipsAlert', data);
+          } else {
+            dialogShow('#dialog-rules');
+          }
+        });
+
+
+        $('#tabs').on('click', function(e) {
+          var t = e.target;
+          if(t.id === 'tab1') {
+            showTab1();
+          } else if(t.id === 'tab2') {
+            showTab2();
+          } else {}
+        });
+
+        $('#section').on('click', 'a', function(e) {
+          var t = e.target;
+          if(t.id === 'zeroInfo1' ||
+             t.id === 'zeroInfo2' ||
+             t.id === 'zeroInfo3' ||
+             t.id === 'zeroInfo4') {
+            if (isWechat) {
+              dialogShow('#pre4-0-wechat');
+            } else {
+              dialogShow('#pre4-0');
+            }
+          } else if(t.id === 'zeroInfo5' ||
+                    t.id === 'zeroInfo6') {
+            dialogShow('#5and6-0');
+          } else if(t.id === 'zeroInfo7') {
+            dialogShow('#7-0');
+          } else if(t.id === 'zeroInfo8') {
+            if(!window.targetDialogId) {
+              toastShow('请在搜易贷APP中登录后打开查看');
+            } else {
+              dialogShow('#' + window.targetDialogId);
+            }
+          } else if(t.id === 'prelightBtn'){
+            dialogShow('#prelight');
+          }
+        });
+
+        $('.dialog').on('click', '.dialog-close', function(e) {
+          dialogHide($(e.target).parents('.dialog').selector);
+        });
+
+        $('#loginBtn').on('click', function(e) {
+          go('/login');
+        });
+
+        $('#invest').on('click', function(e) {
+          var t = e.target;
+          if(window.isClient) {
+            go('/index?appTabId=0'); // go invest
+          } else if(window.isWechat){
+            toastShow('下载搜易贷APP,立即投资!');
+          } else {
+            window.location.href = 'https://m.souyidai.com/invest';
+          }
+        });
+
+        $('#finalLightGo').on('click', function(e) {
+          var t = e.target;
+          //兑换积分
+          $.post('/billion/api/exchange', {temp: 1}, function(response){
+            if(errorHandle(response)) {
+              toastShow('成功消耗账户积分，完成点亮任务');
+              getZeroState();
+            }
+          });
+        });
+
+        $('#pre4-0-share-btn').on('click', function() {
+          window.location.href = 'https://weixin.souyidai.com/10billion/#!/invite/share/' + window.inviteUrl;
+        });
+
+        $('#start').on('click', function() {
+          var self = $(this);
+          var config = ['join', 'start', 'invite', 'invite2', 'invest', 'last', 'end1', 'end2'];
+          var currentClass = self[0].className.replace('start-btn ', '');
+
+          if (config.indexOf(currentClass) === -1) {
+            go('/login');
+            return;
+          }
+          var methods = {
+            join: function() {
+              if (!getCookie('syd_auth_verify')) {
+                go('/login');
+                return;
+              }
+              $.post('/billion/api/insertLoginLog', {iswap:1});
+              dialogShow('#startDialog-client');
+            },
+            start: function() {
+              dialogShow('#startDialog-client');
+            },
+            invite: function() {
+              dialogShow('#inviteDialog-client');
+            },
+            invite2: function() {
+              dialogShow('#invite2Dialog-client');
+            },
+            invest: function() {
+              dialogShow('#7-0');
+            },
+            last: function() {
+              dialogShow('#' + window.targetDialogId);
+            },
+            end1: function() {
+              dialogShow('#endDialog-1');
+            },
+            end2: function() {
+              dialogShow('#endDialog-2');
+            }
+          };
+          methods[currentClass]();
+        });
+
+        $('#startBtn-client,#pre4-0-client-share,#shareBtn-client').on('click', function() {
+          var data = {
+            title: "100亿财富计划人人有份！来帮我分钱！",
+            description: "点进去成为我的粉丝，记得一定要点蓝字哦！！",
+            url: "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5ff6c76bdf3b5cce&redirect_uri=http%3A%2F%2Fweixin.souyidai.com%2Foauth%2F&response_type=code&scope=snsapi_userinfo&state=billion_help_" + window.inviteUrl + "#wechat_redirect",
+            imageUrl: "https://weixin.souyidai.com/images/logo.jpg"
+          };
+          if (isClient) {
+            SYDBridge.openNative('share', data);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="">
+<%- include('../common/head', {title: '我的资金'}) %>
+<body class="wechat">
+  <ul class="tab-view tab-list wechat-tab">
+    <li class="tab-active">
+      <a href="/m/my_money" >资金概览</a>
+    </li>
+    <li>
+      <a href="/m/my_money/detail" >资金明细</a>
+    </li>
+  </ul>
+  <!--当前资产列表-->
+  <div class="wechat-myac-aslist">
+    <span class="wechat-myac-samlltit">当前资产价值</span>
+    <div class="wechat-myac-column">
+      <span>
+        <strong><%= (data.availableBalance/100).toFixed(2).replace(/(\d)(?=(?:\d{3})+(?:\.\d+)?$)/g, '$1,') %>元</strong>
+        <em>可用金额</em>
+      </span>
+      <span>
+        <strong><%= (data.blockedBalance/100).toFixed(2).replace(/(\d)(?=(?:\d{3})+(?:\.\d+)?$)/g, '$1,') %>元</strong>
+        <em>冻结金额</em>
+      </span>
+      <span>
+        <strong><%= (data.willGainPrincipalForP2P/100).toFixed(2).replace(/(\d)(?=(?:\d{3})+(?:\.\d+)?$)/g, '$1,') %>元</strong>
+        <em>P2P资产</em>
+      </span>
+      <span>
+        <strong><%= (data.willGainPrincipalForJjs/100).toFixed(2).replace(/(\d)(?=(?:\d{3})+(?:\.\d+)?$)/g, '$1,') %>元</strong>
+        <em>金交所资产</em>
+      </span>
+    </div>
+    <span class="wechat-myac-total">
+      <strong><%= (data.currentAsset/100).toFixed(2).replace(/(\d)(?=(?:\d{3})+(?:\.\d+)?$)/g, '$1,') %>元</strong>
+      <em>合计</em>
+    </span>
+  </div>
+  <!--当前资产列表-end-->
+  <!--底部-->
+  <div class="btn-bottom">
+    <div class="row">
+      <a class="text col-6" href="/m/recharge">充值</a>
+      <a class="text col-6 border-left" href="https://m.souyidai.com/account/select_card">取现</a>
+    </div>
+  </div>
+  <!--底部end-->
+  <%- include('../common/foot') %>
+  <%- include('../common/pv') %>
+</body>
+</html>

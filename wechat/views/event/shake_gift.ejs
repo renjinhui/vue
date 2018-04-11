@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="">
+<%- include('../common/head_event', {title: '全民摇奖一起嗨'}) %>
+<body class="shake-result" style="padding-bottom:0">
+  <div class="shake-gift-wrap" id="box">
+      <div class="shake-bg"></div>
+      <div class="gift-box">
+        <div class="shine shine1"></div>
+        <div class="shine shine2"></div>
+      </div>
+      <div class="gift"></div>
+      <a href="javascript:void(0);" class="shake_open" id="open"></a>
+  </div>
+  <div class="shake-result-wrap" id="res" style="display:none">
+    <% if (giftId === '0') {%>
+      <p class="res-desc">手抖了一下，木有抢到<br>换个姿势再来一次！</p>
+      <img class="res-img" src="https://static.souyidai.com/wap/2.0/images/weixin_shake/gift0.png" alt="">
+    <% } %>
+    <% if (giftId === '1') {%>
+      <p class="res-succ-desc"><span class="res-gift-name">摇中加息券</span><br><span class="res-gift-desc">请到摇一摇活动页面"我的奖品"查看</span></p>
+      <div class="res-bg">
+        <img class="res-img" src="https://static.souyidai.com/wap/2.0/images/weixin_shake/gift1.png" alt="">
+      </div>
+    <% } %>
+    <% if (giftId === '2') {%>
+      <p class="res-succ-desc"><span class="res-gift-name">摇中200元红包</span><br><span class="res-gift-desc">请到摇一摇活动页面"我的奖品"查看</span></p>
+      <div class="res-bg">
+        <img class="res-img" src="https://static.souyidai.com/wap/2.0/images/weixin_shake/gift2.png" alt="">
+      </div>
+    <% } %>
+    <% if (giftId === '3') {%>
+      <p class="res-succ-desc"><span class="res-gift-name">摇中50元红包</span><br><span class="res-gift-desc">请到摇一摇活动页面"我的奖品"查看</span></p>
+      <div class="res-bg">
+        <img class="res-img" src="https://static.souyidai.com/wap/2.0/images/weixin_shake/gift3.png" alt="">
+      </div>
+    <% } %>
+    <% if (giftId === '4') {%>
+      <p class="res-succ-desc"><span class="res-gift-name">摇中20元红包</span><br><span class="res-gift-desc">请到摇一摇活动页面"我的奖品"查看</span></p>
+      <div class="res-bg">
+        <img class="res-img" src="https://static.souyidai.com/wap/2.0/images/weixin_shake/gift4.png" alt="">
+      </div>
+    <% } %>
+    <% if (giftId === '5') {%>
+      <p class="res-succ-desc"><span class="res-gift-name">摇中5元红包</span><br><span class="res-gift-desc">请到摇一摇活动页面"我的奖品"查看</span></p>
+      <div class="res-bg">
+        <img class="res-img" src="https://static.souyidai.com/wap/2.0/images/weixin_shake/gift5.png" alt="">
+      </div>
+    <% } %>
+    <% if (giftId === '6') {%>
+      <p class="res-succ-desc"><span class="res-gift-name">摇中两鲜网牛排抵用券</span><br><span class="res-gift-desc">请到摇一摇活动页面"我的奖品"查看</span></p>
+      <div class="res-bg">
+        <img class="res-img" src="https://static.souyidai.com/wap/2.0/images/weixin_shake/gift6.png" alt="">
+      </div>
+    <% } %>
+    <% if (giftId === '7') {%>
+      <p class="res-succ-desc"><span class="res-gift-name">摇中爱鲜蜂抵用券</span><br><span class="res-gift-desc">请到摇一摇活动页面"我的奖品"查看</span></p>
+      <div class="res-bg">
+        <img class="res-img" src="https://static.souyidai.com/wap/2.0/images/weixin_shake/gift7.png" alt="">
+      </div>
+    <% } %>
+    <% if (giftId === '8') {%>
+      <p class="res-succ-desc"><span class="res-gift-name">摇中云雾安睡枕兑换券</span><br><span class="res-gift-desc">请到摇一摇活动页面"我的奖品"查看</span></p>
+      <div class="res-bg">
+        <img class="res-img" src="https://static.souyidai.com/wap/2.0/images/weixin_shake/gift8.png" alt="">
+      </div>
+    <% } %>
+    <% if (giftId === '9') {%>
+      <p class="res-succ-desc"><span class="res-gift-name">惊喜来的太突然！恭喜摇中AppleWatch一台！</span><br><span class="res-gift-desc">请到摇一摇活动页面"我的奖品"查看</span></p>
+      <div class="res-bg">
+        <img class="res-img" src="https://static.souyidai.com/wap/2.0/images/weixin_shake/gift_watch.png" alt="">
+      </div>
+    <% } %>
+    <p class="share-desc">分享活动,下次中奖概率会翻倍哦</p>
+    <a href="javascript:void(0);" class="shake_back" id="back"></a>
+    <a href="javascript:void(0);" class="shake_open" id="share"></a>
+  </div>
+  <%- include('../common/foot') %>
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <script>
+    $(function() {
+      $('#open').on('click', function() {
+        $('#box').hide();
+        $('#res').show();
+      });
+      $('#share').on('click', function() {
+        if (isClient) {
+          var data = {
+            title: '全民摇奖一起High,少你一个玩儿不起来',
+            description: '红包投资即可返现, 1元起投, 新手专享30天年化收益9.88%!好收益, 赚起来!',
+            url: 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5ff6c76bdf3b5cce&redirect_uri=http%3A%2F%2Fweixin.souyidai.com%2Foauth%2F&response_type=code&scope=snsapi_base&state=shake#wechat_redirect',
+            imageUrl: 'https://help.souyidai.com/upload/2015/07/13/1436788915424.png'
+          };
+          SYDBridge.openNative('share', data);
+          $.ajax({
+            url: '/event/shake/share',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+              time : new Date().getTime()
+            },
+            success: function(res) {
+            }
+          });
+        }
+      });
+      $('#back').on('click', function() {
+        location.href = '/event';
+      });
+    });
+  </script>
+  <%- include('../common/pv') %>
+</body>
+</html>

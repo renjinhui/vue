@@ -1,0 +1,53 @@
+.head,
+.prize {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.head {
+  background-image: url(../images/ac2.png);
+  height: 4rem;
+  margin-top: 0.4rem;
+}
+
+.content .prize {
+  background-image: url(../images/prize-show.png);
+  height: 4rem;
+  text-align: center;
+}
+
+.content .prize.mask {
+  background-image: url(../images/prize-hide.png);
+}
+
+.prize-title,
+.prize-user,
+.prize-good {
+  color: #ffe000;
+}
+.prize-title {
+  margin: 0.1rem 0;
+}
+
+
+.mask .prize-user {
+  visibility: hidden;
+}
+.prize-user {
+  height: 2rem;
+  padding-top: 0.53rem;
+  font-size: 0.34rem;
+}
+
+.prize-good {
+  padding-top: 0.15rem;
+}
+
+.prize .good-name {
+  font-size: 0.24rem;
+}
+
+.prize .good-value {
+  font-size: 0.293rem;
+}
