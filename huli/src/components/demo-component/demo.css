@@ -1,0 +1,29 @@
+
+.demo_box{
+	min-height: 500px;
+	position: relative;
+}
+.menu_box{
+	width: 150px;
+	position: absolute;
+	height: 100%;
+	overflow: scroll;
+	border-right:1px solid #ccc; 
+	text-align: center;
+}
+.menu_box li a{
+	display: block;
+	height: 25px;
+	line-height: 25px;
+	font-size: 18px;
+}
+.menu_box li a.current {
+	height: 25px;
+	line-height: 25px;
+	font-size: 18px;
+	background: #ccc;
+}
+.body_box{
+	position: absolute;
+	left: 165px;
+}

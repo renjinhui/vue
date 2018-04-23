@@ -1,0 +1,7 @@
+{
+  "env": {
+    "es6": true
+  },
+//  "presets": [ "es2015-loose", "react"]
+  "presets": [ ["es2015", {"loose": true}] , "react"  , "stage-0"]
+}
